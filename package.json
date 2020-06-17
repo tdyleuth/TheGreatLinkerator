@@ -6,19 +6,26 @@
   "scripts": {
     "start:dev": "node server/index.js",
     "build": "webpack --mode='production'",
-    "build:watch": "webpack --watch --mode='development'"
+    "build:watch": "webpack --watch --mode='development'",
+    "seed:dev": "nodemon ./db/seed.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tdyleuth/TheGreatLinkerator.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "express": "^4.17.1",
     "axios": "^0.19.2",
     "chalk": "^4.1.0",
-    "express": "^4.17.1",
     "pg": "^8.2.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-router-dom": "^5.2.0"
+    "react-router-dom": "^5.2.0",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.4"
   },
   "devDependencies": {
     "@babel/core": "^7.10.2",
@@ -26,5 +33,9 @@
     "babel-loader": "^8.1.0",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.11"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/tdyleuth/TheGreatLinkerator/issues"
+  },
+  "homepage": "https://github.com/tdyleuth/TheGreatLinkerator#readme"
 }
