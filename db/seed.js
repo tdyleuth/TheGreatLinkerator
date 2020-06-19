@@ -3,6 +3,7 @@ const {
     createUser,
     getAllUsers,
     createLink,
+    getAllLinks,
 } = require('./index');
 
 const bcrypt = require('bcrypt');
@@ -13,6 +14,9 @@ async function testDB() {
 
         console.log("Finished db testing...")
         
+        const results = await getAllLinks();
+
+        console.log("Links:", results)
     }catch(error){
         console.error("Error testing db!")
         throw error;

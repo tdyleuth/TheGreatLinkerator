@@ -155,9 +155,16 @@ async function updateLink(id, fields = {}) {
 
 async function getAllLinks() {
     try{
-        const { rows: [ links ] } = await client.query(`
+        const { rows: linksIds } = await client.query(`
         SELECT * FROM links;
         `);
+
+        const links = await Promise.all(linksIds.map(
+          link => getLinkById( link.id )
+        ));
+
+      return links;
+
     } catch(error){
         throw error;
     }
