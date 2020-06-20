@@ -4,9 +4,11 @@ const {
     getAllUsers,
     createLink,
     getAllLinks,
+    getLinkByTagName
 } = require('./index');
 
 const bcrypt = require('bcrypt');
+const { get } = require('../api');
 
 async function testDB() {
     try{
@@ -14,9 +16,18 @@ async function testDB() {
 
         console.log("Finished db testing...")
         
-        const results = await getAllLinks();
+        console.log("Testing getAllLinks")
 
-        console.log("Links:", results)
+        const results = await getAllLinks();
+        console.log("Finished Testing getAllLinks", results)
+
+        console.log("Testing getLinksByTagName");
+        const linksbytagname = await getLinkByTagName("news");
+        console.log("Finished Testing getAllLinksBytag", linksbytagname)
+
+        conso
+
+
     }catch(error){
         console.error("Error testing db!")
         throw error;

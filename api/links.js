@@ -21,18 +21,30 @@ linksRouter.get('/', async (req,res) => {
     });
 });
 
-//Create new link
+
+//Create new link with added tags
 linksRouter.post('/',requireUser, async (req,res,next) => {
-    const { name, url, comment } = req.body;
+    const { name, url, comment, tags = "" } = req.body;
     const { id } = req.user;
+    const tagsArr = tags.trim().split(/\s+/)
+    const linkData = {};
+    
+    if(tagsArr.length) {
+  
+      linkData.tags = tagsArr;
+    }
+  
 
     try{
-        const link = await createLink({
-            creatorId: id,
-            name,
-            url,
-            comment,
-        })
+      creatorId = id;
+      linkData.creatorId = creatorId;
+      linkData.name = name;
+      linkData.url  = url;
+      linkData.comment = comment;
+      
+      const link = await createLink(linkData)
+      console.log("testing", linkData)
+          
 
         if(link){
             res.send({
@@ -48,7 +60,7 @@ linksRouter.post('/',requireUser, async (req,res,next) => {
     } catch ({ name, message }) {
         next({ name, message });
     }
-})
+});
 
 //Update Link
 
@@ -98,6 +110,5 @@ linksRouter.patch('/:linkId',requireUser, async (req, res, next) => {
   });
 
   
-
 
 module.exports = linksRouter;
