@@ -3,7 +3,7 @@ const linksRouter = express.Router();
 
 const { requireUser } = require('./utils');
 
-const { getAllLinks, createLink, getLinkById, updateLink } = require('../db')
+const { getAllLinks, createLink, getLinkById, updateLink, destroyLinkTags, destroyLink } = require('../db')
 
 linksRouter.use( (req,res,next) => {
     console.log("A request is being made to /links")
@@ -62,11 +62,14 @@ linksRouter.post('/',requireUser, async (req,res,next) => {
     }
 });
 
+
 //Update Link
 
 linksRouter.patch('/:linkId',requireUser, async (req, res, next) => {
     const { linkId } = req.params;
-    const { name, url, comment } = req.body;
+    const { name, url, clicks, comment, tags } = req.body;
+    const tagsArr = tags.trim().split(/\s+/)
+
     const { id } = req.user;
     
     const updateFields = {};
@@ -79,9 +82,17 @@ linksRouter.patch('/:linkId',requireUser, async (req, res, next) => {
       updateFields.url = url;
     }
 
-    if(public){
-        updateFields.comment = comment
+    if(clicks){
+      updateFields.clicks = clicks;
+  }
+
+    if(comment){
+        updateFields.comment = comment;
     }
+
+    if(tags){
+      updateFields.tags = tagsArr;
+  }
 
 
     try {
@@ -109,6 +120,45 @@ linksRouter.patch('/:linkId',requireUser, async (req, res, next) => {
     }     
   });
 
-  
+
+//Delete link and link_tags related
+linksRouter.delete('/:linkId', requireUser, async (req, res, next) => {
+  const { linkId } = req.params;
+  console.log(linkId)
+  const { id } = req.user;
+  try{
+      const link = await getLinkById(linkId);
+      console.log(link)
+
+      if(link && link.creatorId === id) {
+      
+      const deletedLinkTags = await destroyLinkTags(linkId);
+      const deletedLink = await destroyLink(linkId);
+      
+
+      res.send({ 
+          message: "Link Deleted",
+          deleletedLink: deletedLink,
+          deletedLinkTags: deletedLinkTags
+      });
+      } else {
+          next(link 
+          ? {
+              name:"UnauthorizedUserError",
+              message: "You cannot delete a link which is not yours"
+          }
+          : {
+            name: "LinknotFoundError",
+            message: "Link does not exist"
+          });
+       }
+
+  } catch ({name, message }){
+    next({ name, message })
+  }
+});
+
+
+
 
 module.exports = linksRouter;

@@ -209,6 +209,19 @@ async function getLinkById(linkId) {
     }
   }
 
+async function destroyLink(linkId) {
+
+    try {
+      await client.query(`
+      DELETE FROM links
+      WHERE id = ${linkId};
+      `);
+      } catch(error){
+         throw error;
+        }
+  }
+  
+
 
 //tags helper functions
 async function createTags(tagList) {
@@ -310,6 +323,19 @@ async function getLinkByTagName(tagName) {
     }
   }
 
+  async function destroyLinkTags(linkId) {
+    try {
+        await client.query(`
+        DELETE FROM link_tags
+        WHERE "linkId" = ${linkId};
+        `);
+     } catch(error){
+        throw error;
+    }
+  }
+  
+
+
   
 
 module.exports = {
@@ -328,4 +354,6 @@ module.exports = {
     getLinkByTagName,
     createLinkTag,
     addTagsToLink,
+    destroyLinkTags,
+    destroyLink,
 }

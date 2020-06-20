@@ -4,6 +4,7 @@ const {
     getAllUsers,
     createLink,
     getAllLinks,
+    getLinkById,
     getLinkByTagName
 } = require('./index');
 
@@ -25,7 +26,10 @@ async function testDB() {
         const linksbytagname = await getLinkByTagName("news");
         console.log("Finished Testing getAllLinksBytag", linksbytagname)
 
-        conso
+        console.log("Testing getLinksById");
+        const test = await getLinkById(1);
+        console.log("Result", test)
+        console.log("Finished testing getLinksById");
 
 
     }catch(error){
