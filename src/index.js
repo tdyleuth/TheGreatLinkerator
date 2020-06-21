@@ -6,10 +6,13 @@ import ReactDOM from 'react-dom';
 import axios from 'axios';
 import chalk from 'chalk';
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Header from './components/header';
+
 const App = () => {
 
     return (
-        <h1>The Great Linkerator!</h1>
+        <Header />
     );
     
 }
