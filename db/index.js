@@ -118,6 +118,7 @@ async function createLink({
          VALUES($1,$2,$3,$4,$5)
          RETURNING *;`
         , [creatorId,name,url,clicks,comment]);
+
         const tagList = await createTags(tags);
   
         return await addTagsToLink(link.id, tagList);
@@ -262,6 +263,32 @@ async function createTags(tagList) {
     }
 }
 
+
+async function updateTag(id, fields = {}) {
+
+  const setString = Object.keys(fields).map(
+      (key, index) => `"${ key }"=$${ index + 1 }`
+    ).join(', ');
+  
+    if (setString.length === 0) {
+      return;
+    }
+  
+    try {
+      const { rows: [ tag ] }= await client.query(`
+        UPDATE tags
+        SET ${ setString }
+        WHERE id=${ id }
+        RETURNING *;
+      `, Object.values(fields));
+  
+      return tag;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+
 async function createLinkTag(linkId, tagId) {
   try {
     await client.query(`
@@ -273,6 +300,7 @@ async function createLinkTag(linkId, tagId) {
     throw error;
   }
 }
+
 
 async function addTagsToLink(linkId, tagList) {
     try {
@@ -349,6 +377,7 @@ module.exports = {
     updateLink,
     getAllLinks,
     createTags,
+    updateTag,
     getAllTags,
     getLinkById,
     getLinkByTagName,
