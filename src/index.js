@@ -7,7 +7,7 @@ import axios from 'axios';
 import chalk from 'chalk';
 
 import Header from './components/header';
-import './App.css';
+import './app.scss';
 
 const App = () => {
 

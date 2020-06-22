@@ -1,7 +1,34 @@
-// /src/components/App.scss
-@import '../public/index.scss';
+//src/app.scss
 
-$jumbotron-bg: $theme-color1;
+@import "./custom.scss";
 
-@import "../node_modules/bootstrap/scss/bootstrap.scss";
+/* ----------------------------------------------------------------------------------------------- Global -----------------------------------------------------------------------------------------------*/
+
+
+$theme-color2: rgba(50,50,50, 1);
+$theme-accent1: silver;
+$theme-accent2: goldenrod;
+$theme-accent3: red;
+
+
+*{
+    box-sizing: border-box;
+    border: 0;
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    content:"";
+	position:fixed;
+	left:0;
+	top:0;
+	right:0;
+	bottom:0;
+	z-index:-1;
+    font-size: 10px;
+    background: $theme-color2;
+    background: -webkit-linear-gradient(270deg, $theme-color1 5%, $theme-color2 25%);
+    color: white;
+}
 
