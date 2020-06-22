@@ -6,8 +6,8 @@ import ReactDOM from 'react-dom';
 import axios from 'axios';
 import chalk from 'chalk';
 
-import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from './components/header';
+import './App.css';
 
 const App = () => {
 
@@ -17,7 +17,8 @@ const App = () => {
     
 }
 
+const app = document.getElementById('root');
+
 ReactDOM.render(
-    <App />,
-    document.getElementById('root')
+    <App />, app
 );

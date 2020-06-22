@@ -1,26 +1,23 @@
-/* ----------------------------------------------------------------------------------------------- ./index.css -----------------------------------------------------------------------------------------------*/
-
-
-
 /* ----------------------------------------------------------------------------------------------- Global -----------------------------------------------------------------------------------------------*/
-*{
-    box-sizing: border-box;
-    border: 0;
-    padding: 0;
-    margin: 0;
+* {
+  box-sizing: border-box;
+  border: 0;
+  padding: 0;
+  margin: 0;
 }
 
 html {
-    content:"";
-	position:fixed;
-	left:0;
-	top:0;
-	right:0;
-	bottom:0;
-	z-index:-1;
-    font-size: 10px;
-    background: rgb(40,40,40);
-    background: -webkit-linear-gradient(270deg, rgba(0,0,0,1) 5%, rgba(50,50,50,1) 25%);
-    color: white;
+  content: "";
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  font-size: 10px;
+  background: #323232;
+  background: -webkit-linear-gradient(270deg, black 5%, #323232 25%);
+  color: white;
 }
 
+/*# sourceMappingURL=index.css.map */
