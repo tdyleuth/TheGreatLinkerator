@@ -3,7 +3,7 @@ const linksRouter = express.Router();
 
 const { requireUser } = require('./utils');
 
-const { getAllLinks, createLink, getLinkById, updateLink, destroyLinkTags, destroyLink } = require('../db')
+const { getAllLinks, createLink, getLinkById, updateLink, destroyLinkTags, destroyLink, updateTag, createTags, addTagsToLink } = require('../db')
 
 linksRouter.use( (req,res,next) => {
     console.log("A request is being made to /links")
@@ -67,13 +67,12 @@ linksRouter.post('/',requireUser, async (req,res,next) => {
 
 linksRouter.patch('/:linkId',requireUser, async (req, res, next) => {
     const { linkId } = req.params;
+    const { id } = req.user;
     const { name, url, clicks, comment, tags } = req.body;
     const tagsArr = tags.trim().split(/\s+/)
-
-    const { id } = req.user;
-    
     const updateFields = {};
 
+  
     if(name) {
       updateFields.name = name;
     }
@@ -90,17 +89,19 @@ linksRouter.patch('/:linkId',requireUser, async (req, res, next) => {
         updateFields.comment = comment;
     }
 
-    if(tags){
-      updateFields.tags = tagsArr;
-  }
-
-
+  
     try {
       const originalLink = await getLinkById(linkId);
       const _creatorID = originalLink.creatorId;
   
       if(id === _creatorID){
-        const updatedLink = await updateLink(linkId, updateFields);
+        await updateLink(linkId, updateFields);
+
+        const updatedTags = await createTags(tagsArr)
+
+        await addTagsToLink(linkId, updatedTags);
+
+        const updatedLink = await getLinkById(linkId)
 
         res.send({
           message:"Link has been updated",
