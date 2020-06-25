@@ -34,7 +34,7 @@ linksRouter.post('/',requireUser, async (req,res,next) => {
       linkData.tags = tagsArr;
     }
   
-
+ 
     try{
       creatorId = id;
       linkData.creatorId = creatorId;
@@ -120,6 +120,7 @@ linksRouter.patch('/:linkId',requireUser, async (req, res, next) => {
       next({ name, message });
     }     
   });
+
 
 
 //Delete link and link_tags related
