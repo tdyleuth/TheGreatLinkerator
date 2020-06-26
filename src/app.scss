@@ -1,8 +1,16 @@
-/* ----------------------------------------------------------------------------------------------- ./index.css -----------------------------------------------------------------------------------------------*/
+//src/app.scss
 
-
+@import "./custom.scss";
 
 /* ----------------------------------------------------------------------------------------------- Global -----------------------------------------------------------------------------------------------*/
+
+
+$theme-color2: rgba(50,50,50, 1);
+$theme-accent1: silver;
+$theme-accent2: goldenrod;
+$theme-accent3: red;
+
+
 *{
     box-sizing: border-box;
     border: 0;
@@ -19,8 +27,8 @@ html {
 	bottom:0;
 	z-index:-1;
     font-size: 10px;
-    background: rgb(40,40,40);
-    background: -webkit-linear-gradient(270deg, rgba(0,0,0,1) 5%, rgba(50,50,50,1) 25%);
+    background: $theme-color2;
+    background: -webkit-linear-gradient(270deg, $theme-color1 5%, $theme-color2 25%);
     color: white;
 }
 
