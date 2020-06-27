@@ -9,7 +9,7 @@ import axios from 'axios';
 import NavButtons from "./NavButtons";
 import NewBookmark from './New-Bookmark';
 import LoginForm from './Login';
-import SignUpForm from './SignUP';
+import SignUpForm from './SignUp';
 
 
 export default function Nav (){
@@ -70,7 +70,7 @@ export default function Nav (){
 
                 <LoginForm show={LoginModal} hideEvent={ () => setLoginModal(false) } />
 
-                <SignUpForm show={SignUpModal} hideEvent={ () => setSignUpModal(false) } />
+            <SignUpForm show={SignUpModal} hideEvent={ () => setSignUpModal(false) } />
                 
             </Navbar>
         )

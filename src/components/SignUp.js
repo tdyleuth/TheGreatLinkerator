@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
 
-export default function SignUpForm({ show, hideEvent }){
+function SignUpForm({ show, hideEvent }){
 
     return(
 
@@ -49,3 +49,4 @@ export default function SignUpForm({ show, hideEvent }){
 
 }
 
+export default SignUpForm
