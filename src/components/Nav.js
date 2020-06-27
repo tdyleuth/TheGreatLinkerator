@@ -10,14 +10,11 @@ import NewBookmark from './New-Bookmark';
 import LoginForm from './LoginForm';
 import SignUpForm from './SignUpForm';
 
-export default function Nav (){
+export default function Nav ({ user, setUser }){
 
     const [bkmrkModal, setBkmrkModal] = useState(false);
     const [LoginModal, setLoginModal] = useState(false)
     const [SignUpModal, setSignUpModal] = useState(false)
-
-    const [name, setName] = useState('');
-    const [token, setToken] = useState('');
 
     function clearLocalStorage() {
         localStorage.setItem('token', '');
@@ -26,19 +23,19 @@ export default function Nav (){
     }
 
     function handleLogout(){
-        setName('');
         setToken('');
         clearLocalStorage();
         //Update bookmark dispay
     }
 
-    return(name
+
+    return(user.id
         ? (
             <Navbar className='theme-bg theme-variant'>
 
                 <div id='greeting'>
                     <Image src="/assets/avatar.png" alt='Generic avatar image' roundedCircle />
-                    <Navbar.Text id='nav-text'>Welcome, { name }!</Navbar.Text>
+                    <Navbar.Text id='nav-text'>Welcome, { user.name }!</Navbar.Text>
                 </div>
 
            
@@ -67,7 +64,7 @@ export default function Nav (){
                     <NavButtons className='signup' text='Sign-Up' clickEvent={ () => setSignUpModal(true)  } />
                 </div>
                 
-                <LoginForm show={ LoginModal } hideEvent={ () => setLoginModal(false) } name={ name } setName={ setName } token={ token } setToken={ setToken } clearLocalStorage={ clearLocalStorage }/>
+                <LoginForm show={ LoginModal } hideEvent={ () => setLoginModal(false) } user={user} name={ user.name } clearLocalStorage={ clearLocalStorage }/>
                 <SignUpForm show={ SignUpModal } hideEvent={ () => setSignUpModal(false) } />
 
             </Navbar>

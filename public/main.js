@@ -6085,6 +6085,96 @@ module.exports = ReactPropTypesSecret;
 
 /***/ }),
 
+/***/ "./node_modules/react-bootstrap/esm/Alert.js":
+/*!***************************************************!*\
+  !*** ./node_modules/react-bootstrap/esm/Alert.js ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutPropertiesLoose */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var uncontrollable__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! uncontrollable */ "./node_modules/uncontrollable/esm/index.js");
+/* harmony import */ var _restart_hooks_useEventCallback__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @restart/hooks/useEventCallback */ "./node_modules/@restart/hooks/esm/useEventCallback.js");
+/* harmony import */ var _createWithBsPrefix__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./createWithBsPrefix */ "./node_modules/react-bootstrap/esm/createWithBsPrefix.js");
+/* harmony import */ var _divWithClassName__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./divWithClassName */ "./node_modules/react-bootstrap/esm/divWithClassName.js");
+/* harmony import */ var _ThemeProvider__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./ThemeProvider */ "./node_modules/react-bootstrap/esm/ThemeProvider.js");
+/* harmony import */ var _Fade__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./Fade */ "./node_modules/react-bootstrap/esm/Fade.js");
+/* harmony import */ var _CloseButton__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./CloseButton */ "./node_modules/react-bootstrap/esm/CloseButton.js");
+/* harmony import */ var _SafeAnchor__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./SafeAnchor */ "./node_modules/react-bootstrap/esm/SafeAnchor.js");
+
+
+
+
+
+
+
+
+
+
+
+
+var defaultProps = {
+  show: true,
+  transition: _Fade__WEBPACK_IMPORTED_MODULE_9__["default"],
+  closeLabel: 'Close alert'
+};
+var controllables = {
+  show: 'onClose'
+};
+var Alert = react__WEBPACK_IMPORTED_MODULE_3___default.a.forwardRef(function (uncontrolledProps, ref) {
+  var _useUncontrolled = Object(uncontrollable__WEBPACK_IMPORTED_MODULE_4__["useUncontrolled"])(uncontrolledProps, controllables),
+      bsPrefix = _useUncontrolled.bsPrefix,
+      show = _useUncontrolled.show,
+      closeLabel = _useUncontrolled.closeLabel,
+      className = _useUncontrolled.className,
+      children = _useUncontrolled.children,
+      variant = _useUncontrolled.variant,
+      onClose = _useUncontrolled.onClose,
+      dismissible = _useUncontrolled.dismissible,
+      Transition = _useUncontrolled.transition,
+      props = Object(_babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__["default"])(_useUncontrolled, ["bsPrefix", "show", "closeLabel", "className", "children", "variant", "onClose", "dismissible", "transition"]);
+
+  var prefix = Object(_ThemeProvider__WEBPACK_IMPORTED_MODULE_8__["useBootstrapPrefix"])(bsPrefix, 'alert');
+  var handleClose = Object(_restart_hooks_useEventCallback__WEBPACK_IMPORTED_MODULE_5__["default"])(function (e) {
+    onClose(false, e);
+  });
+  var alert = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    role: "alert"
+  }, Transition ? props : undefined, {
+    ref: ref,
+    className: classnames__WEBPACK_IMPORTED_MODULE_2___default()(className, prefix, variant && prefix + "-" + variant, dismissible && prefix + "-dismissible")
+  }), dismissible && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_CloseButton__WEBPACK_IMPORTED_MODULE_10__["default"], {
+    onClick: handleClose,
+    label: closeLabel
+  }), children);
+  if (!Transition) return show ? alert : null;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(Transition, Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    unmountOnExit: true
+  }, props, {
+    in: show
+  }), alert);
+});
+var DivStyledAsH4 = Object(_divWithClassName__WEBPACK_IMPORTED_MODULE_7__["default"])('h4');
+DivStyledAsH4.displayName = 'DivStyledAsH4';
+Alert.displayName = 'Alert';
+Alert.defaultProps = defaultProps;
+Alert.Link = Object(_createWithBsPrefix__WEBPACK_IMPORTED_MODULE_6__["default"])('alert-link', {
+  Component: _SafeAnchor__WEBPACK_IMPORTED_MODULE_11__["default"]
+});
+Alert.Heading = Object(_createWithBsPrefix__WEBPACK_IMPORTED_MODULE_6__["default"])('alert-heading', {
+  Component: DivStyledAsH4
+});
+/* harmony default export */ __webpack_exports__["default"] = (Alert);
+
+/***/ }),
+
 /***/ "./node_modules/react-bootstrap/esm/BootstrapModalManager.js":
 /*!*******************************************************************!*\
   !*** ./node_modules/react-bootstrap/esm/BootstrapModalManager.js ***!
@@ -18653,23 +18743,30 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_bootstrap_Modal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap/Modal */ "./node_modules/react-bootstrap/esm/Modal.js");
 /* harmony import */ var react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap/Form */ "./node_modules/react-bootstrap/esm/Form.js");
 /* harmony import */ var react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap/Button */ "./node_modules/react-bootstrap/esm/Button.js");
+/* harmony import */ var react_bootstrap_Alert__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-bootstrap/Alert */ "./node_modules/react-bootstrap/esm/Alert.js");
+/* harmony import */ var react_bootstrap_Fade__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-bootstrap/Fade */ "./node_modules/react-bootstrap/esm/Fade.js");
 // /src/components/LoginForm.js
 
 
 
 
 
-const BASE_URL = 'http://localhost:3000/api/';
+
+
+const BASE_URL = 'http://localhost:3000/api/users';
 
 function LoginForm({
   show,
   hideEvent,
   name,
   setName,
-  token,
-  setToken,
   clearLocalStorage
 }) {
+  const [username, setUsername] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])('');
+  const [password, setPassword] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])('');
+  const [userError, setUserError] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false);
+  const [passwordError, setPasswordError] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false);
+
   function setLocalStorage(token, name) {
     localStorage.setItem('token', token);
     localStorage.setItem('name', name); //Get epoch time for time of function call and convert from milliseconds to seconds to minutes, and store in local storage
@@ -18678,14 +18775,37 @@ function LoginForm({
     localStorage.setItem('bookmark-fetch-time', '0');
   }
 
+  async function isLoggedIn() {
+    const token = localStorage.getItem('token');
+    console.log('token is ', token);
+    const timeSinceLogin = +new Date(Date.now()) / 1000 / 60 - Number(localStorage.getItem('login-time')); //If there is a stored token and it is current (less than 30 minutes), attempt to validate token
+
+    if (token && timeSinceLogin < 30) {
+      const {
+        data: {
+          name
+        }
+      } = await axios__WEBPACK_IMPORTED_MODULE_1___default.a.post(BASE_URL + '/test', {
+        token
+      });
+
+      if (name === 'VerificationSuccessful') {
+        return true;
+      } else {
+        clearLocalStorage();
+        return false;
+      }
+    } else {
+      return false;
+    }
+  }
+
   async function loginUser() {
     //TODO: Hash password before sending and integrate hash validation to isLoggedIn 
-    console.log('here3');
-    const username = document.getElementById('login-username').value;
-    const password = document.getElementById('login-password').value;
-    console.log('here4');
-    console.log('username is ', username);
-    console.log('password is ', password);
+    const loginUsername = document.getElementById('login-username').value;
+    const loginPassword = document.getElementById('login-password').value;
+    console.log('username is ', loginUsername);
+    console.log('password is ', loginPassword);
 
     try {
       const {
@@ -18693,11 +18813,25 @@ function LoginForm({
           name,
           token
         }
-      } = await axios__WEBPACK_IMPORTED_MODULE_1___default.a.post(BASE_URL + 'users/login', {
-        username: 'yhafez',
-        password: 'passwored121'
+      } = await axios__WEBPACK_IMPORTED_MODULE_1___default.a.post(BASE_URL + '/login', {
+        username: loginUsername,
+        password: loginPassword
       });
-      console.log('returned name and token are ', name, token);
+
+      if (name === 'IncorrectCredentialsError') {
+        console.log('Got here');
+        setPasswordError(true);
+        return;
+      } else if (name === 'UserExistsError') {
+        console.log('Got here too');
+        setUserError(true);
+        return;
+      } else if (name === 'MissingCredentialsError') {
+        return;
+      }
+
+      setUsername(loginUsername);
+      setPassword(loginPassword);
       setLocalStorage(token, name);
       return {
         token,
@@ -18709,8 +18843,9 @@ function LoginForm({
     }
   }
 
-  async function handleLogin() {
-    console.log('here2');
+  async function handleLogin(event) {
+    event.preventDefault();
+    event.stopPropagation();
     const isLoggedIn = await loginUser(); //If login is successful, update state accordingly
 
     if (isLoggedIn) {
@@ -18718,38 +18853,9 @@ function LoginForm({
       setToken(isLoggedIn.token);
     } //If unsuccessful, display notice to user
     else {
-        //TODO give notice that login is invalid
         clearLocalStorage();
       } //TODO "Remember Me"
 
-  }
-
-  async function isLoggedIn() {
-    const token = localStorage.getItem('token');
-    const timeSinceLogin = +new Date(Date.now()) / 1000 / 60 - Number(localStorage.getItem('login-time')); //If there is a stored token and it is current (less than 30 minutes), attempt to validate token
-
-    if (token && timeSinceLogin < 30) {
-      const {
-        data: {
-          name
-        }
-      } = await axios__WEBPACK_IMPORTED_MODULE_1___default.a.post(BASE_URL + 'users/test', {
-        token
-      });
-
-      if (name === 'VerificationSuccessful') {
-        return true;
-      } else if (token) {
-        //Give notice that user has been signed out due to inactivity
-        clearLocalStorage();
-        return false;
-      } else {
-        clearLocalStorage();
-        return false;
-      }
-    } else {
-      return false;
-    }
   } //Checks if login is current and recent and, if not, renews login token
   //TODO
 
@@ -18761,13 +18867,6 @@ function LoginForm({
     }
   }
 
-  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
-    const verifyLogin = isLoggedIn().then(loggedIn => {
-      if (loggedIn) {
-        handleLogin();
-      }
-    });
-  }, []);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Modal__WEBPACK_IMPORTED_MODULE_2__["default"], {
     size: "lg",
     show: show,
@@ -18777,20 +18876,34 @@ function LoginForm({
     closeButton: true
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Modal__WEBPACK_IMPORTED_MODULE_2__["default"].Title, {
     id: "login-header"
-  }, "Login")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Modal__WEBPACK_IMPORTED_MODULE_2__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_3__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_3__["default"].Group, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_3__["default"].Label, null, "Enter Username"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_3__["default"].Control, {
+  }, "Login")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Modal__WEBPACK_IMPORTED_MODULE_2__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    onSubmit: handleLogin
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_3__["default"].Group, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Fade__WEBPACK_IMPORTED_MODULE_6__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Alert__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    id: "user-not-found",
+    variant: "danger",
+    dismissible: true,
+    show: userError,
+    onClose: () => setUserError(false)
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Alert__WEBPACK_IMPORTED_MODULE_5__["default"].Heading, null, " Username not found! Please try again."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Fade__WEBPACK_IMPORTED_MODULE_6__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Alert__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    id: "incorrect-password",
+    variant: "danger",
+    dismissible: true,
+    show: passwordError,
+    onClose: () => setPasswordError(false)
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Alert__WEBPACK_IMPORTED_MODULE_5__["default"].Heading, null, " Incorrect password! Please try again."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_3__["default"].Label, null, "Enter Username"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_3__["default"].Control, {
     as: "input",
     id: "login-username",
     required: true
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_3__["default"].Label, null, "Enter Password"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_3__["default"].Control, {
     as: "input",
     id: "login-password",
+    type: "password",
     required: true
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     id: "loginForm-btns"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_4__["default"], {
     id: "submit-loginForm",
-    type: "submit",
-    onClick: handleLogin
+    type: "submit"
   }, "Login"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_4__["default"], {
     id: "close-loginForm",
     onClick: hideEvent
@@ -18827,12 +18940,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function Nav() {
+function Nav({
+  user,
+  setUser
+}) {
   const [bkmrkModal, setBkmrkModal] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false);
   const [LoginModal, setLoginModal] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false);
   const [SignUpModal, setSignUpModal] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false);
-  const [name, setName] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])('');
-  const [token, setToken] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])('');
 
   function clearLocalStorage() {
     localStorage.setItem('token', '');
@@ -18841,12 +18955,11 @@ function Nav() {
   }
 
   function handleLogout() {
-    setName('');
     setToken('');
     clearLocalStorage(); //Update bookmark dispay
   }
 
-  return name ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Navbar__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  return user.id ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Navbar__WEBPACK_IMPORTED_MODULE_1__["default"], {
     className: "theme-bg theme-variant"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     id: "greeting"
@@ -18856,7 +18969,7 @@ function Nav() {
     roundedCircle: true
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Navbar__WEBPACK_IMPORTED_MODULE_1__["default"].Text, {
     id: "nav-text"
-  }, "Welcome, ", name, "!")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, "Welcome, ", user.name, "!")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "navButtons"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_NavButtons__WEBPACK_IMPORTED_MODULE_3__["default"], {
     className: "new-bkmrk",
@@ -18892,10 +19005,8 @@ function Nav() {
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_LoginForm__WEBPACK_IMPORTED_MODULE_5__["default"], {
     show: LoginModal,
     hideEvent: () => setLoginModal(false),
-    name: name,
-    setName: setName,
-    token: token,
-    setToken: setToken,
+    user: user,
+    name: user.name,
     clearLocalStorage: clearLocalStorage
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SignUpForm__WEBPACK_IMPORTED_MODULE_6__["default"], {
     show: SignUpModal,
@@ -19070,16 +19181,53 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_bootstrap_Modal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap/Modal */ "./node_modules/react-bootstrap/esm/Modal.js");
 /* harmony import */ var react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap/Form */ "./node_modules/react-bootstrap/esm/Form.js");
 /* harmony import */ var react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap/Button */ "./node_modules/react-bootstrap/esm/Button.js");
+/* harmony import */ var react_bootstrap_Alert__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap/Alert */ "./node_modules/react-bootstrap/esm/Alert.js");
+/* harmony import */ var react_bootstrap_Fade__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-bootstrap/Fade */ "./node_modules/react-bootstrap/esm/Fade.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_6__);
 // /src/components/SignUpForm.js
 
 
 
 
 
+
+
+const BASE_URL = 'http://localhost:3000/api/users';
+
 function SignUpForm({
   show,
   hideEvent
 }) {
+  const [userError, setUserError] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false);
+  const [passwordError, setPasswordError] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false);
+
+  async function handleSignup(event) {
+    event.preventDefault();
+    event.stopPropagation();
+    const name = document.getElementById('signup-name').value;
+    const username = document.getElementById('signup-username').value;
+    const password = document.getElementById('signup-password').value;
+    const {
+      data: {
+        name: messageName,
+        token
+      }
+    } = await axios__WEBPACK_IMPORTED_MODULE_6___default.a.post(BASE_URL + '/register', {
+      username,
+      password,
+      name
+    });
+
+    if (messageName === 'UserExistsError') {
+      setUserError(true);
+    }
+
+    if (messageName === 'PasswordLengthError') {
+      setPasswordError(true);
+    }
+  }
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Modal__WEBPACK_IMPORTED_MODULE_1__["default"], {
     size: "lg",
     show: show,
@@ -19089,14 +19237,32 @@ function SignUpForm({
     closeButton: true
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Modal__WEBPACK_IMPORTED_MODULE_1__["default"].Title, {
     id: "signup-header"
-  }, "Register")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Modal__WEBPACK_IMPORTED_MODULE_1__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2__["default"].Group, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2__["default"].Label, null, "Enter New Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2__["default"].Control, {
+  }, "Register")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Modal__WEBPACK_IMPORTED_MODULE_1__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    onSubmit: handleSignup
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2__["default"].Group, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Fade__WEBPACK_IMPORTED_MODULE_5__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Alert__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    id: "user-exists-error",
+    variant: "danger",
+    dismissible: true,
+    show: userError,
+    onClose: () => setUserError(false)
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Alert__WEBPACK_IMPORTED_MODULE_4__["default"].Heading, null, " A user by this username already exists! Please try registering with a different username. "))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Fade__WEBPACK_IMPORTED_MODULE_5__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Alert__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    id: "short-password",
+    variant: "danger",
+    dismissible: true,
+    show: passwordError,
+    onClose: () => setPasswordError(false)
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Alert__WEBPACK_IMPORTED_MODULE_4__["default"].Heading, null, " Password must be at least 8 characters in length "))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2__["default"].Label, null, "Enter New Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2__["default"].Control, {
+    id: "signup-name",
     as: "input",
     required: true
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2__["default"].Label, null, "Enter New Username"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2__["default"].Control, {
+    id: "signup-username",
     as: "input",
     required: true
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2__["default"].Label, null, "Enter New Password"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2__["default"].Control, {
+    id: "signup-password",
     as: "input",
+    type: "password",
     required: true
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     id: "signUpForm-btns"
@@ -19144,9 +19310,62 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+const BASE_URL = 'http://localhost:3000/api/';
 
 const App = () => {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Header__WEBPACK_IMPORTED_MODULE_4__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Nav__WEBPACK_IMPORTED_MODULE_5__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("main", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Search__WEBPACK_IMPORTED_MODULE_6__["default"], null)));
+  const [user, setUser] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
+    id: '',
+    username: '',
+    name: ''
+  });
+
+  function clearLocalStorage() {
+    localStorage.setItem('token', '');
+    localStorage.setItem('name', '');
+    localStorage.setItem('login-time', JSON.stringify(NaN));
+  }
+
+  async function attemptTokenLogin() {
+    const token = localStorage.getItem('token');
+    console.log('token is ', token);
+    const timeSinceLogin = +new Date(Date.now()) / 1000 / 60 - Number(localStorage.getItem('login-time')); //If there is a stored token and it is current (less than 30 minutes), attempt to validate token
+
+    if (token && timeSinceLogin < 30) {
+      const {
+        data
+      } = await axios__WEBPACK_IMPORTED_MODULE_2___default.a.post(BASE_URL + 'users/test', {
+        token
+      });
+      const {
+        name: messageName,
+        userObj
+      } = data;
+      const {
+        id,
+        username,
+        name
+      } = userObj;
+      setUser(userObj);
+
+      if (messageName === 'VerificationSuccessful') {
+        return userObj;
+      } else {
+        clearLocalStorage();
+        return {};
+      }
+    } else {
+      return {};
+    }
+  }
+
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
+    attemptTokenLogin();
+  }, []);
+  console.log('user in index ', user);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Header__WEBPACK_IMPORTED_MODULE_4__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Nav__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    user: user,
+    setUser: setUser
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("main", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Search__WEBPACK_IMPORTED_MODULE_6__["default"], null)));
 };
 
 const app = document.getElementById('root');

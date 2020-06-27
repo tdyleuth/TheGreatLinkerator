@@ -30,6 +30,7 @@ usersRouter.post('/register', async (req, res, next) => {
   
     try {
       const userExist = await getUserByUsername(username);
+      console.log(userExist);
   
       if (userExist) {
         next({
@@ -64,6 +65,7 @@ usersRouter.post('/register', async (req, res, next) => {
       });
   
       res.send({ 
+        name: 'SignupSuccessful',
         message: "Thank you for signing up!",
         token 
       });
@@ -112,7 +114,7 @@ usersRouter.post('/login', async (req, res, next) => {
        else {
       if (passwordsMatch) {
     
-      const token = jwt.sign({ username, password, id }, process.env.JWT_SECRET, { expiresIn: '1w' });
+      const token = jwt.sign({ username, name, id }, process.env.JWT_SECRET, { expiresIn: '1w' });
 
       res.send({ message: "You're logged in!", token, name });
 
@@ -134,16 +136,26 @@ usersRouter.post('/login', async (req, res, next) => {
 usersRouter.post('/test', async (req, res, next) => {
   
   try{
-    console.log('here 5');
+
+    console.log('here');
     const { token } = req.body;
-    console.log('here 6');
     const verification = jwt.verify(token, process.env.JWT_SECRET);
-    console.log('here 7');
     console.log('verification ', verification);
+
+    const userObj ={
+      id: verification.id,
+      username: verification.username,
+      name: verification.name
+    }
+    
+    console.log('userObj is ', userObj);
+    
     res.send({
       name: 'VerificationSuccessful',
       message: 'Token is valid, verification is successful',
-    })
+      userObj
+    });
+
   }
   catch(err){
     console.error("There's been an error verifying user is logged in @ /user/test route. Error: ", err);

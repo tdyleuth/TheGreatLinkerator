@@ -113,7 +113,7 @@ async function dropTables() {
 async function createInitialUsers() {
    
     const tonyPass = 'password909';
-    const yahyaPass = 'passwored121';
+    const yahyaPass = 'password121';
     const SALT_COUNT = 10;
     
     try {
