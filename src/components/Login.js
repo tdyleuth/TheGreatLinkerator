@@ -31,7 +31,7 @@ function LoginForm({ show, hideEvent }){
                         <Form.Label>Enter Password</Form.Label>
                         <Form.Control as='input' required></Form.Control>
                         
-                        <div id='#loginForm-btns'>
+                        <div id='loginForm-btns'>
                             <Button id='submit-loginForm'type='submit'>Login</Button>
                             <Button id='close-loginForm' onClick={ hideEvent } >Close</Button>
                         </div>
