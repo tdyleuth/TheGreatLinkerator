@@ -1,8 +1,16 @@
-// /src/components/App.scss
+// /src/custom.scss
+@import "./theme";
 
-$theme-color1: rgba(0, 0, 0, 1);
+$gradient1: linear-gradient(180deg, rgba(34,34,34,1) 22%, rgba(35,35,35,1) 30%, rgba(25,25,25,1) 70%);
+$gradient2: linear-gradient(180deg, rgba(80,80,80,1) 22%, rgba(48,48,48,1) 90%);
 
 $jumbotron-bg: $theme-color1;
+$jumbotron-padding: 0.8rem;
+
+$navbar-padding-y: 2rem;
+$navbar-padding-x: 3rem;
+
+$primary: $theme-accent3;
 
 @import "~bootstrap";
 

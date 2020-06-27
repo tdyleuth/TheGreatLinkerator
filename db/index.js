@@ -48,6 +48,7 @@ async function createUser({
 
 
 async function getUserByUsername(username) {
+
     try {
       const { rows: [user] } = await client.query(`
         SELECT *

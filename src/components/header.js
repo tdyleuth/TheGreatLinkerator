@@ -10,10 +10,16 @@ export default function Header (){
         
         <Jumbotron>
 
-            
-                <h1>The Great Linkerator</h1>
-                <h2>The new way to bookmark the web</h2>
-            
+            <div id='header'>
+
+                <img className='chain' alt='Stylized chain link' src='/assets/chain-link.png' />
+                <div>
+                    <h1>The Great Linkerator</h1>
+                    <h2>The new way to bookmark the web</h2>
+                </div>
+                <img className='chain' alt='Stylized chain link' src='/assets/chain-link.png' />
+                
+            </div>
             
             {/* Error handler in case of image load failure */}
             {/* {onError

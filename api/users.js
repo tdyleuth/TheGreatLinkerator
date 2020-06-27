@@ -84,7 +84,8 @@ usersRouter.post('/login', async (req, res, next) => {
   }
 
   const userExist = await getUserByUsername(username);
-  
+  console.log('userexists is ', userExist);
+
       if (!userExist) {
         next({
           name: 'UserExistsError',
@@ -97,6 +98,7 @@ usersRouter.post('/login', async (req, res, next) => {
     const user = await getUserByUsername(username);
     const hashedPassword = user.password;
     const { id } = user;
+    const name = user.name;
 
     bcrypt.compare(password, hashedPassword, function(err, passwordsMatch) {
     
@@ -108,7 +110,7 @@ usersRouter.post('/login', async (req, res, next) => {
     
       const token = jwt.sign({ username, password, id }, process.env.JWT_SECRET, { expiresIn: '1w' });
 
-      res.send({ message: "You're logged in!", token });
+      res.send({ message: "You're logged in!", token, name });
 
       } else {
         next({ 
