@@ -23,7 +23,11 @@ export default function Nav ({ user, setUser }){
     }
 
     function handleLogout(){
-        setToken('');
+        setUser({
+            id: '',
+            username: '',
+            name: ''
+        });
         clearLocalStorage();
         //Update bookmark dispay
     }
@@ -64,7 +68,7 @@ export default function Nav ({ user, setUser }){
                     <NavButtons className='signup' text='Sign-Up' clickEvent={ () => setSignUpModal(true)  } />
                 </div>
                 
-                <LoginForm show={ LoginModal } hideEvent={ () => setLoginModal(false) } user={user} name={ user.name } clearLocalStorage={ clearLocalStorage }/>
+                <LoginForm show={ LoginModal } setShow={ setLoginModal } hideEvent={ () => setLoginModal(false) } user={ user } setUser={ setUser } clearLocalStorage={ clearLocalStorage }/>
                 <SignUpForm show={ SignUpModal } hideEvent={ () => setSignUpModal(false) } />
 
             </Navbar>

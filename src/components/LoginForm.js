@@ -14,7 +14,7 @@ const BASE_URL = 'http://localhost:3000/api/users';
 
 
 
-function LoginForm({ show, hideEvent, name, setName, clearLocalStorage }){
+function LoginForm({ show, setShow, hideEvent, user, setUser, clearLocalStorage }){
     
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -66,23 +66,21 @@ function LoginForm({ show, hideEvent, name, setName, clearLocalStorage }){
     
         console.log('username is ', loginUsername);
         console.log('password is ', loginPassword);
-
+        
             
         try{
 
-            const { data: { name, token } } = await axios.post(BASE_URL + '/login',
+            const { data: { name, token, id } } = await axios.post(BASE_URL + '/login',
             {
                 username: loginUsername,
                 password: loginPassword
             });
 
             if(name === 'IncorrectCredentialsError'){
-                console.log('Got here');
                 setPasswordError(true);
                 return;
             }
             else if(name === 'UserExistsError'){
-                console.log('Got here too');
                 setUserError(true);
                 return;
             }
@@ -93,6 +91,11 @@ function LoginForm({ show, hideEvent, name, setName, clearLocalStorage }){
             setUsername(loginUsername);
             setPassword(loginPassword);
             setLocalStorage(token, name);
+            setUser({
+                id,
+                username: loginUsername,
+                name
+            })
             return {token, name};
 
         }
@@ -114,8 +117,7 @@ function LoginForm({ show, hideEvent, name, setName, clearLocalStorage }){
          
         //If login is successful, update state accordingly
         if(isLoggedIn){
-            setName(isLoggedIn.name);
-            setToken(isLoggedIn.token);
+            setShow(false);
         }
         //If unsuccessful, display notice to user
         else{ 

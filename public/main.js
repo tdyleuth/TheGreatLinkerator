@@ -18757,9 +18757,10 @@ const BASE_URL = 'http://localhost:3000/api/users';
 
 function LoginForm({
   show,
+  setShow,
   hideEvent,
-  name,
-  setName,
+  user,
+  setUser,
   clearLocalStorage
 }) {
   const [username, setUsername] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])('');
@@ -18811,7 +18812,8 @@ function LoginForm({
       const {
         data: {
           name,
-          token
+          token,
+          id
         }
       } = await axios__WEBPACK_IMPORTED_MODULE_1___default.a.post(BASE_URL + '/login', {
         username: loginUsername,
@@ -18819,11 +18821,9 @@ function LoginForm({
       });
 
       if (name === 'IncorrectCredentialsError') {
-        console.log('Got here');
         setPasswordError(true);
         return;
       } else if (name === 'UserExistsError') {
-        console.log('Got here too');
         setUserError(true);
         return;
       } else if (name === 'MissingCredentialsError') {
@@ -18833,6 +18833,11 @@ function LoginForm({
       setUsername(loginUsername);
       setPassword(loginPassword);
       setLocalStorage(token, name);
+      setUser({
+        id,
+        username: loginUsername,
+        name
+      });
       return {
         token,
         name
@@ -18849,8 +18854,7 @@ function LoginForm({
     const isLoggedIn = await loginUser(); //If login is successful, update state accordingly
 
     if (isLoggedIn) {
-      setName(isLoggedIn.name);
-      setToken(isLoggedIn.token);
+      setShow(false);
     } //If unsuccessful, display notice to user
     else {
         clearLocalStorage();
@@ -18955,7 +18959,11 @@ function Nav({
   }
 
   function handleLogout() {
-    setToken('');
+    setUser({
+      id: '',
+      username: '',
+      name: ''
+    });
     clearLocalStorage(); //Update bookmark dispay
   }
 
@@ -19004,9 +19012,10 @@ function Nav({
     clickEvent: () => setSignUpModal(true)
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_LoginForm__WEBPACK_IMPORTED_MODULE_5__["default"], {
     show: LoginModal,
+    setShow: setLoginModal,
     hideEvent: () => setLoginModal(false),
     user: user,
-    name: user.name,
+    setUser: setUser,
     clearLocalStorage: clearLocalStorage
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SignUpForm__WEBPACK_IMPORTED_MODULE_6__["default"], {
     show: SignUpModal,
