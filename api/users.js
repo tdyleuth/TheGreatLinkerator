@@ -7,11 +7,13 @@ const SALT_COUNT = 10;
 
 const  { getAllUsers, getUserByUsername, createUser} = require('../db')
 
+
 usersRouter.use((req, res, next) => {
     console.log("A request is being made to /users");
 
     next();
 });
+
 
 usersRouter.get('/', async (req, res) => {
     const users = await getAllUsers();
@@ -21,6 +23,7 @@ usersRouter.get('/', async (req, res) => {
     });
   });
 
+  
   //Create new user (Require username and password)
 usersRouter.post('/register', async (req, res, next) => {
     const { username, password, name } = req.body;
@@ -44,7 +47,7 @@ usersRouter.post('/register', async (req, res, next) => {
 
      bcrypt.hash(password, SALT_COUNT, function(err, hashedPassword){
      if (err){
-       throw error;
+       throw err;
      } else {
         createUser({
           username,
@@ -64,8 +67,9 @@ usersRouter.post('/register', async (req, res, next) => {
         message: "Thank you for signing up!",
         token 
       });
-    } catch ({ name, message }) {
-      console.log(error)
+    } catch (error) {
+      console.error(error);
+      const { name, message } = error;
       next({ name, message })
     } 
   });
@@ -125,6 +129,28 @@ usersRouter.post('/login', async (req, res, next) => {
     next({ name, message });
   }
 });
+
+
+usersRouter.post('/test', async (req, res, next) => {
+  
+  try{
+    console.log('here 5');
+    const { token } = req.body;
+    console.log('here 6');
+    const verification = jwt.verify(token, process.env.JWT_SECRET);
+    console.log('here 7');
+    console.log('verification ', verification);
+    res.send({
+      name: 'VerificationSuccessful',
+      message: 'Token is valid, verification is successful',
+    })
+  }
+  catch(err){
+    console.error("There's been an error verifying user is logged in @ /user/test route. Error: ", err);
+    const { name, message } = err;
+    next({ name, message });
+  }
+})
 
   
 module.exports = usersRouter;

@@ -24,7 +24,7 @@ linksRouter.get('/', async (req,res) => {
 
 //Create new link with added tags
 linksRouter.post('/',requireUser, async (req,res,next) => {
-    const { name, url, comment, tags = "" } = req.body;
+    const { name, url, comment="", tags = "" } = req.body;
     const { id } = req.user;
     const tagsArr = tags.trim().split(/\s+/)
     const linkData = {};
@@ -40,10 +40,11 @@ linksRouter.post('/',requireUser, async (req,res,next) => {
       linkData.creatorId = creatorId;
       linkData.name = name;
       linkData.url  = url;
-      linkData.comment = comment;
+      if(comment){ linkData.comment = comment }
+      if(tags){ linkData.tags = tags }
       
-      const link = await createLink(linkData)
-      console.log("testing", linkData)
+      const link = await createLink(linkData);
+      console.log("testing", linkData);
           
 
         if(link){

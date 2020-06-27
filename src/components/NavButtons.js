@@ -1,4 +1,4 @@
-// /src/components/header.js
+// /src/components/NavButtons.js
 
 import React from 'react';
 import Button from 'react-bootstrap/Button'

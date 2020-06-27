@@ -120,12 +120,12 @@ body{
     }
     
     .navButtons{
-        width: 22rem;
+        width: 28rem;
         display: flex;
         justify-content: space-between;
     }
 
-    .login, .signup, .new-bkmrk, .new-fldr{
+    .login, .signup, .new-bkmrk, .new-fldr, .logout{
         font-size: 1.8rem;
         background: $gradient1;
         width: 10rem;
@@ -140,7 +140,7 @@ body{
         }
     }
 
-    .new-bkmrk, .new-fldr{
+    .new-bkmrk, .new-fldr, .logout{
         font-size: 1.5rem;
     }
 
@@ -265,13 +265,13 @@ body{
             width: 18rem;
         }
 
-        .login, .signup, .new-bkmrk, .new-fldr{
+        .login, .signup, .new-bkmrk, .new-fldr, .logout{
             font-size: 1.5rem;
             width: 8rem;
             height: 5rem;
         }
 
-        .new-bkmrk, .new-fldr{
+        .new-bkmrk, .new-fldr, .logout{
             font-size: 1.2rem;
         }
 
@@ -303,13 +303,13 @@ body{
             width: 15rem;
         }
 
-        .login, .signup, .new-bkmrk, .new-fldr{
+        .login, .signup, .new-bkmrk, .new-fldr, .logout{
             font-size: 1.2rem;
             width: 7rem;
             height: 5rem;
         }
 
-        .new-bkmrk, .new-fldr{
+        .new-bkmrk, .new-fldr, .logout{
             font-size: 1rem;
         }
 
@@ -341,13 +341,13 @@ body{
             width: 13rem;
         }
 
-        .login, .signup, .new-bkmrk, .new-fldr{
+        .login, .signup, .new-bkmrk, .new-fldr, .logout{
             font-size: 1rem;
             width: 6rem;
             height: 4rem;
         }
 
-        .new-bkmrk, .new-fldr{
+        .new-bkmrk, .new-fldr, .logout{
             font-size: 0.8rem;
         }
 
@@ -385,13 +385,13 @@ body{
             width: 13rem;
         }
 
-        .login, .signup, .new-bkmrk, .new-fldr{
+        .login, .signup, .new-bkmrk, .new-fldr, .logout{
             font-size: 1rem;
             width: 6rem;
             height: 4rem;
         }
 
-        .new-bkmrk, .new-fldr{
+        .new-bkmrk, .new-fldr, .logout{
             font-size: 0.8rem;
         }
 
