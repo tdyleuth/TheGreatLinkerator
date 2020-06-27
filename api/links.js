@@ -34,9 +34,9 @@ linksRouter.post('/',requireUser, async (req,res,next) => {
       linkData.tags = tagsArr;
     }
   
-
+ 
     try{
-      creatorId = id;
+      const creatorId = id;
       linkData.creatorId = creatorId;
       linkData.name = name;
       linkData.url  = url;
@@ -68,6 +68,7 @@ linksRouter.post('/',requireUser, async (req,res,next) => {
 
 linksRouter.patch('/:linkId',requireUser, async (req, res, next) => {
     const { linkId } = req.params;
+    // @ts-ignore
     const { id } = req.user;
     const { name, url, clicks, comment, tags } = req.body;
     const tagsArr = tags.trim().split(/\s+/)
@@ -121,6 +122,7 @@ linksRouter.patch('/:linkId',requireUser, async (req, res, next) => {
       next({ name, message });
     }     
   });
+
 
 
 //Delete link and link_tags related

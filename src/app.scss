@@ -177,6 +177,10 @@ body{
         .modal-title{
             font-size: 3rem;
         }
+        
+        .close{
+            font-size: 3rem;
+        }
 
     }
 
@@ -195,10 +199,6 @@ body{
 
         textarea{
             margin-bottom: 2rem;;
-        }
-
-        .close{
-            font-size: 3rem;
         }
 
         #new-bkmrk-btns{
@@ -248,6 +248,30 @@ body{
 .btn-primary{
     border: none;
 }
+
+#loginForm-btns,#signUpForm-btns{
+    margin: 2rem auto 0 auto;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#close-loginForm{
+    background: $theme-accent2;
+    padding: 0.5rem 1.2rem;
+}
+
+#submit-loginForm, #submit-signUpForm{
+    background-color: green;
+}
+
+#close-signUpForm{
+    background: $theme-accent2;
+    padding: 0.6rem 1.4rem;
+}
+
+
+
 
 
 /* ----------------------------------------------------------------------------------------------- Media Queries -----------------------------------------------------------------------------------------------*/

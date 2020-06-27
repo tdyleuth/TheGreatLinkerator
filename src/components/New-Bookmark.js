@@ -17,14 +17,21 @@ export default function NewBookmark({ show, hideEvent }){
         const url = document.getElementById('new-bkmrk-url').value;
         const tags = document.getElementById('new-bkmrk-tags').value;
         const comment = document.getElementById('new-bkmrk-desc').value;
-
-        const bookmark = await axios.post('http://localhost:3000/api/links', {
+        
+        try {
+            const bookmark = await axios.post('http://localhost:3000/api/links', {
             name, url, tags, comment
         });
 
         console.log('bookmark is ', bookmark);
         
         hideEvent();
+        } catch (err) {
+            console.error('Error creating bookmark at /src/components/New-Bookmark @ createBookmark(event). Error: ', err);
+            const { name, message } = err;
+            throw { name, message}
+        }
+        
     }
 
     return(

@@ -107,7 +107,7 @@ usersRouter.post('/login', async (req, res, next) => {
     bcrypt.compare(password, hashedPassword, function(err, passwordsMatch) {
     
     if (err){
-      throw error;
+      throw err;
     }
        else {
       if (passwordsMatch) {
