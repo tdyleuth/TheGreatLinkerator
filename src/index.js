@@ -32,7 +32,6 @@ const App = () => {
     async function attemptTokenLogin(){
 
         const token = localStorage.getItem('token');
-        console.log('token is ', token);
         const timeSinceLogin = (+(new Date(Date.now()))/1000/60) - Number(localStorage.getItem('login-time'));
 
         //If there is a stored token and it is current (less than 30 minutes), attempt to validate token
@@ -62,7 +61,6 @@ const App = () => {
 
     }, [])
 
-        console.log('user in index ', user);
     return (
         <>
             <header>

@@ -79,7 +79,7 @@ body{
     justify-content: space-between;
 
     span{
-        font-size: 3rem;
+        font-size: 2.8rem;
     }
     
     button{
@@ -284,7 +284,7 @@ body{
         }
 
         .navButtons{
-            width: 18rem;
+            width: 23rem;
         }
 
         .login, .signup, .new-bkmrk, .new-fldr, .logout{
@@ -321,8 +321,12 @@ body{
 
     .navbar{
 
+        span{
+            font-size: 1.7rem;
+        }
+
         .navButtons{
-            width: 15rem;
+            width: 20rem;
         }
 
         .login, .signup, .new-bkmrk, .new-fldr, .logout{
@@ -356,11 +360,11 @@ body{
     .navbar{
 
         span{
-            font-size: 1.3rem;
+            font-size: 1.2rem;
         }
 
         .navButtons{
-            width: 13rem;
+            width: 17rem;
         }
 
         .login, .signup, .new-bkmrk, .new-fldr, .logout{
@@ -399,12 +403,17 @@ body{
         flex-direction: column;
         text-align: center;
 
+        span{
+            font-size: 2rem;
+        }
+
         #arrow{
             display: none;
         }
 
         .navButtons{
-            width: 13rem;
+            width: 20rem;
+            margin-top: 2rem;
         }
 
         .login, .signup, .new-bkmrk, .new-fldr, .logout{

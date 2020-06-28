@@ -14,28 +14,14 @@ const BASE_URL = 'http://localhost:3000/api/users';
 
 
 
-function LoginForm({ show, setShow, hideEvent, user, setUser, clearLocalStorage }){
+function LoginForm({ show, hideEvent, setShow, setLoginNotice, setUser, setSignupNotice, setLogoutNotice, setLocalStorage, clearLocalStorage }){
     
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
     const [userError, setUserError] = useState(false);
     const [passwordError, setPasswordError] = useState(false);
-
-
-    function setLocalStorage(token, name) {
-
-        localStorage.setItem('token', token);
-        localStorage.setItem('name', name);
-
-        //Get epoch time for time of function call and convert from milliseconds to seconds to minutes, and store in local storage
-        localStorage.setItem('login-time', JSON.stringify(+(new Date(Date.now()))/1000/60));
-        localStorage.setItem('bookmark-fetch-time', '0');
-    }
 
     async function isLoggedIn(){
 
         const token = localStorage.getItem('token');
-        console.log('token is ', token);
         const timeSinceLogin = (+(new Date(Date.now()))/1000/60) - Number(localStorage.getItem('login-time'));
 
         //If there is a stored token and it is current (less than 30 minutes), attempt to validate token
@@ -56,47 +42,47 @@ function LoginForm({ show, setShow, hideEvent, user, setUser, clearLocalStorage 
     }
 
     async function loginUser (){
-    
-        //TODO: Hash password before sending and integrate hash validation to isLoggedIn 
-
-
-        
+            console.log('1')
         const loginUsername = document.getElementById('login-username').value;
         const loginPassword = document.getElementById('login-password').value;
-    
-        console.log('username is ', loginUsername);
-        console.log('password is ', loginPassword);
-        
             
         try{
-
-            const { data: { name, token, id } } = await axios.post(BASE_URL + '/login',
+    
+            const { data: { messageName, name, token, id } } = await axios.post(BASE_URL + '/login',
             {
                 username: loginUsername,
                 password: loginPassword
             });
+            console.log('messagename is ', messageName);
 
-            if(name === 'IncorrectCredentialsError'){
+            if(messageName === 'IncorrectCredentialsError'){
+                setUserError(false);
                 setPasswordError(true);
                 return;
             }
-            else if(name === 'UserExistsError'){
+            else if(messageName === 'UserExistsError'){
+                setPasswordError(false);
                 setUserError(true);
                 return;
             }
-            else if(name==='MissingCredentialsError'){
+            else if(messageName==='MissingCredentialsError'){
+                setUserError(false);
+                setPasswordError(false);
                 return;
             }
+            else if(messageName==='LoginSuccess'){
+                setLocalStorage(token, name);
+                setLogoutNotice(false);
+                setSignupNotice(false);
+                setLoginNotice(true);
+                setUser({
+                    id,
+                    username: loginUsername,
+                    name
+                });
 
-            setUsername(loginUsername);
-            setPassword(loginPassword);
-            setLocalStorage(token, name);
-            setUser({
-                id,
-                username: loginUsername,
-                name
-            })
-            return {token, name};
+                return {token, name};
+            }
 
         }
         catch(err){
@@ -108,7 +94,6 @@ function LoginForm({ show, setShow, hideEvent, user, setUser, clearLocalStorage 
 
 
     async function handleLogin (event){
-
         
         event.preventDefault();
         event.stopPropagation();
