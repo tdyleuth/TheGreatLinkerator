@@ -270,9 +270,26 @@ body{
     padding: 0.6rem 1.4rem;
 }
 
-#search-bar{
-    margin: 1rem;
+#body-header{
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: $gradient1;
+    align-items: center;
+
+    #body-header-title{
+        margin-top: 3rem;
+        color: $theme-accent1;
+        font-size: 4rem;
+    }
+
+    #search-bar{
+        margin: 1.5rem 0 3rem 0;
+        width: 25vw;
+    }
 }
+
 
 /* ----------------------------------------------------------------------------------------------- Media Queries -----------------------------------------------------------------------------------------------*/
 

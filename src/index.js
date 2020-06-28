@@ -67,13 +67,13 @@ const App = () => {
                     <Header />
                     <Nav user={ user } setUser={ setUser }/>
             </header>
-
+            
             <main>
-                
-                {/* {breadcrumb} */}
-                {/* <h1>{folder-name}</h1> */}
-                <Search />
-
+                <div id='body-header'>
+                    {/* {breadcrumb} */}
+                    <h2 id='body-header-title'>Your Bookmarks</h2>
+                    <Search />
+                </div>
             </main>
         </>
     );

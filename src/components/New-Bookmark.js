@@ -12,9 +12,9 @@ import axios from 'axios';
 const BASE_URL = 'http://localhost:3000/api/links';
 
 
-function NewBookmarkForm({ show, hideEvent, setShow, setBookmarkNotice, setLogoutNotice }){
+function NewBookmarkForm({ show, hideEvent, setShow, setBookmarkNotice, setLogoutNotice, duplicateError, setDuplicateError }){
 
-    const [duplicateError, setDuplicateError] = useState(false);
+    
   
 
     async function createBookmark() {
@@ -78,6 +78,8 @@ function NewBookmarkForm({ show, hideEvent, setShow, setBookmarkNotice, setLogou
 
         event.preventDefault();
         event.stopPropagation();
+        setDuplicateError(false);
+
         
         const newBookmark = await createBookmark();
          

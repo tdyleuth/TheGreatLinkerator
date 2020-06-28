@@ -24,6 +24,8 @@ export default function Nav ({ user, setUser }){
 
     const [ bookmarkNotice, setBookmarkNotice ] = useState(false);
 
+    const [duplicateError, setDuplicateError] = useState(false);
+
     function setLocalStorage(token, name) {
 
         localStorage.setItem('token', token);
@@ -67,12 +69,12 @@ export default function Nav ({ user, setUser }){
                     <div className="navButtons">
 
                         {/* TODO: LINE BREAK */}
-                        <NavButtons className='new-bkmrk' text={`New\ Bookmark`} clickEvent={ () => setBkmrkModal(true)   } />
+                        <NavButtons className='new-bkmrk' text={`New\ Bookmark`} clickEvent={ () => {setDuplicateError(false); setBookmarkNotice(false); setBkmrkModal(true)}} />
                         <NavButtons className='new-fldr' text={`New\ Folder`} clickEvent={ null } />
                         <NavButtons className='logout' text={`Log\ Out`} clickEvent={ handleLogout } />
                     </div>
                     
-                    <NewBookmarkForm show={ bkmrkModal } hideEvent={() => setBkmrkModal(false)}  setBookmarkNotice={ setBookmarkNotice }   setLogoutNotice={ setLogoutNotice }  setShow={ setBkmrkModal } />
+                    <NewBookmarkForm show={ bkmrkModal } hideEvent={() => setBkmrkModal(false)}  setBookmarkNotice={ setBookmarkNotice }   setLogoutNotice={ setLogoutNotice }  setShow={ setBkmrkModal } duplicateError={ duplicateError } setDuplicateError={ setDuplicateError }/>
 
                 </Navbar>
                 <Fade>
