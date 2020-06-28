@@ -43,10 +43,7 @@ function NewBookmarkForm({ show, hideEvent, setShow, setBookmarkNotice, setLogou
         
         try {
         
-<<<<<<< HEAD
-        const bookmark = await axios.post(BASE_URL, data, headers);
-       
-=======
+
         const { data: { message } } = await axios.post(BASE_URL, data, headers)
 
         console.log("Messageasas:", message)
@@ -55,7 +52,6 @@ function NewBookmarkForm({ show, hideEvent, setShow, setBookmarkNotice, setLogou
             setDuplicateError(true)
             return;
         }
->>>>>>> bb7af2e188fc41089fc8309c3761ad1647f6f4bf
 
         if ( message === `New link created!`){
             setBookmarkNotice(true)
@@ -83,18 +79,13 @@ function NewBookmarkForm({ show, hideEvent, setShow, setBookmarkNotice, setLogou
         event.preventDefault();
         event.stopPropagation();
         
-         const newBookmark = await createBookmark();
+        const newBookmark = await createBookmark();
          
-<<<<<<< HEAD
-=======
-
-        //If Create Bookmark is successful, update state accordingly
+//  Bookmark is successful, update state accordingly
         if(newBookmark){
             setShow(false);
 
         } 
-     
->>>>>>> bb7af2e188fc41089fc8309c3761ad1647f6f4bf
     }
 
     return(

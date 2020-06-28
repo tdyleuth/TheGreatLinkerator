@@ -19118,9 +19118,141 @@ function NavButtons({
   !*** ./src/components/New-Bookmark.js ***!
   \****************************************/
 /*! exports provided: default */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /Users/yhafez/curriculum/linkerator/TheGreatLinkerator/src/components/New-Bookmark.js: Unexpected token (46:1)\n\n\u001b[0m \u001b[90m 44 | \u001b[39m        \u001b[36mtry\u001b[39m {\u001b[0m\n\u001b[0m \u001b[90m 45 | \u001b[39m        \u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 46 | \u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<\u001b[39m \u001b[33mHEAD\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m    | \u001b[39m \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 47 | \u001b[39m        \u001b[36mconst\u001b[39m bookmark \u001b[33m=\u001b[39m await axios\u001b[33m.\u001b[39mpost(\u001b[33mBASE_URL\u001b[39m\u001b[33m,\u001b[39m data\u001b[33m,\u001b[39m headers)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 48 | \u001b[39m       \u001b[0m\n\u001b[0m \u001b[90m 49 | \u001b[39m\u001b[33m===\u001b[39m\u001b[33m===\u001b[39m\u001b[33m=\u001b[39m\u001b[0m\n    at Object._raise (/Users/yhafez/curriculum/linkerator/TheGreatLinkerator/node_modules/@babel/parser/lib/index.js:754:17)\n    at Object.raiseWithData (/Users/yhafez/curriculum/linkerator/TheGreatLinkerator/node_modules/@babel/parser/lib/index.js:747:17)\n    at Object.raise (/Users/yhafez/curriculum/linkerator/TheGreatLinkerator/node_modules/@babel/parser/lib/index.js:741:17)\n    at Object.unexpected (/Users/yhafez/curriculum/linkerator/TheGreatLinkerator/node_modules/@babel/parser/lib/index.js:8844:16)\n    at Object.jsxParseIdentifier (/Users/yhafez/curriculum/linkerator/TheGreatLinkerator/node_modules/@babel/parser/lib/index.js:4432:12)\n    at Object.jsxParseNamespacedName (/Users/yhafez/curriculum/linkerator/TheGreatLinkerator/node_modules/@babel/parser/lib/index.js:4442:23)\n    at Object.jsxParseElementName (/Users/yhafez/curriculum/linkerator/TheGreatLinkerator/node_modules/@babel/parser/lib/index.js:4453:21)\n    at Object.jsxParseOpeningElementAt (/Users/yhafez/curriculum/linkerator/TheGreatLinkerator/node_modules/@babel/parser/lib/index.js:4539:22)\n    at Object.jsxParseElementAt (/Users/yhafez/curriculum/linkerator/TheGreatLinkerator/node_modules/@babel/parser/lib/index.js:4572:33)\n    at Object.jsxParseElement (/Users/yhafez/curriculum/linkerator/TheGreatLinkerator/node_modules/@babel/parser/lib/index.js:4646:17)\n    at Object.parseExprAtom (/Users/yhafez/curriculum/linkerator/TheGreatLinkerator/node_modules/@babel/parser/lib/index.js:4653:19)\n    at Object.parseExprSubscripts (/Users/yhafez/curriculum/linkerator/TheGreatLinkerator/node_modules/@babel/parser/lib/index.js:9693:23)\n    at Object.parseMaybeUnary (/Users/yhafez/curriculum/linkerator/TheGreatLinkerator/node_modules/@babel/parser/lib/index.js:9673:21)\n    at Object.parseExprOps (/Users/yhafez/curriculum/linkerator/TheGreatLinkerator/node_modules/@babel/parser/lib/index.js:9543:23)\n    at Object.parseMaybeConditional (/Users/yhafez/curriculum/linkerator/TheGreatLinkerator/node_modules/@babel/parser/lib/index.js:9516:23)\n    at Object.parseMaybeAssign (/Users/yhafez/curriculum/linkerator/TheGreatLinkerator/node_modules/@babel/parser/lib/index.js:9471:21)\n    at Object.parseExpression (/Users/yhafez/curriculum/linkerator/TheGreatLinkerator/node_modules/@babel/parser/lib/index.js:9423:23)\n    at Object.parseStatementContent (/Users/yhafez/curriculum/linkerator/TheGreatLinkerator/node_modules/@babel/parser/lib/index.js:11322:23)\n    at Object.parseStatement (/Users/yhafez/curriculum/linkerator/TheGreatLinkerator/node_modules/@babel/parser/lib/index.js:11193:17)\n    at Object.parseBlockOrModuleBlockBody (/Users/yhafez/curriculum/linkerator/TheGreatLinkerator/node_modules/@babel/parser/lib/index.js:11768:25)\n    at Object.parseBlockBody (/Users/yhafez/curriculum/linkerator/TheGreatLinkerator/node_modules/@babel/parser/lib/index.js:11754:10)\n    at Object.parseBlock (/Users/yhafez/curriculum/linkerator/TheGreatLinkerator/node_modules/@babel/parser/lib/index.js:11738:10)\n    at Object.parseTryStatement (/Users/yhafez/curriculum/linkerator/TheGreatLinkerator/node_modules/@babel/parser/lib/index.js:11626:23)\n    at Object.parseStatementContent (/Users/yhafez/curriculum/linkerator/TheGreatLinkerator/node_modules/@babel/parser/lib/index.js:11250:21)\n    at Object.parseStatement (/Users/yhafez/curriculum/linkerator/TheGreatLinkerator/node_modules/@babel/parser/lib/index.js:11193:17)\n    at Object.parseBlockOrModuleBlockBody (/Users/yhafez/curriculum/linkerator/TheGreatLinkerator/node_modules/@babel/parser/lib/index.js:11768:25)\n    at Object.parseBlockBody (/Users/yhafez/curriculum/linkerator/TheGreatLinkerator/node_modules/@babel/parser/lib/index.js:11754:10)\n    at Object.parseBlock (/Users/yhafez/curriculum/linkerator/TheGreatLinkerator/node_modules/@babel/parser/lib/index.js:11738:10)\n    at Object.parseFunctionBody (/Users/yhafez/curriculum/linkerator/TheGreatLinkerator/node_modules/@babel/parser/lib/index.js:10745:24)\n    at Object.parseFunctionBodyAndFinish (/Users/yhafez/curriculum/linkerator/TheGreatLinkerator/node_modules/@babel/parser/lib/index.js:10728:10)");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_bootstrap_Modal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap/Modal */ "./node_modules/react-bootstrap/esm/Modal.js");
+/* harmony import */ var react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap/Form */ "./node_modules/react-bootstrap/esm/Form.js");
+/* harmony import */ var react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap/Button */ "./node_modules/react-bootstrap/esm/Button.js");
+/* harmony import */ var react_bootstrap_Alert__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap/Alert */ "./node_modules/react-bootstrap/esm/Alert.js");
+/* harmony import */ var react_bootstrap_Fade__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-bootstrap/Fade */ "./node_modules/react-bootstrap/esm/Fade.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_6__);
+// /src/components/New-Bookmark.js
+
+
+
+
+
+
+
+const BASE_URL = 'http://localhost:3000/api/links';
+
+function NewBookmarkForm({
+  show,
+  hideEvent,
+  setShow,
+  setBookmarkNotice,
+  setLogoutNotice
+}) {
+  const [duplicateError, setDuplicateError] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false);
+
+  async function createBookmark() {
+    const name = document.getElementById('new-bkmrk-name').value;
+    const url = document.getElementById('new-bkmrk-url').value;
+    const tags = document.getElementById('new-bkmrk-tags').value;
+    const comment = document.getElementById('new-bkmrk-desc').value;
+    const tagsArray = tags.split(",");
+    const token = localStorage.getItem('token');
+    const headers = {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      }
+    };
+    const data = {
+      name,
+      url,
+      tags: tagsArray,
+      comment
+    };
+
+    try {
+      const {
+        data: {
+          message
+        }
+      } = await axios__WEBPACK_IMPORTED_MODULE_6___default.a.post(BASE_URL, data, headers);
+      console.log("Messageasas:", message);
+
+      if (message === `duplicate key value violates unique constraint "links_url_key"`) {
+        setDuplicateError(true);
+        return;
+      }
+
+      if (message === `New link created!`) {
+        setBookmarkNotice(true);
+        setLogoutNotice(false);
+      }
+
+      console.log('New bookmark is ', data);
+      return data;
+    } catch (err) {
+      console.error('Error creating bookmark at /src/components/New-Bookmark @ createBookmark(event). Error', err);
+      throw error;
+    }
+  }
+
+  async function handleCreateBookMark(event) {
+    event.preventDefault();
+    event.stopPropagation();
+    const newBookmark = await createBookmark(); //  Bookmark is successful, update state accordingly
+
+    if (newBookmark) {
+      setShow(false);
+    }
+  }
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Modal__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    size: "lg",
+    show: show,
+    onHide: hideEvent,
+    id: "new-bkmrk-modal"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Modal__WEBPACK_IMPORTED_MODULE_1__["default"].Header, {
+    closeButton: true
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Modal__WEBPACK_IMPORTED_MODULE_1__["default"].Title, {
+    id: "new-bkmk-header"
+  }, "Create New Bookmark")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Modal__WEBPACK_IMPORTED_MODULE_1__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    onSubmit: handleCreateBookMark
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2__["default"].Group, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Fade__WEBPACK_IMPORTED_MODULE_5__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Alert__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    id: "duplicate-link-found",
+    variant: "danger",
+    dismissible: true,
+    show: duplicateError,
+    onClose: () => setDuplicateError(false)
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Alert__WEBPACK_IMPORTED_MODULE_4__["default"].Heading, null, " Duplicate bookmark found! Please try again."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2__["default"].Label, null, "Name:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2__["default"].Control, {
+    as: "input",
+    id: "new-bkmrk-name",
+    required: true
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2__["default"].Label, null, "URL:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2__["default"].Control, {
+    as: "input",
+    id: "new-bkmrk-url",
+    placeholder: "https://example.com",
+    pattern: "https://.*",
+    size: "30",
+    required: true
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2__["default"].Label, null, "Tags (separated by commas):"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2__["default"].Control, {
+    as: "input",
+    id: "new-bkmrk-tags"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2__["default"].Label, null, "Description (optional):"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2__["default"].Control, {
+    as: "textarea",
+    id: "new-bkmrk-desc",
+    rows: "5"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    id: "new-bkmrk-btns"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    id: "submit-new-bkmrk",
+    type: "submit"
+  }, "Submit"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    id: "close-new-bkmrk",
+    onClick: hideEvent
+  }, "Close"))))));
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (NewBookmarkForm);
 
 /***/ }),
 
