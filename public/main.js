@@ -19122,6 +19122,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+const BASE_URL = 'http://localhost:3000/api/links';
 function NewBookmark({
   show,
   hideEvent
@@ -19132,14 +19133,22 @@ function NewBookmark({
     const url = document.getElementById('new-bkmrk-url').value;
     const tags = document.getElementById('new-bkmrk-tags').value;
     const comment = document.getElementById('new-bkmrk-desc').value;
+    const token = localStorage.getItem('token');
+    const headers = {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      }
+    };
+    const data = {
+      name,
+      url,
+      tags,
+      comment
+    };
 
     try {
-      const bookmark = await axios__WEBPACK_IMPORTED_MODULE_4___default.a.post('http://localhost:3000/api/links', {
-        name,
-        url,
-        tags,
-        comment
-      });
+      const bookmark = await axios__WEBPACK_IMPORTED_MODULE_4___default.a.post(BASE_URL, data, headers);
       console.log('bookmark is ', bookmark);
       hideEvent();
     } catch (err) {
@@ -19155,6 +19164,16 @@ function NewBookmark({
     }
   }
 
+  async function handleCreateBookMark(event) {
+    event.preventDefault();
+    event.stopPropagation();
+    const createBookmark = await NewBookmark(); //If Create Bookmark is successful, update state accordingly
+
+    if (createBookmark) {
+      setShow(false);
+    } else {}
+  }
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Modal__WEBPACK_IMPORTED_MODULE_1__["default"], {
     size: "lg",
     show: show,
@@ -19164,7 +19183,9 @@ function NewBookmark({
     closeButton: true
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Modal__WEBPACK_IMPORTED_MODULE_1__["default"].Title, {
     id: "new-bkmk-header"
-  }, "Create New Bookmark")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Modal__WEBPACK_IMPORTED_MODULE_1__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2__["default"].Group, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2__["default"].Label, null, "Name:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2__["default"].Control, {
+  }, "Create New Bookmark")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Modal__WEBPACK_IMPORTED_MODULE_1__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    onSubmit: handleCreateBookMark
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2__["default"].Group, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2__["default"].Label, null, "Name:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2__["default"].Control, {
     as: "input",
     id: "new-bkmrk-name",
     required: true

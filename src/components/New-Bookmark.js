@@ -7,23 +7,39 @@ import Button from 'react-bootstrap/Button';
 
 import axios from 'axios';
 
+const BASE_URL = 'http://localhost:3000/api/links';
+
 export default function NewBookmark({ show, hideEvent }){
 
     async function createBookmark(event) {
         
         event.preventDefault();
-
         const name = document.getElementById('new-bkmrk-name').value;
         const url = document.getElementById('new-bkmrk-url').value;
-        const tags = document.getElementById('new-bkmrk-tags').value;
+        const tags= document.getElementById('new-bkmrk-tags').value;
         const comment = document.getElementById('new-bkmrk-desc').value;
+
+        const token = localStorage.getItem('token');
+
+       
+        const headers = {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${ token }`} 
+            }
+        const data = {
+            name, 
+            url, 
+            tags, 
+            comment }
         
         try {
-            const bookmark = await axios.post('http://localhost:3000/api/links', {
-            name, url, tags, comment
-        });
+        
+        const bookmark = await axios.post(BASE_URL, data, headers)
+       
 
         console.log('bookmark is ', bookmark);
+
         
         hideEvent();
         } catch (err) {
@@ -32,6 +48,27 @@ export default function NewBookmark({ show, hideEvent }){
             throw { name, message}
         }
         
+    }
+
+
+    async function handleCreateBookMark (event){
+
+        
+        event.preventDefault();
+        event.stopPropagation();
+        
+        const createBookmark = await NewBookmark();
+         
+        //If Create Bookmark is successful, update state accordingly
+        if(createBookmark){
+            setShow(false);
+        }
+        
+        else{ 
+          
+        }
+     
+    
     }
 
     return(
@@ -50,7 +87,7 @@ export default function NewBookmark({ show, hideEvent }){
                 
             <Modal.Body>
 
-                <Form>
+                <Form onSubmit = { handleCreateBookMark }>
                     <Form.Group>
                 
                         <Form.Label>Name:</Form.Label>

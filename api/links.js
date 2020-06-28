@@ -41,8 +41,8 @@ linksRouter.post('/',requireUser, async (req,res,next) => {
       linkData.name = name;
       linkData.url  = url;
       if(comment){ linkData.comment = comment }
-      if(tags){ linkData.tags = tags }
-      
+      if(tags){ linkData.tags = [tags] }
+      console.log("testing", linkData)
       const link = await createLink(linkData);
       console.log("testing", linkData);
           
