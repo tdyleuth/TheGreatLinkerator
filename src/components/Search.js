@@ -5,7 +5,7 @@ import Form from 'react-bootstrap/Form';
 export default function Search() {
 
     return(
-        <Form.Control type="text" placeholder="Search..." />
+        <Form.Control id='search-bar' type="text" placeholder="Search..." />
     )
     
 

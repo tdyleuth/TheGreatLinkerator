@@ -26,7 +26,7 @@ linksRouter.get('/', async (req,res) => {
 linksRouter.post('/',requireUser, async (req,res,next) => {
     const { name, url, comment="", tags = "" } = req.body;
     const { id } = req.user;
-    const tagsArr = tags.trim().split(/\s+/)
+    const tagsArr = tags.trim().split(/\s+/);
     const linkData = {};
     
     if(tagsArr.length) {

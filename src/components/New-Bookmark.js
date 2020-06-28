@@ -35,7 +35,7 @@ export default function NewBookmark({ show, hideEvent }){
         
         try {
         
-        const bookmark = await axios.post(BASE_URL, data, headers)
+        const bookmark = await axios.post(BASE_URL, data, headers);
        
 
         console.log('bookmark is ', bookmark);
@@ -59,16 +59,6 @@ export default function NewBookmark({ show, hideEvent }){
         
         const createBookmark = await NewBookmark();
          
-        //If Create Bookmark is successful, update state accordingly
-        if(createBookmark){
-            setShow(false);
-        }
-        
-        else{ 
-          
-        }
-     
-    
     }
 
     return(
