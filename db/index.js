@@ -119,7 +119,7 @@ async function createLink({
          VALUES($1,$2,$3,$4,$5)
          RETURNING *;`
         , [creatorId,name,url,clicks,comment]);
-
+        
         const tagList = await createTags(tags);
   
         return await addTagsToLink(link.id, tagList);
@@ -227,6 +227,10 @@ async function destroyLink(linkId) {
 
 //tags helper functions
 async function createTags(tagList) {
+
+     
+     console.log("teses",tagList)
+
 
     if (tagList.length === 0) { 
       return; 
