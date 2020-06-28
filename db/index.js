@@ -228,23 +228,17 @@ async function destroyLink(linkId) {
 //tags helper functions
 async function createTags(tagList) {
 
-     
-     console.log("teses",tagList)
-
-
     if (tagList.length === 0) { 
       return; 
     }
   
-
     const insertValues = tagList.map(
       (_, index) => `$${index + 1}`).join('), (');
-   
-  
+     console.log("fdfd", insertValues)
     
     const selectValues = tagList.map(
       (_, index) => `$${index + 1}`).join(', ');
-   
+    console.log("sellectva", selectValues)
   
     try {
    

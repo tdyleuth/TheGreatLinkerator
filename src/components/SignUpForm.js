@@ -13,7 +13,7 @@ import axios from 'axios';
 
 const BASE_URL = 'http://localhost:3000/api/users';
 
-function SignUpForm({ show, hideEvent, setUser, setSignupNotice, setSignUpModal, setLoginNotice, setLogoutNotice, setLocalStorage }){
+function SignUpForm({ show, hideEvent, setUser, setSignupNotice, setSignUpModal, setLoginNotice, setLogoutNotice, setLocalStorage, setBookmarkNotice }){
 
     const [ userError, setUserError ] = useState(false);
     const [ usernameError, setUsernameError ] = useState(false);
@@ -57,6 +57,7 @@ function SignUpForm({ show, hideEvent, setUser, setSignupNotice, setSignUpModal,
             setSignupNotice(true);
             setLocalStorage(token, name);
             setSignUpModal(false);
+            setBookmarkNotice(false);
             setUser({
                 username,
                 name,

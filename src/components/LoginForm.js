@@ -14,7 +14,7 @@ const BASE_URL = 'http://localhost:3000/api/users';
 
 
 
-function LoginForm({ show, hideEvent, setShow, setLoginNotice, setUser, setSignupNotice, setLogoutNotice, setLocalStorage, clearLocalStorage }){
+function LoginForm({ show, hideEvent, setShow, setLoginNotice, setUser, setSignupNotice, setLogoutNotice, setLocalStorage, clearLocalStorage, setBookmarkNotice }){
     
     const [userError, setUserError] = useState(false);
     const [passwordError, setPasswordError] = useState(false);
@@ -75,6 +75,7 @@ function LoginForm({ show, hideEvent, setShow, setLoginNotice, setUser, setSignu
                 setLogoutNotice(false);
                 setSignupNotice(false);
                 setLoginNotice(true);
+                setBookmarkNotice(false)
                 setUser({
                     id,
                     username: loginUsername,

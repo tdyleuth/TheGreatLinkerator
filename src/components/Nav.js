@@ -8,7 +8,7 @@ import Alert from 'react-bootstrap/Alert';
 import Fade from 'react-bootstrap/Fade';
 
 import NavButtons from "./NavButtons";
-import NewBookmark from './New-Bookmark';
+import NewBookmarkForm from './New-Bookmark';
 import LoginForm from './LoginForm';
 import SignUpForm from './SignUpForm';
 
@@ -21,6 +21,8 @@ export default function Nav ({ user, setUser }){
     const [ signupNotice, setSignupNotice ] = useState(false);
     const [ loginNotice, setLoginNotice ] = useState(false);
     const [ logoutNotice, setLogoutNotice ] = useState(false);
+
+    const [ bookmarkNotice, setBookmarkNotice ] = useState(false);
 
     function setLocalStorage(token, name) {
 
@@ -65,12 +67,12 @@ export default function Nav ({ user, setUser }){
                     <div className="navButtons">
 
                         {/* TODO: LINE BREAK */}
-                        <NavButtons className='new-bkmrk' text={`New\ Bookmark`} clickEvent={ () => setBkmrkModal(true) } />
+                        <NavButtons className='new-bkmrk' text={`New\ Bookmark`} clickEvent={ () => setBkmrkModal(true)   } />
                         <NavButtons className='new-fldr' text={`New\ Folder`} clickEvent={ null } />
                         <NavButtons className='logout' text={`Log\ Out`} clickEvent={ handleLogout } />
                     </div>
                     
-                    <NewBookmark show={ bkmrkModal } hideEvent={() => setBkmrkModal(false)} />
+                    <NewBookmarkForm show={ bkmrkModal } hideEvent={() => setBkmrkModal(false)}  setBookmarkNotice={ setBookmarkNotice }   setLogoutNotice={ setLogoutNotice }  setShow={ setBkmrkModal } />
 
                 </Navbar>
                 <Fade>
@@ -81,6 +83,12 @@ export default function Nav ({ user, setUser }){
                 <Fade>
                     <Alert id='sign-up-success' variant='success' dismissible show={ signupNotice }  onClose={ () => setSignupNotice(false)} >
                         <Alert.Heading> You have successfully signed up! </Alert.Heading>
+                    </Alert>
+                </Fade>
+
+                <Fade>
+                    <Alert id='create-bookmark-success' variant='success' dismissible show={ bookmarkNotice }  onClose={ () => setBookmarkNotice(false)} >
+                        <Alert.Heading> You have successfully created bookmark! </Alert.Heading>
                     </Alert>
                 </Fade>
             </>
@@ -98,8 +106,9 @@ export default function Nav ({ user, setUser }){
                         <NavButtons className='signup' text='Sign-Up' clickEvent={ () => setSignUpModal(true)  } />
                     </div>
                     
-                    <LoginForm show={ LoginModal } hideEvent={ () => setLoginModal(false) } setShow={ setLoginModal } setLoginNotice={ setLoginNotice } setSignupNotice={ setSignupNotice } setLogoutNotice={ setLogoutNotice } setUser={ setUser } setLocalStorage={ setLocalStorage } clearLocalStorage={ clearLocalStorage } />
-                    <SignUpForm show={ SignUpModal } hideEvent={ () => setSignUpModal(false) } setUser={ setUser } setSignupNotice={ setSignupNotice } setSignUpModal={ setSignUpModal } setLoginNotice={ setLoginNotice } setLogoutNotice={ setLogoutNotice } setLocalStorage={ setLocalStorage } />
+                    <LoginForm show={ LoginModal } hideEvent={ () => setLoginModal(false) } setShow={ setLoginModal } setLoginNotice={ setLoginNotice } setSignupNotice={ setSignupNotice } setLogoutNotice={ setLogoutNotice } setUser={ setUser } setLocalStorage={ setLocalStorage } clearLocalStorage={ clearLocalStorage } setBookmarkNotice ={ setBookmarkNotice }/>
+
+                    <SignUpForm show={ SignUpModal } hideEvent={ () => setSignUpModal(false) } setUser={ setUser } setSignupNotice={ setSignupNotice } setSignUpModal={ setSignUpModal } setLoginNotice={ setLoginNotice } setLogoutNotice={ setLogoutNotice } setLocalStorage={ setLocalStorage } setBookmarkNotice ={ setBookmarkNotice } />
 
                 </Navbar>
                 
