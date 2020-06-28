@@ -29,46 +29,62 @@ usersRouter.post('/register', async (req, res, next) => {
     const { username, password, name } = req.body;
   
     try {
-      const userExist = await getUserByUsername(username);
-      console.log(userExist);
+      const userExists = await getUserByUsername(username);
   
-      if (userExist) {
-        next({
-          name: 'UserExistsError',
+      if (userExists) {
+        return next({
+          messageName: 'UserExistsError',
           message: 'A user by that username already exists'
         });
       }
-
-      if (password.length < 8) {
-        next({
-          name: 'PasswordLengthError',
-          message: 'Password must be at least 8 characters'
+    console.log(username.length < 5 || username.length > 25)
+      if (username.length < 5 || username.length > 25) {
+        console.log('got here')
+        return next({
+          messageName: 'UsernameLengthError',
+          message: 'Username must be 8-25 characters'
         });
       }
 
-     bcrypt.hash(password, SALT_COUNT, function(err, hashedPassword){
-     if (err){
-       throw err;
-     } else {
-        createUser({
-          username,
-          password:hashedPassword,
-          name,
-          });
+      if (password.length < 8 || password.length > 25) {
+        return next({
+          messageName: 'PasswordLengthError',
+          message: 'Password must be 8-25 characters'
+        });
+      }
+
+
+      bcrypt.hash(password, SALT_COUNT, function(err, hashedPassword){
+        if (err){
+          throw err;
+        }
+        else {
+            
+          createUser({
+            username,
+            password:hashedPassword,
+            name,
+          }).then((newUser) => {
+
+            const token = jwt.sign({ 
+              username
+            }, process.env.JWT_SECRET, {
+              expiresIn: '1w'
+            });
+              
+            res.send({ 
+              messageName: 'SignupSuccessful',
+              message: "Thank you for signing up!",
+              token,
+              username,
+              name,
+              id: newUser.id
+            });
+          })
         }
       });
 
-      const token = jwt.sign({ 
-         username
-      }, process.env.JWT_SECRET, {
-        expiresIn: '1w'
-      });
-  
-      res.send({ 
-        name: 'SignupSuccessful',
-        message: "Thank you for signing up!",
-        token 
-      });
+      
     } catch (error) {
       console.error(error);
       const { name, message } = error;
@@ -83,18 +99,17 @@ usersRouter.post('/login', async (req, res, next) => {
 
 
   if (!username || !password) {
-    next({
-      name: "MissingCredentialsError",
+    return next({
+      messageName: "MissingCredentialsError",
       message: "Please supply both a username and password"
     });
   }
 
   const userExist = await getUserByUsername(username);
-  console.log('userexists is ', userExist);
 
       if (!userExist) {
-        next({
-          name: 'UserExistsError',
+        return next({
+          messageName: 'UserExistsError',
           message: 'Username does not exist'
         });
       }
@@ -116,12 +131,12 @@ usersRouter.post('/login', async (req, res, next) => {
     
       const token = jwt.sign({ username, name, id }, process.env.JWT_SECRET, { expiresIn: '1w' });
 
-      res.send({ message: "You're logged in!", token, name, id });
+      res.send({ messageName: "LoginSuccess", message: "You're logged in!", token, name, id });
 
       } else {
-        next({ 
-        name: 'IncorrectCredentialsError', 
-        message: 'Username or password is incorrect'
+          return next({ 
+          messageName: 'IncorrectCredentialsError', 
+          message: 'Username or password is incorrect'
         });
       }
     }
@@ -137,18 +152,14 @@ usersRouter.post('/test', async (req, res, next) => {
   
   try{
 
-    console.log('here');
     const { token } = req.body;
     const verification = jwt.verify(token, process.env.JWT_SECRET);
-    console.log('verification ', verification);
 
     const userObj ={
       id: verification.id,
       username: verification.username,
       name: verification.name
     }
-    
-    console.log('userObj is ', userObj);
     
     res.send({
       name: 'VerificationSuccessful',

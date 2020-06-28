@@ -62,7 +62,7 @@ async function createTables() {
         CREATE TABLE links (
         id SERIAL PRIMARY KEY,
         "creatorId" INTEGER REFERENCES users(id) NOT NULL,
-        name VARCHAR(255) UNIQUE NOT NULL,
+        name VARCHAR(255) NOT NULL,
         url VARCHAR(255) UNIQUE NOT NULL,
         clicks INTEGER,
         comment TEXT NOT NULL,

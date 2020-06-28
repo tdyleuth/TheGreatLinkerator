@@ -13,32 +13,58 @@ import axios from 'axios';
 
 const BASE_URL = 'http://localhost:3000/api/users';
 
-function SignUpForm({ show, hideEvent }){
+function SignUpForm({ show, hideEvent, setUser, setSignupNotice, setSignUpModal, setLoginNotice, setLogoutNotice, setLocalStorage, setBookmarkNotice }){
 
     const [ userError, setUserError ] = useState(false);
+    const [ usernameError, setUsernameError ] = useState(false);
     const [ passwordError, setPasswordError ] = useState(false);
 
     async function handleSignup(event){
-
+        
         event.preventDefault();
         event.stopPropagation();
-
-        const name = document.getElementById('signup-name').value;
-        const username = document.getElementById('signup-username').value;
+        
+        const newName = document.getElementById('signup-name').value;
+        const newUsername = document.getElementById('signup-username').value;
         const password = document.getElementById('signup-password').value;
-
-        const { data: { name: messageName, token } } = await axios.post(BASE_URL + '/register', {
-            username,
+        
+        const { data: { messageName, token, username, name, id } } = await axios.post(BASE_URL + '/register', {
+            username: newUsername,
             password,
-            name
-        })
+            name: newName
+        });
+
+        console.log('signup data is ', messageName, token, username, name, id);
 
         if(messageName === 'UserExistsError' ){
+            setUsernameError(false);
+            setPasswordError(false);
             setUserError(true);
         }
-        if(messageName === 'PasswordLengthError'){
+        else if(messageName === 'UsernameLengthError'){
+            setPasswordError(false);
+            setUserError(false);
+            setUsernameError(true);
+        }
+        else if(messageName === 'PasswordLengthError'){
+            setUsernameError(false);
+            setUserError(false);
             setPasswordError(true);
         }
+        else if(messageName==='SignupSuccessful'){
+            setLogoutNotice(false);
+            setLoginNotice(false);
+            setSignupNotice(true);
+            setLocalStorage(token, name);
+            setSignUpModal(false);
+            setBookmarkNotice(false);
+            setUser({
+                username,
+                name,
+                id
+            });
+        }
+
 
     }
 
@@ -63,17 +89,22 @@ function SignUpForm({ show, hideEvent }){
                     <Form.Group>
 
                         <Fade>
-                            <Alert id='user-exists-error' variant='danger' dismissible show={ userError }  onClose={ () => setUserError(false)} >
+                            <Alert id='user-exists-error' variant='danger' show={ userError }  onClose={ () => setUserError(false)} dismissible>
                                 <Alert.Heading> A user by this username already exists! Please try registering with a different username. </Alert.Heading>
                             </Alert>
                         </Fade>
 
                         <Fade>
-                            <Alert id='short-password' variant='danger' dismissible show={ passwordError }  onClose={ () => setPasswordError(false)} >
-                                <Alert.Heading> Password must be at least 8 characters in length </Alert.Heading>
+                            <Alert id='password-length-error' variant='danger' show={ passwordError }  onClose={ () => setPasswordError(false)} dismissible>
+                                <Alert.Heading> Password must be 8-25 characters in length </Alert.Heading>
                             </Alert>
                         </Fade>
                         
+                        <Fade>
+                            <Alert id='username-length-error' variant='danger' show={ usernameError }  onClose={ () => setUsernameError(false)} dismissible>
+                                <Alert.Heading> Username must be 8-25 characters in length </Alert.Heading>
+                            </Alert>
+                        </Fade>
                         
                         <Form.Label>Enter New Name</Form.Label>
                         <Form.Control id='signup-name' as='input' required></Form.Control>
