@@ -5,7 +5,30 @@ import Jumbotron from 'react-bootstrap/Jumbotron'
 
 
 export default function Header (){
+
+    const handleLogoError = () => {
+
+        return(
+        
+            <Jumbotron>
     
+                <div id='header'>
+    
+                    <img className='chain' alt='Stylized chain link' src='/assets/chain-link.png' />
+                    <div>
+                        <h1>The Great Linkerator</h1>
+                        <h2>The new way to bookmark the web</h2>
+                    </div>
+                    <img className='chain' alt='Stylized chain link' src='/assets/chain-link.png' />
+                    
+                </div>
+    
+            </Jumbotron>
+        
+        );
+        
+    }
+
     return(
         
         <Jumbotron>
@@ -14,18 +37,11 @@ export default function Header (){
 
                 <img className='chain' alt='Stylized chain link' src='/assets/chain-link.png' />
                 <div>
-                    <h1>The Great Linkerator</h1>
-                    <h2>The new way to bookmark the web</h2>
+                    <img id='logo' src='/assets/logo.png' alt='"The Great Linkerator" written in a pixelated font in front of a padlock' onError={ () => handleLogoError() }/>
                 </div>
                 <img className='chain' alt='Stylized chain link' src='/assets/chain-link.png' />
                 
             </div>
-            
-            {/* Error handler in case of image load failure */}
-            {/* {onError
-                ? null
-                : <img src='./logo' alt='A three link chain with left and right displaying only half links'/>
-            } */}
 
         </Jumbotron>
     

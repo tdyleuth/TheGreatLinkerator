@@ -6,14 +6,13 @@ import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Alert from 'react-bootstrap/Alert';
-import Fade from 'react-bootstrap/Fade';
-
+import {Animated} from "react-animated-css";
 
 import axios from 'axios';
 
 const BASE_URL = 'http://localhost:3000/api/users';
 
-function SignUpForm({ show, hideEvent, setUser, setSignupNotice, setSignUpModal, setLoginNotice, setLogoutNotice, setLocalStorage, setBookmarkNotice }){
+function SignUpForm({ show, hideEvent, setUser, setSignupNotice, setSignUpModal, setLoginNotice, setLogoutNotice, setLocalStorage, setNewBookmarkNotice, setEditBookmarkNotice, setVisibility, visibility }){
 
     const [ userError, setUserError ] = useState(false);
     const [ usernameError, setUsernameError ] = useState(false);
@@ -40,29 +39,66 @@ function SignUpForm({ show, hideEvent, setUser, setSignupNotice, setSignUpModal,
             setUsernameError(false);
             setPasswordError(false);
             setUserError(true);
+            setTimeout(() => {
+                setVisibility(false);
+            }, 200);
+            setTimeout(() => {
+                setVisibility(true);
+            }, 2500);
+            setTimeout(() => {
+                setUserError(false);
+            }, 3000);
         }
         else if(messageName === 'UsernameLengthError'){
             setPasswordError(false);
             setUserError(false);
             setUsernameError(true);
+            setTimeout(() => {
+                setVisibility(false);
+            }, 200);
+            setTimeout(() => {
+                setVisibility(true);
+            }, 2500);
+            setTimeout(() => {
+                setUsernameError(false);
+            }, 3000);
         }
         else if(messageName === 'PasswordLengthError'){
             setUsernameError(false);
             setUserError(false);
             setPasswordError(true);
+            setTimeout(() => {
+                setVisibility(false);
+            }, 200);
+            setTimeout(() => {
+                setVisibility(true);
+            }, 2500);
+            setTimeout(() => {
+                setPasswordError(false);
+            }, 3000);
         }
         else if(messageName==='SignupSuccessful'){
+            setSignupNotice(true);
+            setSignUpModal(false);
             setLogoutNotice(false);
             setLoginNotice(false);
-            setSignupNotice(true);
             setLocalStorage(token, name);
-            setSignUpModal(false);
-            setBookmarkNotice(false);
+            setNewBookmarkNotice(false);
+            setEditBookmarkNotice(false);
             setUser({
                 username,
                 name,
                 id
             });
+            setTimeout(() => {
+                setVisibility(false);
+            }, 200);
+            setTimeout(() => {
+                setVisibility(true);
+            }, 2500);
+            setTimeout(() => {
+                setSignupNotice(false);
+            }, 3000);
         }
 
 
@@ -88,32 +124,32 @@ function SignUpForm({ show, hideEvent, setUser, setSignupNotice, setSignUpModal,
                 <Form onSubmit={ handleSignup }>
                     <Form.Group>
 
-                        <Fade>
+                    <Animated animationIn='fadeOut' animationOut='fadeIn' isVisible={ visibility } >
                             <Alert id='user-exists-error' variant='danger' show={ userError }  onClose={ () => setUserError(false)} dismissible>
                                 <Alert.Heading> A user by this username already exists! Please try registering with a different username. </Alert.Heading>
                             </Alert>
-                        </Fade>
+                        </Animated>
 
-                        <Fade>
+                        <Animated animationIn='fadeOut' animationOut='fadeIn' isVisible={ visibility } >
                             <Alert id='password-length-error' variant='danger' show={ passwordError }  onClose={ () => setPasswordError(false)} dismissible>
                                 <Alert.Heading> Password must be 8-25 characters in length </Alert.Heading>
                             </Alert>
-                        </Fade>
+                        </Animated>
                         
-                        <Fade>
+                        <Animated animationIn='fadeOut' animationOut='fadeIn' isVisible={ visibility } >
                             <Alert id='username-length-error' variant='danger' show={ usernameError }  onClose={ () => setUsernameError(false)} dismissible>
                                 <Alert.Heading> Username must be 8-25 characters in length </Alert.Heading>
                             </Alert>
-                        </Fade>
+                        </Animated>
                         
                         <Form.Label>Enter New Name</Form.Label>
-                        <Form.Control id='signup-name' as='input' required></Form.Control>
+                        <Form.Control id='signup-name' as='input' placeholder='Name' required></Form.Control>
                 
                         <Form.Label>Enter New Username</Form.Label>
-                        <Form.Control id='signup-username' as='input' required></Form.Control>
+                        <Form.Control id='signup-username' as='input' placeholder='Username' required></Form.Control>
 
                         <Form.Label>Enter New Password</Form.Label>
-                        <Form.Control id='signup-password' as='input' type='password' required></Form.Control>
+                        <Form.Control id='signup-password' as='input' type='password' placeholder='Password' required></Form.Control>
                         
                         <div id='signUpForm-btns'>
                             <Button id='submit-signUpForm' type='submit' >Register</Button>

@@ -9,8 +9,11 @@ import chalk from 'chalk';
 import Header from './components/Header';
 import Nav from './components/Nav';
 import Search from './components/Search'
-import './app.scss';
 import BookmarkUI from './components/Bookmark-UI';
+
+import Image from 'react-bootstrap/Image'
+
+import './app.scss';
 
 const BASE_URL = 'http://localhost:3000/api/';
 
@@ -63,22 +66,22 @@ const App = () => {
     
     if(!user.id){
 
-  return (
-    <>
-    <header>
-            <Header />
-            <Nav user={ user } setUser={ setUser }/>
-    </header>
-    
-    <main>
-        <div id='body-header'>
-            {/* {breadcrumb} */}
-            <h2 id='body-header-title'>Your Bookmarks</h2>
-            <Search />
-        </div>
-    </main>
-    </>   
-  )
+        return (
+            <>
+            <header>
+                    <Header />
+                    <Nav user={ user } setUser={ setUser }/>
+            </header>
+            
+            <main>
+                <div id='body-header-welcome'>
+                    {/* {breadcrumb} */}
+                    <h2 id='body-header-welcome-title'>Welcome! Please sign-up or log in to continue!</h2>
+                    <Image id='chain-welcome' src="/assets/chain-link.png" alt='Stylized chain link' rounded />
+                </div>
+            </main>
+            </>   
+        )
 
     } else {
         return (
@@ -96,7 +99,7 @@ const App = () => {
                     <Search />
                 </div>
                
-                <BookmarkUI user={ user } setUser={ setUser } />
+                <BookmarkUI />
 
             </main>
             </>   

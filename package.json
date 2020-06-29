@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "animate.css": "^4.1.0",
     "axios": "^0.19.2",
     "bcrypt": "^5.0.0",
     "body-parser": "^1.19.0",
@@ -15,6 +16,7 @@
     "morgan": "^1.10.0",
     "pg": "^8.2.1",
     "react": "^16.13.1",
+    "react-animated-css": "^1.2.1",
     "react-bootstrap": "^1.0.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0"

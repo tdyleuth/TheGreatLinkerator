@@ -156,7 +156,7 @@ async function createInitialLinks(){
      });
 
      await createLink({
-        creatorId: tony.id,
+        creatorId: yahya.id,
         name: "apple",
         url: "www.apple.com",
         clicks:1,

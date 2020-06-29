@@ -4,15 +4,15 @@ import React, { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import Alert from 'react-bootstrap/Alert'
-import Fade from 'react-bootstrap/Fade';
+import Alert from 'react-bootstrap/Alert';
+import {Animated} from "react-animated-css";
 
 import axios from 'axios';
 
 const BASE_URL = 'http://localhost:3000/api/links';
 
 
-function NewBookmarkForm({ show, hideEvent, setShow, setBookmarkNotice, setLogoutNotice, duplicateError, setDuplicateError }){
+function BookmarkForm({ show, hideEvent, setShow, setBookmarkNotice, setLogoutNotice, setLoginNotice, duplicateError, setDuplicateError, setVisibility, visibility, action }){
 
     
   
@@ -49,12 +49,23 @@ function NewBookmarkForm({ show, hideEvent, setShow, setBookmarkNotice, setLogou
 
         if( message === `duplicate key value violates unique constraint "links_url_key"`){
             setDuplicateError(true)
+            setTimeout(() => {
+                setVisibility(false);
+            }, 200);
+            setTimeout(() => {
+                setVisibility(true);
+            }, 2500);
+            setTimeout(() => {
+                setDuplicateError(false);
+            }, 3000);
             return;
         }
 
         if ( message === `New link created!`){
             setBookmarkNotice(true)
             setLogoutNotice(false);
+            setLoginNotice(false);
+            
         }
         
        
@@ -67,7 +78,7 @@ function NewBookmarkForm({ show, hideEvent, setShow, setBookmarkNotice, setLogou
      
         } catch (err) {
             console.error('Error creating bookmark at /src/components/New-Bookmark @ createBookmark(event). Error', err)
-            throw error;
+            throw err;
         }
         
     }
@@ -79,13 +90,20 @@ function NewBookmarkForm({ show, hideEvent, setShow, setBookmarkNotice, setLogou
         event.stopPropagation();
         setDuplicateError(false);
 
-        
         const newBookmark = await createBookmark();
          
 //  Bookmark is successful, update state accordingly
         if(newBookmark){
             setShow(false);
-
+            setTimeout(() => {
+                setVisibility(false);
+            }, 200);
+            setTimeout(() => {
+                setVisibility(true);
+            }, 2500);
+            setTimeout(() => {
+                setBookmarkNotice(false);
+            }, 3000);
         } 
     }
 
@@ -99,7 +117,7 @@ function NewBookmarkForm({ show, hideEvent, setShow, setBookmarkNotice, setLogou
         >
             <Modal.Header closeButton>
 
-                <Modal.Title id='new-bkmk-header'>Create New Bookmark</Modal.Title>
+                <Modal.Title id='new-bkmk-header'>{ action } Bookmark</Modal.Title>
 
             </Modal.Header>
                 
@@ -108,25 +126,24 @@ function NewBookmarkForm({ show, hideEvent, setShow, setBookmarkNotice, setLogou
                 <Form onSubmit = { handleCreateBookMark }>
                     <Form.Group>
 
-                        <Fade>
+                        <Animated animationIn='fadeOut' animationOut='fadeIn' isVisible={ visibility } >
                             <Alert id='duplicate-link-found' variant='danger' dismissible show={ duplicateError }  onClose={ () => setDuplicateError(false)} >
                                 <Alert.Heading> Duplicate bookmark found! Please try again.</Alert.Heading>
                             </Alert>
-                        </Fade>
+                        </Animated>
                 
                         <Form.Label>Name:</Form.Label>
-                        <Form.Control as='input' id='new-bkmrk-name' required></Form.Control>
+                        <Form.Control as='input' id='new-bkmrk-name' placeholder='Boomark Name'required></Form.Control>
 
                         <Form.Label>URL:</Form.Label>
                         <Form.Control as='input' id='new-bkmrk-url' placeholder="https://example.com"
                         pattern="https://.*" size="30" required></Form.Control>
 
                         <Form.Label>Tags (separated by commas):</Form.Label>
-                        <Form.Control as='input' id='new-bkmrk-tags'></Form.Control>
+                        <Form.Control as='input' id='new-bkmrk-tags' placeholder='Tag1, Tag2, Tag3, ...'></Form.Control>
 
                         <Form.Label>Description (optional):</Form.Label>
-                        <Form.Control as='textarea' 
-                        id='new-bkmrk-desc'rows='5'></Form.Control>
+                        <Form.Control as='textarea' id='new-bkmrk-desc'rows='5' placeholder='Description...'></Form.Control>
                         
                         <div id='new-bkmrk-btns'>
                             <Button id='submit-new-bkmrk' type='submit'>Submit</Button>
@@ -144,4 +161,4 @@ function NewBookmarkForm({ show, hideEvent, setShow, setBookmarkNotice, setLogou
 }
 
 
-export default NewBookmarkForm
+export default BookmarkForm;

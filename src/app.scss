@@ -34,10 +34,28 @@ html{
     background: $theme-color2;
     background: linear-gradient(180deg, $theme-color2 5%, $theme-color1 90%);
     color: $theme-accent2;
+    height: 100%;
+    overflow: auto;
+
 }
 
 body{
-    background-color: $theme-color2;
+    background-color: transparent;   
+    height: 100%;
+}
+
+main{   
+    height: 120vh;
+    position: relative;
+    overflow: scroll;
+    min-height: max-content;
+}
+
+#bookmark-ui{
+    height: 120vh;
+    min-height: max-content;
+    margin-bottom: 20rem;
+    overflow: scroll;
 }
 
 #header{
@@ -57,23 +75,61 @@ body{
 
     img{
         // padding-top: 0.5rem;
-        height: 8rem;
+        height: 10rem;
         width: auto;
+        opacity: 30%;
+    }
+
+    #logo{
+        height: 20vh;
+        width: auto;
+        opacity: 100%;
+    }
+    
+
+}
+
+#body-header-welcome{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 65vh;
+
+    #body-header-welcome-title{
+        text-align: center;
+        color: $theme-accent1;
+        font-size: 4rem;
+        margin: 0 3rem;
+    }
+
+    #chain-welcome{
+        height: 20vw;
+        width: auto;
+        opacity: 10%;
     }
 
 }
 
 .jumbotron{
 
+    position: relative;
+    $theme-accent4: rgba(124, 6, 6, 0.4);
     margin-bottom: 0;
     border-radius: 0 0 10px 10px;
     background: $gradient1;
     text-align: center;
-
+    // border-bottom: 1.5px solid darken($theme-accent4, 7%);
+    
+    
 }
 
 .navbar{
 
+    position: relative;
+    $theme-accent4: rgba(124, 6, 6, 0.75);
+    box-shadow: 0 5px 20px -5px darken($theme-accent4, 15%);
     border-radius: 5px;
     display: flexbox;
     justify-content: space-between;
@@ -119,10 +175,18 @@ body{
         color: $theme-accent1;
     }
     
-    .navButtons{
-        width: 28rem;
+    .navButtons-logged-out, .navButtons-logged-in{
         display: flex;
         justify-content: space-between;
+    }
+
+    .navButtons-logged-out{
+        margin: auto;
+        width: 28rem;
+    }
+
+    .navButtons-logged-in{
+        width: 35rem;
     }
 
     .login, .signup, .new-bkmrk, .new-fldr, .logout{
@@ -132,7 +196,7 @@ body{
         height: 5.5rem;
         
         &:hover, &:focus, &:active{
-            border-color: $theme-accent3;
+            border-color: $theme-accent2;
         }
 
         &:click{
@@ -153,22 +217,14 @@ body{
 
 .modal-content{
     
-    $border-size: $border-size + 1.5px;
+    $border-size: $border-size + 0.5px;
     @extend .theme-bg;
     margin-top: 20vh;
+    padding: 1rem;
+    border-radius: 5px;
     
     color: $theme-accent1;
-
-    border: {
-
-        top: $border-size;
-        bottom: $border-size;
-        left: $border-size;
-        right: $border-size;
-        color: $theme-color1;
-        style: solid;
-        radius: 10px;
-    }
+    box-shadow: 0 0 18px -2px darken($theme-accent4, 7%);
     
     .modal-header{
 
@@ -187,6 +243,7 @@ body{
     
     .modal-body{
             
+
         label{
             margin-top: 2rem;
             font-size: 1.5rem;
@@ -210,7 +267,7 @@ body{
 
         button{
 
-            $border-size: $border-size - 1.5px;
+            
 
             font-size: 1.5rem;
             border-radius: 8px;
@@ -227,18 +284,27 @@ body{
             }
 
             &:hover, &:focus, &:active{
-                border-color: $theme-accent3;
+                border-color: $theme-accent2;
             }
 
         }
 
         #close-new-bkmrk{
-            background: $theme-accent2;
+            background: $theme-accent4;
             padding: 0.5rem 1.2rem;
         }
 
         #submit-new-bkmrk{
             background-color: green;
+        }
+
+        .form-label{
+            font-size: 2.5rem;
+            
+        }
+
+        .form-control{
+            font-size: 1.5rem;
         }
 
     }
@@ -257,7 +323,7 @@ body{
 }
 
 #close-loginForm{
-    background: $theme-accent2;
+    background: $theme-accent4;
     padding: 0.5rem 1.2rem;
 }
 
@@ -266,7 +332,7 @@ body{
 }
 
 #close-signUpForm{
-    background: $theme-accent2;
+    background: $theme-accent4;
     padding: 0.6rem 1.4rem;
 }
 
@@ -275,7 +341,6 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background: $gradient1;
     align-items: center;
 
     #body-header-title{
@@ -291,34 +356,163 @@ body{
 }
 
 
-/* ----------------------------------------------------------------------------------------------- Media Queries -----------------------------------------------------------------------------------------------*/
+.accordion{
 
+    margin: 0 0.6rem;
+    
 
-@media (max-width: 950px){
+    .bookmark-header{
+        
+        $gradient1: linear-gradient(180deg, rgba(34,34,34, 0.8) 40%, rgba(35,35,35,0.8) 48%, rgba(25,25,25,0.8) 70%);
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        height: 5rem;
+        background: $gradient1;
+        border-radius: 9px;
+        box-shadow: 0 2px 20px -10px darken($theme-accent4, 10%);
+        margin-bottom: 0.4rem;
 
-    .navbar{
-
-        span{
-            font-size: 2rem;
+        &:hover{
+            cursor: pointer;
         }
 
-        .navButtons{
-            width: 23rem;
+        h2, span{ 
+            color: $theme-accent1;
         }
 
-        .login, .signup, .new-bkmrk, .new-fldr, .logout{
-            font-size: 1.5rem;
-            width: 8rem;
-            height: 5rem;
+        a{
+            color: $theme-accent1;
         }
 
-        .new-bkmrk, .new-fldr, .logout{
-            font-size: 1.2rem;
+        h2, a{
+            font-size: 3rem;
+
+            &:hover{
+                font-size: 3.05rem;
+            }
         }
 
+        .bookmark-name:hover{
+            cursor: pointer;
+            color: $theme-accent2;
+
+        }
+
+        a:hover{
+            text-decoration: none;
+            color: lighten($theme-accent2, 2%);
+            text-decoration: underline;
+        }
+
+        div{
+            display: flex;
+            justify-content: space-beween;
+            align-items: center;
+            width: 15rem;
+
+            .settings{
+                font-size: 3.5rem;
+            }
+
+            .dropdown{
+                font-size: 7rem;
+                padding: -2rem;
+
+            }
+
+            .material-icons{
+                    
+                    &:hover{
+                        color: $theme-accent2;
+                        cursor: pointer;
+                    }
+            }
+
+        }
     }
 
+    .card-body{
+        background: $gradient2;
+        margin-bottom: 0.8rem;
+        border-radius: 0 0 10px 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        
+        h3{
+            font-size: 2.7rem;
+        }
+
+        $theme-color1: rgba(0, 0, 0, 0.1);
+
+        .card-comment{
+            
+            .comment{
+                flex-grow: 5;
+                width: 70vw;
+                word-wrap: break-word;
+                background: $theme-color1;
+                color: $theme-accent1;
+                padding: 1.5rem;
+                margin-top: 1rem;
+                margin-right: 2rem;
+                border-radius: 10px;
+                font-size: 1.8rem;
+
+            }
+
+        }
+
+        .card-info{
+            align-self: center;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: stretch;
+            width: 100%;
+            height: 100%;
+            
+
+            p{
+                color: $theme-accent1;
+            }
+
+            .card-tags{
+                
+                flex-basis: 10rem;
+
+                p{
+                    background: $theme-color1;
+                    border-radius: 10px;
+                    margin-bottom: 4rem;
+                    width: 25vw;
+                    font-size: 2rem;
+                    padding: 1.5rem;
+                }
+            }
+
+            .card-stats{
+                background: $theme-color1;
+                border-radius: 10px;
+                flex-basis: 20rem;
+                width: 25vw;
+                padding: 1.5rem;
+                
+                p{
+                    font-size: 2rem;
+                }
+            }
+
+            
+
+        }
+    }
 }
+
+/* ----------------------------------------------------------------------------------------------- Media Queries -----------------------------------------------------------------------------------------------*/
 
 
 @media (max-width: 850px){
@@ -341,23 +535,38 @@ body{
     .navbar{
 
         span{
-            font-size: 1.7rem;
+            font-size: 2.4rem;
         }
 
-        .navButtons{
-            width: 20rem;
+        .navButtons-logged-in{
+            width: 30rem;
         }
 
-        .login, .signup, .new-bkmrk, .new-fldr, .logout{
-            font-size: 1.2rem;
-            width: 7rem;
+        .login, .signup{
+            font-size: 1.5rem;
+            width: 8rem;
             height: 5rem;
         }
 
         .new-bkmrk, .new-fldr, .logout{
-            font-size: 1rem;
+            font-size: 1.3rem;
+            width: 9rem;
+            height: 5.2rem;
         }
 
+    }
+
+    .accordion{
+        .bookmark-header{
+
+            h2, a{
+                font-size: 2.2rem;
+
+                &:hover{
+                    font-size: 2.25rem;
+                }
+            }
+        }
     }
 
 }
@@ -379,29 +588,81 @@ body{
     .navbar{
 
         span{
-            font-size: 1.2rem;
+            font-size: 2rem;
+            text-align: center;
         }
 
-        .navButtons{
-            width: 17rem;
+
+        .navButtons-logged-out{
+            width: 23rem;
         }
 
-        .login, .signup, .new-bkmrk, .new-fldr, .logout{
-            font-size: 1rem;
-            width: 6rem;
-            height: 4rem;
+        .navButtons-logged-in{
+            width: 25rem;
         }
 
         .new-bkmrk, .new-fldr, .logout{
-            font-size: 0.8rem;
+            font-size: 1rem;
+            width: 7rem;
+            height: 5rem;
         }
 
+        .login, .signup{
+            font-size: 1.5rem;
+            width: 8rem;
+            height: 4.5rem;
+        }
+
+    }
+
+    .accordion{
+
+        .bookmark-header{
+
+            h2, a{
+                
+                
+                font-size: 1.9rem;
+
+                &:hover{
+                    font-size: 1.95rem;
+                }
+
+            }
+
+            a{
+                justify-self: center;
+                align-self: center;
+                margin: auto;
+            }
+
+            
+            div{
+                
+                justify-content: flex-end;
+                width: auto;
+
+                .settings{
+                    font-size: 2.2rem;
+                    border: 0;
+                }
+
+                .dropdown{
+                    font-size: 4.5rem;
+                }
+
+            }
+        }
     }
 }
 
 
 @media (max-width: 500px){
     
+    .jumbotron{
+        padding: 2rem;
+    }
+
     #header{
 
         h1{
@@ -421,28 +682,36 @@ body{
 
         flex-direction: column;
         text-align: center;
+        padding: 1rem;
 
         span{
-            font-size: 2rem;
+            font-size: 2.3rem;
         }
 
         #arrow{
             display: none;
         }
 
-        .navButtons{
-            width: 20rem;
-            margin-top: 2rem;
+
+        .navButtons-logged-out{
+            width: 19rem;
         }
 
-        .login, .signup, .new-bkmrk, .new-fldr, .logout{
-            font-size: 1rem;
-            width: 6rem;
-            height: 4rem;
+        .navButtons-logged-in{
+            margin-top: 1.2rem;
         }
 
         .new-bkmrk, .new-fldr, .logout{
-            font-size: 0.8rem;
+            font-size: 1rem;
+            width: 7rem;
+            height: 5rem;
+        }
+
+
+        .login, .signup{
+            font-size: 1.3rem;
+            width: 7rem;
+            height: 4.5rem;
         }
 
     }
