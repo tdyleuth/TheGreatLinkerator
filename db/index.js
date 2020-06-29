@@ -162,7 +162,7 @@ async function getAllLinks() {
         `);
 
         const links = await Promise.all(linksIds.map(
-          link => getLinkById( link.id )
+          link => getLinkByLinkId( link.id )
         ));
 
       return links;
@@ -172,7 +172,7 @@ async function getAllLinks() {
     }
 }
 
-async function getLinkById(linkId) {
+async function getLinkByLinkId(linkId) {
     try {
       const { rows: [ link ]  } = await client.query(`
         SELECT *
@@ -210,6 +210,20 @@ async function getLinkById(linkId) {
       throw error;
     }
   }
+
+async function getLinkByUserId(userId) {
+  try{
+   const { rows } = await client.query(`
+   SELECT * FROM links 
+   WHERE "creatorId" = $1 
+   `, [userId])
+
+   return rows;
+
+  }catch(error){
+    throw error;
+  }
+}
 
 async function destroyLink(linkId) {
 
@@ -309,7 +323,7 @@ async function addTagsToLink(linkId, tagList) {
   
       await Promise.all(createLinkTagPromises);
   
-      return await getLinkById(linkId);
+      return await getLinkByLinkId(linkId);
     } catch (error) {
       throw error;
     }
@@ -327,7 +341,7 @@ async function getLinkByTagName(tagName) {
       `, [tagName]);
   
       return await Promise.all(linkIds.map(
-        link => getLinkById(link.id)
+        link => getLinkByLinkId(link.id)
       ));
     } catch (error) {
       throw error;
@@ -378,10 +392,11 @@ module.exports = {
     createTags,
     updateTag,
     getAllTags,
-    getLinkById,
+    getLinkByLinkId,
     getLinkByTagName,
     createLinkTag,
     addTagsToLink,
     destroyLinkTags,
     destroyLink,
+    getLinkByUserId,
 }

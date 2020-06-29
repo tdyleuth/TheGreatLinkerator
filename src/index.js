@@ -9,8 +9,8 @@ import chalk from 'chalk';
 import Header from './components/Header';
 import Nav from './components/Nav';
 import Search from './components/Search'
-
 import './app.scss';
+import BookmarkUI from './components/Bookmark-UI';
 
 const BASE_URL = 'http://localhost:3000/api/';
 
@@ -60,9 +60,30 @@ const App = () => {
         attemptTokenLogin()
 
     }, [])
+    
+    if(!user.id){
 
-    return (
-        <>
+  return (
+    <>
+    <header>
+            <Header />
+            <Nav user={ user } setUser={ setUser }/>
+    </header>
+    
+    <main>
+        <div id='body-header'>
+            {/* {breadcrumb} */}
+            <h2 id='body-header-title'>Your Bookmarks</h2>
+            <Search />
+        </div>
+    </main>
+    </>   
+  )
+
+    } else {
+        return (
+
+            <>
             <header>
                     <Header />
                     <Nav user={ user } setUser={ setUser }/>
@@ -74,10 +95,14 @@ const App = () => {
                     <h2 id='body-header-title'>Your Bookmarks</h2>
                     <Search />
                 </div>
+               
+                <BookmarkUI user={ user } setUser={ setUser } />
+
             </main>
-        </>
-    );
-    
+            </>   
+           
+        )
+    }
 }
 
 const app = document.getElementById('root');

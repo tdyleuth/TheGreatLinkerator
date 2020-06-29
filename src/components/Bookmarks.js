@@ -1,20 +1,25 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
+import Accordion from 'react-bootstrap/Accordion'
+import Button from 'react-bootstrap/Button'
 
 
 //Create bookmark => modal => (name, description (optional), url, tags, submit, cancel )
 // => Name, url
 
 
-export default function Bookmark(){
+export default function Bookmark( { name, url , comment, tags, clickCount , dateCreated} ){
 
     return(
         <div>
             <Card.Header>
-                {/* {Bookmark name} */}
+              <Accordion.Toggle as={Button} variant="link">
+              { name }
+             </Accordion.Toggle> 
+
             </Card.Header>
             <Card.Header>
-                {/* {Bookmark url} */}
+                { url }
             </Card.Header>
             <Card.Header>
                 {/* {Options icon} */}
@@ -26,18 +31,17 @@ export default function Bookmark(){
             
             <Card.Body>
                 <h3>Description:</h3>
-                {/* <p>{Bookmark description}</p> */}
-
+                 <p>{ comment }</p> 
 
                 <h3>Tags:</h3>
-                {/* <p>{tags}</p> */}
+                 <p>{ tags }</p> 
       
                 <h3>Date Created:</h3>           
-                {/* <p>{DateCreated}</p> */}
+                <p> { dateCreated} </p>
                 <h3>Date Modified:</h3>
                 {/* <p>{DateModified}</p> */}
                 <h3>Click Count:</h3>
-                {/* <p>{ClickCount}</p> */}
+                <p>{clickCount }</p>
             </Card.Body>
         </div>
 

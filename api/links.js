@@ -3,7 +3,7 @@ const linksRouter = express.Router();
 
 const { requireUser } = require('./utils');
 
-const { getAllLinks, createLink, getLinkById, updateLink, destroyLinkTags, destroyLink, updateTag, createTags, addTagsToLink } = require('../db')
+const { getAllLinks, createLink, getLinkByLinkId, updateLink, destroyLinkTags, destroyLink, updateTag, createTags, addTagsToLink, getLinkByUserId } = require('../db')
 
 linksRouter.use( (req,res,next) => {
     console.log("A request is being made to /links")
@@ -20,6 +20,20 @@ linksRouter.get('/', async (req,res) => {
         links
     });
 });
+
+
+//Get links by userId
+linksRouter.get('/user', requireUser, async (req, res) => {
+  const { id } = req.user
+  const links = await getLinkByUserId(id);
+
+  res.send({
+    name: "LinkSuccess",
+    message: "Links retrieved!",
+    links
+  });
+
+})
 
 
 //Create new link with added tags
@@ -92,7 +106,7 @@ linksRouter.patch('/:linkId',requireUser, async (req, res, next) => {
 
   
     try {
-      const originalLink = await getLinkById(linkId);
+      const originalLink = await getLinkByLinkId(linkId);
       const _creatorID = originalLink.creatorId;
   
       if(id === _creatorID){
@@ -102,7 +116,7 @@ linksRouter.patch('/:linkId',requireUser, async (req, res, next) => {
 
         await addTagsToLink(linkId, updatedTags);
 
-        const updatedLink = await getLinkById(linkId)
+        const updatedLink = await getLinkByLinkId(linkId)
 
         res.send({
           message:"Link has been updated",
@@ -130,7 +144,7 @@ linksRouter.delete('/:linkId', requireUser, async (req, res, next) => {
   console.log(linkId)
   const { id } = req.user;
   try{
-      const link = await getLinkById(linkId);
+      const link = await getLinkByLinkId(linkId);
       console.log(link)
 
       if(link && link.creatorId === id) {

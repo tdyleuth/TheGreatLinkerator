@@ -6,7 +6,7 @@ const {
     getAllTags,
     updateTag,
     getAllLinks,
-    getLinkById,
+    getLinkByLinkId,
     getLinkByTagName,
 
 } = require('./index');
@@ -29,7 +29,7 @@ async function testDB() {
         console.log("Finished Testing getAllLinksBytag", linksbytagname)
 
         console.log("Testing getLinksById");
-        const test = await getLinkById(1);
+        const test = await getLinkByLinkId(1);
         console.log("Result", test)
         console.log("Finished testing getLinksById");
        
@@ -154,6 +154,15 @@ async function createInitialLinks(){
          comment: "google is the best search engine",
          tags: ["search", "knowledge", "tool"]
      });
+
+     await createLink({
+        creatorId: tony.id,
+        name: "apple",
+        url: "www.apple.com",
+        clicks:1,
+        comment: "apple is the best search engine",
+        tags: ["search", "knowledge", "tool"]
+    });
 
      await createLink({
         creatorId: yahya.id,

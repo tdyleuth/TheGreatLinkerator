@@ -46,7 +46,6 @@ function NewBookmarkForm({ show, hideEvent, setShow, setBookmarkNotice, setLogou
 
         const { data: { message } } = await axios.post(BASE_URL, data, headers)
 
-        console.log("Messageasas:", message)
 
         if( message === `duplicate key value violates unique constraint "links_url_key"`){
             setDuplicateError(true)
