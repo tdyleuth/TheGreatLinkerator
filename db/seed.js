@@ -158,6 +158,25 @@ async function createInitialLinks(){
      });
 
      await createLink({
+        creatorId: tony.id,
+        name: "stuff",
+        url: "www.stuff.com",
+        clicks:1,
+        comment: "stuffis the best search engine",
+        tags: ["search", "knowledge", "tool"]
+    });
+
+    await createLink({
+        creatorId: tony.id,
+        name: "test",
+        url: "www.test.com",
+        clicks:1,
+        comment: "test the best search engine",
+        tags: ["search", "knowledge", "tool"]
+    });
+
+
+     await createLink({
         creatorId: yahya.id,
         name: "apple",
         url: "www.apple.com",

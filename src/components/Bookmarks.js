@@ -24,13 +24,10 @@ function CustomToggle({ children, eventKey }) {
         console.log('totally custom!'),
     );
 
-    console.log('decoratedOnClick is ', decoratedOnClick.toString());
-
     const handleClick = (event) => {
         
         const element = event.target.tagName.toLowerCase();
-        console.log('element is ', element);
-
+       
         if( element !== 'span' && element !== 'a'){
             decoratedOnClick(event);
         }
@@ -47,7 +44,7 @@ function CustomToggle({ children, eventKey }) {
 
 }
 
-export default function Bookmark( { id, name, url , comment, tags, clickCount , dateCreated, dateModified, lastAccessed} ){
+export default function Bookmark( { id, name, url , comment, tags, clickCount , dateCreated, dateModified, lastAccessed, setLinks, links, setDeleteBookmarkNotice, setVisibility} ){
 
 
     const handleClick = async () =>{
@@ -81,7 +78,55 @@ export default function Bookmark( { id, name, url , comment, tags, clickCount , 
 
     }
 
+   async function deleteBookmark(linkId){
     
+        const token = localStorage.getItem('token');
+        const headers = {
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${ token }`} 
+        }
+         
+        try {
+           
+            const deletedLink = await axios.delete(BASE_URL + `/${linkId}`, headers)
+            console.log("deletedlink", deletedLink)
+            if(deletedLink){
+            const updatedLinks = links.filter((link) => {
+                if(link.id != linkId){
+                    return link;
+                }
+            }) 
+           
+            setLinks(updatedLinks)
+            
+            setDeleteBookmarkNotice(true)
+            setTimeout(() => {
+                setVisibility(false);
+            }, 200);
+            setTimeout(() => {
+                setVisibility(true);
+            }, 2500);
+            setTimeout(() => {
+                setDeleteBookmarkNotice(false);
+            }, 3000);
+          
+            return deletedLink
+            
+         }
+        }
+        catch(err){
+                console.error(err);
+                throw err;
+        }
+    }
+
+    function handleDelete(e){
+        const linkId= e.target.getAttribute("id")
+        deleteBookmark(linkId);
+    }
+
+
 
     return(
         <Accordion defaultActiveKey='0'>
@@ -107,7 +152,7 @@ export default function Bookmark( { id, name, url , comment, tags, clickCount , 
                                 </Dropdown.Toggle>
                                 <Dropdown.Menu>
                                     <Dropdown.Item className='edit-button' >Edit Bookmark</Dropdown.Item>
-                                    <Dropdown.Item className='delete-button' >Delete Bookmark</Dropdown.Item>
+                                    <Dropdown.Item className='delete-button' id={id} onClick={ (e) => handleDelete(e) } >Delete Bookmark</Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>
 

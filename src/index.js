@@ -25,6 +25,8 @@ const App = () => {
         name: ''
     });
     const[links, setLinks] =useState([]);
+    const [ deleteBookmarkNotice, setDeleteBookmarkNotice ] = useState(false);
+    const[ visibility, setVisibility ] = useState(true);
 
     function clearLocalStorage() {
         localStorage.setItem('token', '');
@@ -69,7 +71,7 @@ const App = () => {
                 }
 
         const { data: { links } } = await axios.get(BASE_URL + '/links/user', headers);
-        console.log('links inner is ', links);
+   
 
         return links;
 
@@ -109,15 +111,13 @@ const App = () => {
 
     }, [user])
     
-    console.log('userObj top-level is ', user);
-    console.log('link at the top-level is ', links);
     if(!user.id){
 
         return (
             <>
             <header>
                     <Header />
-                    <Nav user={ user } setUser={ setUser }/>
+                    <Nav user={ user } setUser={ setUser } setDeleteBookmarkNotice ={setDeleteBookmarkNotice} setVisibility={setVisibility} visibility={visibility}/>
             </header>
             
             <main>
@@ -136,7 +136,7 @@ const App = () => {
             <>
                 <header>
                         <Header />
-                        <Nav user={ user } setUser={ setUser }/>
+                        <Nav user={ user } setUser={ setUser } setDeleteBookmarkNotice ={setDeleteBookmarkNotice} deleteBookmarkNotice={ deleteBookmarkNotice} setVisibility={setVisibility} visibility={visibility} />
                 </header>
                 
                 <main>
@@ -146,10 +146,8 @@ const App = () => {
                         <Search />
                     </div>
                 
-                    < BookmarkUI links={ links } setLinks={ setLinks } />
-                        {/* <div>
-                        { renderBookmarks() }
-                        </div> */}
+                    < BookmarkUI links={ links } setLinks={ setLinks } setDeleteBookmarkNotice ={setDeleteBookmarkNotice} deleteBookmarkNotice={ deleteBookmarkNotice} setVisibility={setVisibility} />
+                    
 
                 </main>
             </>   

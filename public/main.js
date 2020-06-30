@@ -48414,7 +48414,9 @@ __webpack_require__.r(__webpack_exports__);
 const BASE_URL = "http://localhost:3000/api/links";
 function BookmarkUI({
   links,
-  setLinks
+  setLinks,
+  setDeleteBookmarkNotice,
+  setVisibility
 }) {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     id: "bookmark-ui"
@@ -48440,7 +48442,11 @@ function BookmarkUI({
       dateCreated: datecreated,
       dateModified: dateModified,
       comment: comment,
-      lastAccessed: lastAccessed
+      lastAccessed: lastAccessed,
+      setLinks: setLinks,
+      links: links,
+      setDeleteBookmarkNotice: setDeleteBookmarkNotice,
+      setVisibility: setVisibility
     });
     return bookmarkCard;
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Bookmarks__WEBPACK_IMPORTED_MODULE_2__["default"], {
@@ -48453,7 +48459,11 @@ function BookmarkUI({
     dateCreated: "2020-05-06",
     dateModified: "2020-06-06",
     lastAccessed: "2020-05-09",
-    comment: "I am a comment. I cant be short, but I can also be long. This is just filler content though.sabvazadevishuzatanapemusceregmacowmewzewzugfuvpalupdozejoiferinirizkuriagrovgebkugezmujjimbacjocaebsahgehbuduneflodirmoheahuzaufravkancuelladrazhebhucocgujorpurvizurbupfuvhasalcihionewerajguznenoupvupfezumibaedecomvejaminhowebiditgutaodovaebaijoesefivzuvijzilhucjuhzudpiocfurcijiwfebzepakhacogrubitzoheponbategdoznazotadjaniovdeecvaehairac"
+    comment: "I am a comment. I cant be short, but I can also be long. This is just filler content though.sabvazadevishuzatanapemusceregmacowmewzewzugfuvpalupdozejoiferinirizkuriagrovgebkugezmujjimbacjocaebsahgehbuduneflodirmoheahuzaufravkancuelladrazhebhucocgujorpurvizurbupfuvhasalcihionewerajguznenoupvupfezumibaedecomvejaminhowebiditgutaodovaebaijoesefivzuvijzilhucjuhzudpiocfurcijiwfebzepakhacogrubitzoheponbategdoznazotadjaniovdeecvaehairac",
+    setLinks: setLinks,
+    links: links,
+    setDeleteBookmarkNotice: setDeleteBookmarkNotice,
+    setVisibility: setVisibility
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Bookmarks__WEBPACK_IMPORTED_MODULE_2__["default"], {
     id: "8",
     key: "8",
@@ -48464,7 +48474,11 @@ function BookmarkUI({
     dateCreated: "June 5th, 2020",
     dateModified: "July 1st, 2020",
     lastAccessed: "June 13th, 2020",
-    comment: "I am a comment. I cant be short, but I can also be long. This is just filler content though.sabvazadevishuzatanapemusceregmacowmewzewzugfuvpalupdozejoiferinirizkuriagrovgebkugezmujjimbacjocaebsahgehbuduneflodirmoheahuzaufravkancuelladrazhebhucocgujorpurvizurbupfuvhasalcihionewerajguznenoupvupfezumibaedecomvejaminhowebiditgutaodovaebaijoesefivzuvijzilhucjuhzudpiocfurcijiwfebzepakhacogrubitzoheponbategdoznazotadjaniovdeecvaehairac"
+    comment: "I am a comment. I cant be short, but I can also be long. This is just filler content though.sabvazadevishuzatanapemusceregmacowmewzewzugfuvpalupdozejoiferinirizkuriagrovgebkugezmujjimbacjocaebsahgehbuduneflodirmoheahuzaufravkancuelladrazhebhucocgujorpurvizurbupfuvhasalcihionewerajguznenoupvupfezumibaedecomvejaminhowebiditgutaodovaebaijoesefivzuvijzilhucjuhzudpiocfurcijiwfebzepakhacogrubitzoheponbategdoznazotadjaniovdeecvaehairac",
+    setLinks: setLinks,
+    links: links,
+    setDeleteBookmarkNotice: setDeleteBookmarkNotice,
+    setVisibility: setVisibility
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Bookmarks__WEBPACK_IMPORTED_MODULE_2__["default"], {
     id: "7",
     key: "7",
@@ -48475,7 +48489,11 @@ function BookmarkUI({
     dateCreated: "June 5th, 2020",
     dateModified: "July 1st, 2020",
     lastAccessed: "June 13th, 2020",
-    comment: "I am a comment. I cant be short, but I can also be long. This is just filler content though.sabvazadevishuzatanapemusceregmacowmewzewzugfuvpalupdozejoiferinirizkuriagrovgebkugezmujjimbacjocaebsahgehbuduneflodirmoheahuzaufravkancuelladrazhebhucocgujorpurvizurbupfuvhasalcihionewerajguznenoupvupfezumibaedecomvejaminhowebiditgutaodovaebaijoesefivzuvijzilhucjuhzudpiocfurcijiwfebzepakhacogrubitzoheponbategdoznazotadjaniovdeecvaehairac"
+    comment: "I am a comment. I cant be short, but I can also be long. This is just filler content though.sabvazadevishuzatanapemusceregmacowmewzewzugfuvpalupdozejoiferinirizkuriagrovgebkugezmujjimbacjocaebsahgehbuduneflodirmoheahuzaufravkancuelladrazhebhucocgujorpurvizurbupfuvhasalcihionewerajguznenoupvupfezumibaedecomvejaminhowebiditgutaodovaebaijoesefivzuvijzilhucjuhzudpiocfurcijiwfebzepakhacogrubitzoheponbategdoznazotadjaniovdeecvaehairac",
+    setLinks: setLinks,
+    links: links,
+    setDeleteBookmarkNotice: setDeleteBookmarkNotice,
+    setVisibility: setVisibility
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Bookmarks__WEBPACK_IMPORTED_MODULE_2__["default"], {
     id: "6",
     key: "6",
@@ -48486,7 +48504,11 @@ function BookmarkUI({
     dateCreated: "June 5th, 2020",
     dateModified: "July 1st, 2020",
     lastAccessed: "June 13th, 2020",
-    comment: "I am a comment. I cant be short, but I can also be long. This is just filler content though.sabvazadevishuzatanapemusceregmacowmewzewzugfuvpalupdozejoiferinirizkuriagrovgebkugezmujjimbacjocaebsahgehbuduneflodirmoheahuzaufravkancuelladrazhebhucocgujorpurvizurbupfuvhasalcihionewerajguznenoupvupfezumibaedecomvejaminhowebiditgutaodovaebaijoesefivzuvijzilhucjuhzudpiocfurcijiwfebzepakhacogrubitzoheponbategdoznazotadjaniovdeecvaehairac"
+    comment: "I am a comment. I cant be short, but I can also be long. This is just filler content though.sabvazadevishuzatanapemusceregmacowmewzewzugfuvpalupdozejoiferinirizkuriagrovgebkugezmujjimbacjocaebsahgehbuduneflodirmoheahuzaufravkancuelladrazhebhucocgujorpurvizurbupfuvhasalcihionewerajguznenoupvupfezumibaedecomvejaminhowebiditgutaodovaebaijoesefivzuvijzilhucjuhzudpiocfurcijiwfebzepakhacogrubitzoheponbategdoznazotadjaniovdeecvaehairac",
+    setLinks: setLinks,
+    links: links,
+    setDeleteBookmarkNotice: setDeleteBookmarkNotice,
+    setVisibility: setVisibility
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Bookmarks__WEBPACK_IMPORTED_MODULE_2__["default"], {
     id: "5",
     key: "5",
@@ -48497,7 +48519,11 @@ function BookmarkUI({
     dateCreated: "June 5th, 2020",
     dateModified: "July 1st, 2020",
     lastAccessed: "June 13th, 2020",
-    comment: "I am a comment. I cant be short, but I can also be long. This is just filler content though.sabvazadevishuzatanapemusceregmacowmewzewzugfuvpalupdozejoiferinirizkuriagrovgebkugezmujjimbacjocaebsahgehbuduneflodirmoheahuzaufravkancuelladrazhebhucocgujorpurvizurbupfuvhasalcihionewerajguznenoupvupfezumibaedecomvejaminhowebiditgutaodovaebaijoesefivzuvijzilhucjuhzudpiocfurcijiwfebzepakhacogrubitzoheponbategdoznazotadjaniovdeecvaehairac"
+    comment: "I am a comment. I cant be short, but I can also be long. This is just filler content though.sabvazadevishuzatanapemusceregmacowmewzewzugfuvpalupdozejoiferinirizkuriagrovgebkugezmujjimbacjocaebsahgehbuduneflodirmoheahuzaufravkancuelladrazhebhucocgujorpurvizurbupfuvhasalcihionewerajguznenoupvupfezumibaedecomvejaminhowebiditgutaodovaebaijoesefivzuvijzilhucjuhzudpiocfurcijiwfebzepakhacogrubitzoheponbategdoznazotadjaniovdeecvaehairac",
+    setLinks: setLinks,
+    links: links,
+    setDeleteBookmarkNotice: setDeleteBookmarkNotice,
+    setVisibility: setVisibility
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Bookmarks__WEBPACK_IMPORTED_MODULE_2__["default"], {
     id: "4",
     key: "4",
@@ -48508,7 +48534,11 @@ function BookmarkUI({
     dateCreated: "June 5th, 2020",
     dateModified: "July 1st, 2020",
     lastAccessed: "June 13th, 2020",
-    comment: "I am a comment. I cant be short, but I can also be long. This is just filler content though.sabvazadevishuzatanapemusceregmacowmewzewzugfuvpalupdozejoiferinirizkuriagrovgebkugezmujjimbacjocaebsahgehbuduneflodirmoheahuzaufravkancuelladrazhebhucocgujorpurvizurbupfuvhasalcihionewerajguznenoupvupfezumibaedecomvejaminhowebiditgutaodovaebaijoesefivzuvijzilhucjuhzudpiocfurcijiwfebzepakhacogrubitzoheponbategdoznazotadjaniovdeecvaehairac"
+    comment: "I am a comment. I cant be short, but I can also be long. This is just filler content though.sabvazadevishuzatanapemusceregmacowmewzewzugfuvpalupdozejoiferinirizkuriagrovgebkugezmujjimbacjocaebsahgehbuduneflodirmoheahuzaufravkancuelladrazhebhucocgujorpurvizurbupfuvhasalcihionewerajguznenoupvupfezumibaedecomvejaminhowebiditgutaodovaebaijoesefivzuvijzilhucjuhzudpiocfurcijiwfebzepakhacogrubitzoheponbategdoznazotadjaniovdeecvaehairac",
+    setLinks: setLinks,
+    links: links,
+    setDeleteBookmarkNotice: setDeleteBookmarkNotice,
+    setVisibility: setVisibility
   }));
 }
 
@@ -48732,11 +48762,9 @@ function CustomToggle({
   eventKey
 }) {
   const decoratedOnClick = Object(react_bootstrap_AccordionToggle__WEBPACK_IMPORTED_MODULE_7__["useAccordionToggle"])(eventKey, () => console.log('totally custom!'));
-  console.log('decoratedOnClick is ', decoratedOnClick.toString());
 
   const handleClick = event => {
     const element = event.target.tagName.toLowerCase();
-    console.log('element is ', element);
 
     if (element !== 'span' && element !== 'a') {
       decoratedOnClick(event);
@@ -48757,7 +48785,11 @@ function Bookmark({
   clickCount,
   dateCreated,
   dateModified,
-  lastAccessed
+  lastAccessed,
+  setLinks,
+  links,
+  setDeleteBookmarkNotice,
+  setVisibility
 }) {
   const handleClick = async () => {
     let newCount = +clickCount + 1;
@@ -48784,6 +48816,49 @@ function Bookmark({
       throw err;
     }
   };
+
+  async function deleteBookmark(linkId) {
+    const token = localStorage.getItem('token');
+    const headers = {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      }
+    };
+
+    try {
+      const deletedLink = await axios__WEBPACK_IMPORTED_MODULE_5___default.a.delete(BASE_URL + `/${linkId}`, headers);
+      console.log("deletedlink", deletedLink);
+
+      if (deletedLink) {
+        const updatedLinks = links.filter(link => {
+          if (link.id != linkId) {
+            return link;
+          }
+        });
+        setLinks(updatedLinks);
+        setDeleteBookmarkNotice(true);
+        setTimeout(() => {
+          setVisibility(false);
+        }, 200);
+        setTimeout(() => {
+          setVisibility(true);
+        }, 2500);
+        setTimeout(() => {
+          setDeleteBookmarkNotice(false);
+        }, 3000);
+        return deletedLink;
+      }
+    } catch (err) {
+      console.error(err);
+      throw err;
+    }
+  }
+
+  function handleDelete(e) {
+    const linkId = e.target.getAttribute("id");
+    deleteBookmark(linkId);
+  }
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Accordion__WEBPACK_IMPORTED_MODULE_2__["default"], {
     defaultActiveKey: "0"
@@ -48812,7 +48887,9 @@ function Bookmark({
   }, "settings"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Dropdown__WEBPACK_IMPORTED_MODULE_4__["default"].Menu, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Dropdown__WEBPACK_IMPORTED_MODULE_4__["default"].Item, {
     className: "edit-button"
   }, "Edit Bookmark"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Dropdown__WEBPACK_IMPORTED_MODULE_4__["default"].Item, {
-    className: "delete-button"
+    className: "delete-button",
+    id: id,
+    onClick: e => handleDelete(e)
   }, "Delete Bookmark"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Accordion__WEBPACK_IMPORTED_MODULE_2__["default"].Toggle, {
     as: react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_3__["default"],
     variant: "link",
@@ -49154,7 +49231,11 @@ __webpack_require__.r(__webpack_exports__);
 
 function Nav({
   user,
-  setUser
+  setUser,
+  setDeleteBookmarkNotice,
+  deleteBookmarkNotice,
+  visibility,
+  setVisibility
 }) {
   const [LoginModal, setLoginModal] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false);
   const [SignUpModal, setSignUpModal] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false);
@@ -49166,7 +49247,6 @@ function Nav({
   const [newBookmarkNotice, setNewBookmarkNotice] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false);
   const [editBookmarkNotice, setEditBookmarkNotice] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false);
   const [duplicateError, setDuplicateError] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false);
-  const [visibility, setVisibility] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(true);
 
   function setLocalStorage(token, name) {
     localStorage.setItem('token', token);
@@ -49267,7 +49347,6 @@ function Nav({
     animationOut: "fadeIn",
     isVisible: visibility
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Alert__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    className: "animate__animated animate__fadeOut",
     id: "sign-up-success",
     variant: "success",
     dismissible: true,
@@ -49278,7 +49357,6 @@ function Nav({
     animationOut: "fadeIn",
     isVisible: visibility
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Alert__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    className: "animate__animated animate__fadeOut animate__delay-5s",
     id: "create-bookmark-success",
     variant: "success",
     dismissible: true,
@@ -49289,13 +49367,22 @@ function Nav({
     animationOut: "fadeIn",
     isVisible: visibility
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Alert__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    className: "animate__animated animate__fadeOut",
     id: "create-bookmark-success",
     variant: "success",
     dismissible: true,
     show: editBookmarkNotice,
     onClose: () => setEditBookmarkNotice(false)
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Alert__WEBPACK_IMPORTED_MODULE_4__["default"].Heading, null, " Bookmark has been successfully edited! ")))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Navbar__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Alert__WEBPACK_IMPORTED_MODULE_4__["default"].Heading, null, " Bookmark has been successfully edited! "))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_animated_css__WEBPACK_IMPORTED_MODULE_1__["Animated"], {
+    animationIn: "fadeOut",
+    animationOut: "fadeIn",
+    isVisible: visibility
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Alert__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    id: "deleted-bookmark",
+    variant: "success",
+    dismissible: true,
+    show: deleteBookmarkNotice,
+    onClose: () => setDeleteBookmarkNotice(false)
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Alert__WEBPACK_IMPORTED_MODULE_4__["default"].Heading, null, " Bookmark has been deleted! ")))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Navbar__WEBPACK_IMPORTED_MODULE_2__["default"], {
     className: "theme-bg theme-variant"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "navButtons-logged-out"
@@ -49658,6 +49745,8 @@ const App = () => {
     name: ''
   });
   const [links, setLinks] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]);
+  const [deleteBookmarkNotice, setDeleteBookmarkNotice] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false);
+  const [visibility, setVisibility] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(true);
 
   function clearLocalStorage() {
     localStorage.setItem('token', '');
@@ -49710,7 +49799,6 @@ const App = () => {
         links
       }
     } = await axios__WEBPACK_IMPORTED_MODULE_2___default.a.get(BASE_URL + '/links/user', headers);
-    console.log('links inner is ', links);
     return links; // const bookmarkArr = links.map((bookmark) => {
     //     const { id, name, url, comment, tags, clicks, datecreated, dateModified, lastAccessed } = bookmark;
     //     const bookmarkCard = (
@@ -49734,13 +49822,14 @@ const App = () => {
       getBookmarks().then(data => setLinks(data)).catch(console.error);
     }
   }, [user]);
-  console.log('userObj top-level is ', user);
-  console.log('link at the top-level is ', links);
 
   if (!user.id) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Header__WEBPACK_IMPORTED_MODULE_4__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Nav__WEBPACK_IMPORTED_MODULE_5__["default"], {
       user: user,
-      setUser: setUser
+      setUser: setUser,
+      setDeleteBookmarkNotice: setDeleteBookmarkNotice,
+      setVisibility: setVisibility,
+      visibility: visibility
     })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("main", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       id: "body-header-welcome"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
@@ -49754,14 +49843,21 @@ const App = () => {
   } else {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Header__WEBPACK_IMPORTED_MODULE_4__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Nav__WEBPACK_IMPORTED_MODULE_5__["default"], {
       user: user,
-      setUser: setUser
+      setUser: setUser,
+      setDeleteBookmarkNotice: setDeleteBookmarkNotice,
+      deleteBookmarkNotice: deleteBookmarkNotice,
+      setVisibility: setVisibility,
+      visibility: visibility
     })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("main", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       id: "body-header"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
       id: "body-header-title"
     }, "Your Bookmarks"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Search__WEBPACK_IMPORTED_MODULE_6__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Bookmark_UI__WEBPACK_IMPORTED_MODULE_7__["default"], {
       links: links,
-      setLinks: setLinks
+      setLinks: setLinks,
+      setDeleteBookmarkNotice: setDeleteBookmarkNotice,
+      deleteBookmarkNotice: deleteBookmarkNotice,
+      setVisibility: setVisibility
     })));
   }
 };

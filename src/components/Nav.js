@@ -12,7 +12,7 @@ import BookmarkForm from './BookmarkForm';
 import LoginForm from './LoginForm';
 import SignUpForm from './SignUpForm';
 
-export default function Nav ({ user, setUser }){
+export default function Nav ({ user, setUser, setDeleteBookmarkNotice,  deleteBookmarkNotice, visibility, setVisibility} ){
 
     const [ LoginModal, setLoginModal ] = useState(false);
     const [ SignUpModal, setSignUpModal ] = useState(false);
@@ -27,7 +27,6 @@ export default function Nav ({ user, setUser }){
 
     const [ duplicateError, setDuplicateError ] = useState(false);
 
-    const[ visibility, setVisibility ] = useState(true);
 
     function setLocalStorage(token, name) {
 
@@ -95,26 +94,32 @@ export default function Nav ({ user, setUser }){
 
                 {/* Alerts */}
                 <Animated animationIn = 'fadeOut' animationOut  = 'fadeIn' isVisible={ visibility } >
-                <Alert    id          = 'login-success' variant = 'success' dismissible show = { loginNotice } onClose = { () => setLoginNotice(false) } >
+                <Alert  id  = 'login-success' variant = 'success' dismissible show = { loginNotice } onClose = { () => setLoginNotice(false) } >
                         <Alert.Heading> You are now logged in! </Alert.Heading>
                     </Alert>
                 </Animated>
 
                 <Animated animationIn='fadeOut' animationOut='fadeIn' isVisible={ visibility } >
-                    <Alert className='animate__animated animate__fadeOut' id='sign-up-success' variant='success' dismissible show={ signupNotice }  onClose={ () => setSignupNotice(false)} >
+                    <Alert id='sign-up-success' variant='success' dismissible show={ signupNotice }  onClose={ () => setSignupNotice(false)} >
                         <Alert.Heading> You have successfully signed up! </Alert.Heading>
                     </Alert>
                 </Animated>
 
                 <Animated animationIn='fadeOut' animationOut='fadeIn' isVisible={ visibility } >
-                    <Alert className='animate__animated animate__fadeOut animate__delay-5s' id='create-bookmark-success' variant='success' dismissible show={ newBookmarkNotice }  onClose={ () => setNewBookmarkNotice(false)} >
+                    <Alert id='create-bookmark-success' variant='success' dismissible show={ newBookmarkNotice }  onClose={ () => setNewBookmarkNotice(false)} >
                         <Alert.Heading> You have successfully created bookmark! </Alert.Heading>
                     </Alert>
                 </Animated>
 
                 <Animated animationIn='fadeOut' animationOut='fadeIn' isVisible={ visibility } >
-                    <Alert className='animate__animated animate__fadeOut' id='create-bookmark-success' variant='success' dismissible show={ editBookmarkNotice }  onClose={ () => setEditBookmarkNotice(false)} >
+                    <Alert id='create-bookmark-success' variant='success' dismissible show={ editBookmarkNotice }  onClose={ () => setEditBookmarkNotice(false)} >
                         <Alert.Heading> Bookmark has been successfully edited! </Alert.Heading>
+                    </Alert>
+                </Animated>
+
+                <Animated animationIn='fadeOut' animationOut='fadeIn' isVisible={ visibility } >
+                    <Alert id='deleted-bookmark' variant='success' dismissible show={ deleteBookmarkNotice }  onClose={ () => setDeleteBookmarkNotice(false)} >
+                        <Alert.Heading> Bookmark has been deleted! </Alert.Heading>
                     </Alert>
                 </Animated>
             </>
