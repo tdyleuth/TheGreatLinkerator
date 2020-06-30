@@ -22,7 +22,8 @@ const App = () => {
     const[user, setUser] = useState({
         id: '',
         username: '',
-        name: ''
+        name: '',
+        posts: []
     });
 
     function clearLocalStorage() {
@@ -57,6 +58,11 @@ const App = () => {
         else {return {}}
     }
 
+    const renderBookmarks = () => {
+        console.log('Here I am');
+        console.log('user.posts is ', user.posts);
+        return user.posts;
+    }
 
     useEffect(() => {
 
@@ -64,6 +70,7 @@ const App = () => {
 
     }, [])
     
+    console.log('userObj top-level is ', user);
     if(!user.id){
 
         return (
@@ -87,21 +94,24 @@ const App = () => {
         return (
 
             <>
-            <header>
-                    <Header />
-                    <Nav user={ user } setUser={ setUser }/>
-            </header>
-            
-            <main>
-                <div id='body-header'>
-                    {/* {breadcrumb} */}
-                    <h2 id='body-header-title'>Your Bookmarks</h2>
-                    <Search />
-                </div>
-               
-                <BookmarkUI />
+                <header>
+                        <Header />
+                        <Nav user={ user } setUser={ setUser }/>
+                </header>
+                
+                <main>
+                    <div id='body-header'>
+                        {/* {breadcrumb} */}
+                        <h2 id='body-header-title'>Your Bookmarks</h2>
+                        <Search />
+                    </div>
+                
+                    < BookmarkUI user={ user } setUser={ setUser } />
+                        {/* <div>
+                        { renderBookmarks() }
+                        </div> */}
 
-            </main>
+                </main>
             </>   
            
         )
