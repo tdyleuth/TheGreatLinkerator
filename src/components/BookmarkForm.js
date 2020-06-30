@@ -12,9 +12,7 @@ import axios from 'axios';
 const BASE_URL = 'http://localhost:3000/api/links';
 
 
-function BookmarkForm({ show, hideEvent, setShow, setNewBookmarkNotice, setEditBookmarkNotice, setLogoutNotice, setLoginNotice, duplicateError, setDuplicateError, setVisibility, visibility, action }){
-
-    
+function BookmarkForm({ show, hideEvent, setShow, setNewBookmarkNotice, setEditBookmarkNotice, setLogoutNotice, setLoginNotice, duplicateError, setDuplicateError, setVisibility, visibility, action, links, setLinks, modalTags, setModalTags }){
   
 
     async function createBookmark() {
@@ -62,20 +60,26 @@ function BookmarkForm({ show, hideEvent, setShow, setNewBookmarkNotice, setEditB
         }
 
         if ( message === `New link created!`){
-            setBookmarkNotice(true)
+            setEditBookmarkNotice(false);
+            setNewBookmarkNotice(true);
             setLogoutNotice(false);
             setLoginNotice(false);
+            setTimeout(() => {
+                setVisibility(false);
+            }, 200);
+            setTimeout(() => {
+                setVisibility(true);
+            }, 2500);
+            setTimeout(() => {
+                setNewBookmarkNotice(false);
+            }, 3000);
             
         }
         
-       
         console.log('New bookmark is ', data);
 
         return data;
         
-
-
-     
         } catch (err) {
             console.error('Error creating bookmark at /src/components/New-Bookmark @ createBookmark(event). Error', err)
             throw err;
@@ -92,19 +96,27 @@ function BookmarkForm({ show, hideEvent, setShow, setNewBookmarkNotice, setEditB
 
         const newBookmark = await createBookmark();
          
-//  Bookmark is successful, update state accordingly
+        //  If bookmark is successful, update state accordingly
         if(newBookmark){
             setShow(false);
-            setTimeout(() => {
-                setVisibility(false);
-            }, 200);
-            setTimeout(() => {
-                setVisibility(true);
-            }, 2500);
-            setTimeout(() => {
-                setBookmarkNotice(false);
-            }, 3000);
         } 
+    }
+
+    function handleTagRemove(event){
+
+        const targetId = +(event.target.parentNode.getAttribute('id'));
+
+        const updatedTagsArr = modalTags.filter((tagObj) => {if(targetId != tagObj.id){return tagObj}});
+
+        setModalTags(updatedTagsArr);
+    }
+
+    function handleTagEdit(event){
+        
+        const tagText = event.target.textContent;
+        handleTagRemove(event);
+        document.getElementById('bkmrk-input-tags').value = tagText;
+
     }
 
     return(
@@ -113,11 +125,11 @@ function BookmarkForm({ show, hideEvent, setShow, setNewBookmarkNotice, setEditB
         size='lg'
         show={ show }
         onHide={ hideEvent }
-        id='new-bkmrk-modal'
+        id='bkmrk-input-modal'
         >
             <Modal.Header closeButton>
 
-                <Modal.Title id='new-bkmk-header'>{ action } Bookmark</Modal.Title>
+                <Modal.Title id='bkmrk-input-header'>{ action } Bookmark</Modal.Title>
 
             </Modal.Header>
                 
@@ -133,21 +145,36 @@ function BookmarkForm({ show, hideEvent, setShow, setNewBookmarkNotice, setEditB
                         </Animated>
                 
                         <Form.Label>Name:</Form.Label>
-                        <Form.Control as='input' id='new-bkmrk-name' placeholder='Boomark Name'required></Form.Control>
+                        <Form.Control as='input' id='bkmrk-input-name' placeholder='Boomark Name'required></Form.Control>
 
                         <Form.Label>URL:</Form.Label>
-                        <Form.Control as='input' id='new-bkmrk-url' placeholder="https://example.com"
+                        <Form.Control as='input' id='bkmrk-input-url' placeholder="https://example.com"
                         pattern="https://.*" size="30" required></Form.Control>
 
-                        <Form.Label>Tags (separated by commas):</Form.Label>
-                        <Form.Control as='input' id='new-bkmrk-tags' placeholder='Tag1, Tag2, Tag3, ...'></Form.Control>
-
                         <Form.Label>Description (optional):</Form.Label>
-                        <Form.Control as='textarea' id='new-bkmrk-desc'rows='5' placeholder='Description...'></Form.Control>
+                        <Form.Control as='textarea' id='bkmrk-input-desc'rows='5' placeholder='Description...'></Form.Control>
                         
-                        <div id='new-bkmrk-btns'>
-                            <Button id='submit-new-bkmrk' type='submit'>Submit</Button>
-                            <Button id='close-new-bkmrk' onClick={ hideEvent } >Close</Button>
+                        <Form.Label>Tags (separated by commas):</Form.Label>
+                        <Form.Control as='input' id='bkmrk-input-tags' placeholder='Tag1, Tag2, Tag3, ...'></Form.Control>
+                        <div id='tag-area'>
+                            {modalTags.map(
+
+                                (tagObj) =>
+                                    (<div className='modal-tag' id={`${tagObj.id}`}  key={`${tagObj.id}`}>
+                                        <div onClick={ (e) => handleTagEdit(e) }>
+                                            { tagObj.name }
+                                        </div>
+                                        <span className="material-icons" id={`${tagObj.name}-delete`} onClick={ (e) => handleTagRemove(e) }>
+                                            clear
+                                        </span>
+                                    </div>)
+                                )
+                            }
+                        </div>
+
+                        <div id='bkmrk-input-btns'>
+                            <Button id='submit-bkmrk' type='submit'>Submit</Button>
+                            <Button id='close-bkmrk-input' onClick={ hideEvent } >Close</Button>
                         </div>
                         
                     </Form.Group>

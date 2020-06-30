@@ -12,8 +12,20 @@ import NavButtons from "./NavButtons";
 import SignUpForm from './SignUpForm';
 import LoginForm from './LoginForm';
 
-
-export default function Nav ({ user, setUser, editBkmrkModal, setEditBkmrkModal }){
+export default function Nav ({
+setDeleteBookmarkNotice,
+deleteBookmarkNotice,
+setEditBkmrkModal,
+editBkmrkModal,
+setVisibility,
+setModalTags,
+visibility,
+modalTags,
+setLinks,
+setUser,
+links,
+user,
+}){
     
     //State handlers
     const [ editBookmarkNotice, setEditBookmarkNotice ] = useState(false);
@@ -25,7 +37,6 @@ export default function Nav ({ user, setUser, editBkmrkModal, setEditBkmrkModal 
     const [ loginNotice, setLoginNotice ] = useState(false);
     const [ SignUpModal, setSignUpModal ] = useState(false);
     const [ LoginModal, setLoginModal ] = useState(false);
-    const [ visibility, setVisibility ] = useState(true);
 
 
     //Helper function to set current time, token, and name in local storage
@@ -58,6 +69,7 @@ export default function Nav ({ user, setUser, editBkmrkModal, setEditBkmrkModal 
         setTimeout(() => {setLogoutNotice(false)}, 3000);
     }
 
+    
 
     return(user.id
 
@@ -132,25 +144,33 @@ export default function Nav ({ user, setUser, editBkmrkModal, setEditBkmrkModal 
                         duplicateError={ duplicateError }
                         setLoginNotice={ setLoginNotice }
                         setVisibility={ setVisibility }
+                        setModalTags={ setModalTags }
                         setShow={ setNewBkmrkModal }
                         visibility={ visibility }
+                        modalTags={ modalTags }
                         show={ newBkmrkModal }
+                        setLinks={ setLinks }
                         action='Create New'
+                        links={ links }
                     />
 
                     {/* Edit Bookmark Modal */}
                     <BookmarkForm
+                        hideEvent={ () => { setEditBkmrkModal(false); setModalTags([]) }}
                         setEditBookmarkNotice={ setEditBookmarkNotice }
                         setNewBookmarkNotice={ setNewBookmarkNotice }
-                        hideEvent={ () => setEditBkmrkModal(false) }
                         setDuplicateError={ setDuplicateError }
                         setLogoutNotice={ setLogoutNotice }
                         duplicateError={ duplicateError }
                         setLoginNotice={ setLoginNotice }
                         setVisibility={ setVisibility }
                         setShow={ setEditBkmrkModal }
+                        setModalTags={ setModalTags }
                         visibility={ visibility }
+                        modalTags={ modalTags }
                         show={ editBkmrkModal }
+                        setLinks={ setLinks }
+                        links={ links }
                         action='Edit'
                     />
 
@@ -235,6 +255,12 @@ export default function Nav ({ user, setUser, editBkmrkModal, setEditBkmrkModal 
 
                         <Alert.Heading> Bookmark has been successfully edited! </Alert.Heading>
 
+                    </Alert>
+                </Animated>
+
+                <Animated animationIn='fadeOut' animationOut='fadeIn' isVisible={ visibility } >
+                    <Alert id='deleted-bookmark' variant='success' dismissible show={ deleteBookmarkNotice }  onClose={ () => setDeleteBookmarkNotice(false)} >
+                        <Alert.Heading> Bookmark has been deleted! </Alert.Heading>
                     </Alert>
                 </Animated>
             </>

@@ -3,7 +3,7 @@ const linksRouter = express.Router();
 
 const { requireUser } = require('./utils');
 
-const { getAllLinks, createLink, getLinkByLinkId, updateLink, destroyLinkTags, destroyLink, updateTag, createTags, addTagsToLink, getLinkByUserId } = require('../db')
+const { getAllLinks, createLink, getLinkByLinkId, updateLink, destroyLinkTags, destroyLink, updateTag, createTags, addTagsToLink, getLinkByUserId, getTagsByLinkId } = require('../db')
 
 linksRouter.use( (req,res,next) => {
     console.log("A request is being made to /links")
@@ -24,9 +24,11 @@ linksRouter.get('/', async (req,res) => {
 
 //Get links by userId
 linksRouter.get('/user', requireUser, async (req, res) => {
-  const { id } = req.user
-  const links = await getLinkByUserId(id);
 
+  const { id } = req.user
+
+  const links = await getLinkByUserId(id);
+  
   res.send({
     name: "LinkSuccess",
     message: "Links retrieved!",
@@ -38,28 +40,26 @@ linksRouter.get('/user', requireUser, async (req, res) => {
 
 //Create new link with added tags
 linksRouter.post('/',requireUser, async (req,res,next) => {
+
     const { name, url, comment="", tags = "" } = req.body;
     const { id } = req.user;
     
+    const creatorId = id;
     const linkData = {};
     
-    if(tags.length) {
-  
-      linkData.tags = tags;
-    }
+    linkData.lastAccessed = new Date(Date.now());
+    linkData.dateModified = new Date(Date.now());
+    linkData.dateCreated = new Date(Date.now());
+    if(tags.length) {linkData.tags = tags;}
+    linkData.creatorId = creatorId;
+    linkData.comment = comment;
+    linkData.name = name;
+    linkData.url  = url;
+    linkData.clicks = 0;
   
  
     try{
-      const creatorId = id;
-      linkData.creatorId = creatorId;
-      linkData.name = name;
-      linkData.url  = url;
-      linkData.comment = comment;
-      linkData.clicks = 0;
-      linkData.dateCreated = new Date(Date.now());
-      linkData.dateModified = new Date(Date.now());
-      linkData.lastAccessed = new Date(Date.now());
-      
+
       const link= await createLink(linkData);
 
         if(link){
@@ -85,9 +85,9 @@ linksRouter.patch('/:linkId',requireUser, async (req, res, next) => {
     const { linkId } = req.params;
     // @ts-ignore
     const { id } = req.user;
-    const { name, url, clicks, comment, tags, dateModified, lastAccessed } = req.body;
-    const tagsArr = tags.trim().split(/\s+/)
+    const { name, url, clicks, comment, tags=[], dateModified, lastAccessed } = req.body;
 
+    console.log('I am here and the click count is ', clicks)
     
     const updateFields = {};
 
@@ -116,19 +116,24 @@ linksRouter.patch('/:linkId',requireUser, async (req, res, next) => {
         updateFields.lastAccessed = lastAccessed;
     }
 
+    let tagsArr = await getTagsByLinkId(linkId);
+    
+    if(tags.length){
+      tagsArr = tags.trim().split(/\s+/);
+    }
+    // console.log('tagsArr 2 is ', tagsArr); 
+
   
     try {
       const originalLink = await getLinkByLinkId(linkId);
       const _creatorID = originalLink.creatorId;
   
       if(id === _creatorID){
+        
         await updateLink(linkId, updateFields);
-
-        const updatedTags = await createTags(tagsArr)
-
+        const updatedTags = await createTags(tagsArr);
         await addTagsToLink(linkId, updatedTags);
-
-        const updatedLink = await getLinkByLinkId(linkId)
+        const updatedLink = await getLinkByLinkId(linkId);
 
         res.send({
           message:"Link has been updated",
@@ -153,11 +158,10 @@ linksRouter.patch('/:linkId',requireUser, async (req, res, next) => {
 //Delete link and link_tags related
 linksRouter.delete('/:linkId', requireUser, async (req, res, next) => {
   const { linkId } = req.params;
-  console.log(linkId)
+  
   const { id } = req.user;
   try{
       const link = await getLinkByLinkId(linkId);
-      console.log(link)
 
       if(link && link.creatorId === id) {
       

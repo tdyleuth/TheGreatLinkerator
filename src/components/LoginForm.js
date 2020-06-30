@@ -42,7 +42,7 @@ function LoginForm({ show, hideEvent, setShow, setLoginNotice, setUser, setSignu
     }
 
     async function loginUser (){
-            console.log('1')
+    
         const loginUsername = document.getElementById('login-username').value;
         const loginPassword = document.getElementById('login-password').value;
             
@@ -53,7 +53,6 @@ function LoginForm({ show, hideEvent, setShow, setLoginNotice, setUser, setSignu
                 username: loginUsername,
                 password: loginPassword
             });
-            console.log('messagename is ', messageName);
 
             if(messageName === 'IncorrectCredentialsError'){
                 setUserError(false);

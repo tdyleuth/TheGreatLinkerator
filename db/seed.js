@@ -149,18 +149,37 @@ async function createInitialLinks(){
         console.log("Starting to create links...")
 
      await createLink({
-         creatorId: tony.id,
+         creatorId: yahya.id,
          name: "google",
-         url: "www.google.com",
+         url: "https://www.google.com",
          clicks:1,
          comment: "google is the best search engine",
-         tags: ["search", "knowledge", "tool"]
+         tags: ["search", "knowledge", "tool", "stuff", "more", "stuff"]
      });
+
+     await createLink({
+        creatorId: tony.id,
+        name: "stuff",
+        url: "https://www.stuff.com",
+        clicks:1,
+        comment: "stuffis the best search engine",
+        tags: ["search", "knowledge", "tool"]
+    });
+
+    await createLink({
+        creatorId: tony.id,
+        name: "test",
+        url: "https://www.test.com",
+        clicks:1,
+        comment: "test the best search engine",
+        tags: ["search", "knowledge", "tool"]
+    });
+
 
      await createLink({
         creatorId: yahya.id,
         name: "apple",
-        url: "www.apple.com",
+        url: "https://www.apple.com",
         clicks:1,
         comment: "apple is the best search engine",
         tags: ["search", "knowledge", "tool"]
@@ -169,7 +188,7 @@ async function createInitialLinks(){
      await createLink({
         creatorId: yahya.id,
         name: "reddit",
-        url: "www.reddit.com",
+        url: "https://www.reddit.com",
         clicks:1,
         comment: "Get great content on Reddit",
         tags: ["news", "social", "entertainment"]

@@ -129,8 +129,9 @@ main{
     $theme-accent4: rgba(124, 6, 6, 0.75);
     box-shadow: 0 5px 20px -5px darken($theme-accent4, 15%);
     border-radius: 5px;
-    display: flexbox;
+    display: flex;
     justify-content: space-between;
+    align-items: center;
 
     span{
         font-size: 2.8rem;
@@ -179,7 +180,7 @@ main{
     }
 
     .navButtons-logged-out{
-        margin: auto;
+        margin: 0 auto;
         width: 28rem;
     }
 
@@ -217,7 +218,7 @@ main{
     
     $border-size: $border-size + 0.5px;
     @extend .theme-bg;
-    margin-top: 20vh;
+    margin-top: 5vh;
     padding: 1rem;
     border-radius: 5px;
     
@@ -230,10 +231,13 @@ main{
             
         .modal-title{
             font-size: 3rem;
+            text-shadow: 0 2px 8px black;
         }
         
         .close{
             font-size: 3rem;
+            text-shadow: 0 0 3px black;
+            color: lighten($theme-accent1, 17%);
         }
 
     }
@@ -245,18 +249,20 @@ main{
         label{
             margin-top: 2rem;
             font-size: 1.5rem;
+            text-shadow: 0 0 4px black;
         }
 
-        input textarea{
+        input, textarea{
             margin-top: 0.5rem;
             font-size: 1.5rem;
+            box-shadow: 0 4px 8px -1px black;
         }
 
         textarea{
-            margin-bottom: 2rem;;
+            margin-bottom: 1rem;
         }
 
-        #new-bkmrk-btns{
+        #bkmrk-input-btns{
             margin:0 auto;
             display: flex;
             justify-content: space-evenly;
@@ -285,13 +291,14 @@ main{
 
         }
 
-        #close-new-bkmrk{
+        #close-bkmrk-input{
             background: $theme-accent4;
             padding: 0.5rem 1.2rem;
         }
 
-        #submit-new-bkmrk{
+        #submit-bkmrk{
             background-color: green;
+            padding: 0.5rem 1rem;
         }
 
         .form-label{
@@ -303,8 +310,49 @@ main{
             font-size: 1.5rem;
         }
 
-    }
+        #tag-area{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            align-items: flex-start;
+            padding-bottom: 10rem;
+            padding-top: 2rem;
+            
+            .modal-tag{
+                display: flex;
+                align-items: center;
+                font-size: 1.5rem;
+                color: $theme-accent1;
+                min-width: 5rem;
+                margin-right: 2rem;
+                background: $gradient1;
+                border-radius: 5px;
+                padding: 1rem;
+                text-transform: capitalize;
+                box-shadow: 0 1px 6px -2px darken($theme-accent4, 15%);
 
+                &:hover{
+                    cursor: pointer;
+                    color: $theme-accent2;
+                    font-size: 1.7rem;
+                    font-weight: bold;
+                    box-shadow: 0 1 6px -1px $theme-accent2;
+                }
+
+                #search-delete, .material-icons{
+
+                    font-size: 1.5rem;
+                    padding-top: 0.2rem;
+                    margin-left: 0.5rem;
+
+                    &:hover{
+                        font-size: 2.2rem;
+                    }
+
+                }
+            }
+        }
+    }
 }
 
 .btn-primary{
@@ -340,14 +388,19 @@ main{
     align-items: center;
 
     #body-header-title{
-        margin-top: 3rem;
+        margin-top: 2.5rem;
         color: $theme-accent1;
         font-size: 4rem;
+        text-align: center;
+        text-shadow: -2px 1px 3px darken($theme-accent3, 5%);
     }
 
     #search-bar{
+        $theme-accent4: rgba(124, 6, 6, 1);
         margin: 1.5rem 0 3rem 0;
         width: 25vw;
+        font-size: 1.5rem;
+        box-shadow: 0 1px 6px -2px darken($theme-accent4, 18%);
     }
 }
 
@@ -355,6 +408,10 @@ main{
 .accordion{
 
     margin: 0 0.6rem;
+    
+    h3{
+        text-shadow: -1px 2px 1px lighten(black, 10%);
+    }
     
 
     .bookmark-header{
@@ -378,22 +435,29 @@ main{
             color: $theme-accent1;
         }
 
-        .bookmark-link{
-            color: $theme-accent1;
+        h2{
+            width: 14rem;
+            font-size: 2.5rem;
         }
 
-        h2, .bookmark-link{
+        .bookmark-link{
+            color: $theme-accent1;
+            text-align: center;
             font-size: 3rem;
 
             &:hover{
                 font-size: 3.05rem;
             }
         }
+        
+        .bookmark-name{
 
-        .bookmark-name:hover{
-            cursor: pointer;
-            color: $theme-accent2;
+            text-transform: capitalize;
 
+            &:hover{
+                cursor: pointer;
+                color: $theme-accent2;
+            }
         }
 
         .bookmark-link:hover{
@@ -404,9 +468,8 @@ main{
 
         .bookmark-icons{
             display: flex;
-            justify-content: space-beween;
+            justify-content: space-around;
             align-items: center;
-            width: 15rem;
 
             .settings{
                 font-size: 3.5rem;
@@ -414,8 +477,6 @@ main{
 
             .dropdown{
                 font-size: 7rem;
-                padding: -2rem;
-
             }
 
             .material-icons{
@@ -443,23 +504,69 @@ main{
 
         $theme-color1: rgba(0, 0, 0, 0.1);
 
-        .card-comment{
+        
             
-            .comment{
-                flex-grow: 5;
-                width: 70vw;
-                word-wrap: break-word;
-                background: $theme-color1;
-                color: $theme-accent1;
-                padding: 1.5rem;
-                margin-top: 1rem;
-                margin-right: 2rem;
-                border-radius: 10px;
-                font-size: 1.8rem;
+            .card-main{
 
+                .card-comment{
+
+                    .comment{
+                        flex-grow: 5;
+                        width: 70vw;
+                        word-wrap: break-word;
+                        background: $theme-color1;
+                        color: $theme-accent1;
+                        padding: 1.5rem;
+                        margin-top: 1rem;
+                        margin-right: 2rem;
+                        border-radius: 10px;
+                        font-size: 1.8rem;
+                        box-shadow: 0 1px 6px -2px darken($theme-accent4, 18%);
+
+                    }
+                }
+
+                .card-tags{
+                        
+                    flex-basis: 10rem;
+
+                    .tag-container{
+
+                        display: flex;
+                        flex-wrap: wrap;
+
+                        div{
+                            background: $theme-color1;
+                            border-radius: 10px;
+                            margin-bottom: 4rem;
+                            width: auto;
+                            height: auto;
+                            font-size: 2rem;
+                            padding: 1.5rem;
+                            color: $theme-accent1;
+                            margin-right: 2rem;
+                            margin-bottom: 2rem;
+                            min-width: 8rem;
+                            text-align: center;
+                            box-shadow: 0 1px 6px -2px darken($theme-accent4, 18%);
+
+                            &:hover{
+                                cursor: pointer;
+                                color: $theme-accent2;
+                                font-size: 2.3rem;
+                                box-shadow: 0 0 4px -1px darken($theme-accent2, 2%);
+                            }
+
+                        }
+
+                        .tag{
+                            text-transform: capitalize;
+                        }
+                    }
+
+                }
             }
 
-        }
 
         .card-info{
             align-self: center;
@@ -476,19 +583,6 @@ main{
                 color: $theme-accent1;
             }
 
-            .card-tags{
-                
-                flex-basis: 10rem;
-
-                p{
-                    background: $theme-color1;
-                    border-radius: 10px;
-                    margin-bottom: 4rem;
-                    width: 25vw;
-                    font-size: 2rem;
-                    padding: 1.5rem;
-                }
-            }
 
             .card-stats{
                 background: $theme-color1;
@@ -496,9 +590,11 @@ main{
                 flex-basis: 20rem;
                 width: 25vw;
                 padding: 1.5rem;
+                text-align: center;
+                box-shadow: 0 1px 6px -2px darken($theme-accent4, 18%);
                 
                 p{
-                    font-size: 2rem;
+                    font-size: 2.2rem;
                     text-align: center;
                 }
             }
@@ -546,10 +642,6 @@ main{
             font-size: 4rem;
         }
 
-        h2{
-            font-size: 1.5rem;
-        }
-
         .chain{
             height: 5rem;
         }
@@ -563,6 +655,10 @@ main{
 
         span{
             font-size: 2.4rem;
+        }
+
+        h2{
+            width: 11.8rem;
         }
 
         .navButtons-logged-in{
@@ -586,7 +682,11 @@ main{
     .accordion{
         .bookmark-header{
 
-            h2, .bookmark-link{
+            h2{
+                width: 11.3rem;
+            }
+
+            .bookmark-link{
                 font-size: 2.2rem;
 
                 &:hover{
@@ -619,7 +719,6 @@ main{
             text-align: center;
         }
 
-
         .navButtons-logged-out{
             width: 23rem;
         }
@@ -646,7 +745,11 @@ main{
 
         .bookmark-header{
 
-            h2, .bookmark-link{
+            h2{
+                width: 11.3rem;
+            }
+
+            .bookmark-link{
                 
                 
                 font-size: 1.9rem;
@@ -688,6 +791,8 @@ main{
     
     .jumbotron{
         padding: 2rem;
+        display: flex;
+        justify-content: center;
     }
 
     #header{
@@ -703,6 +808,14 @@ main{
         img{
             height: 3rem;
         }
+
+        .chain{
+            display: none;
+        }
+
+        #logo{
+            margin: auto;
+        }
     }
 
     .navbar{
@@ -713,6 +826,10 @@ main{
 
         span{
             font-size: 2.3rem;
+        }
+
+        h2{
+            width: 8rem;
         }
 
         #arrow{
@@ -726,6 +843,7 @@ main{
 
         .navButtons-logged-in{
             margin-top: 1.2rem;
+            width: 50vw;
         }
 
         .new-bkmrk, .new-fldr, .logout{
@@ -741,6 +859,28 @@ main{
             height: 4.5rem;
         }
 
+    }
+
+    .accordion{
+
+        .bookmark-header{
+
+            justify-content: space-between;
+
+            h2{
+                width: 0;
+            }
+
+            .bookmark-icons{
+                display: none;
+            }
+
+            .bookmark-link{
+                text-align: right;
+                width: 0;
+            }
+     
+        }
     }
 
 }
@@ -760,4 +900,18 @@ main{
 
     }
 
+    .navbar{
+
+        .navButtons-logged-in{
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #greeting{
+            display: flex;
+            flex-direction: column;
+        }
+
+    }
 }

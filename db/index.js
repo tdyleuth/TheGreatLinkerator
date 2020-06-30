@@ -120,9 +120,13 @@ async function createLink({
          RETURNING *;`
         , [creatorId,name,url,clicks,comment]);
         
+        console.log('tags are ', tags);
         const tagList = await createTags(tags);
+        console.log('tagslist here is ', tagList);
   
-        return await addTagsToLink(link.id, tagList);
+        const taggedObj = await addTagsToLink(link.id, tagList);
+        console.log('taggedObj is ', taggedObj);
+        return taggedObj;
 
     } catch(error){
         throw error;
@@ -173,7 +177,9 @@ async function getAllLinks() {
 }
 
 async function getLinkByLinkId(linkId) {
+
     try {
+
       const { rows: [ link ]  } = await client.query(`
         SELECT *
         FROM links
@@ -204,7 +210,6 @@ async function getLinkByLinkId(linkId) {
       link.username = username;
   
       delete link.username;
-  
       return link;
     } catch (error) {
       throw error;
@@ -216,9 +221,16 @@ async function getLinkByUserId(userId) {
    const { rows } = await client.query(`
    SELECT * FROM links 
    WHERE "creatorId" = $1 
-   `, [userId])
+   `, [userId]);
 
-   return rows;
+   const linksArr = await Promise.all(rows.map(async (link)=>{
+    const linkId = link.id;
+    const linkTags = await getTagsByLinkId(linkId);
+    const taggedLink = await addTagsToLink(linkId, linkTags);
+    return taggedLink;
+  }))
+  
+  return linksArr;
 
   }catch(error){
     throw error;
@@ -248,12 +260,10 @@ async function createTags(tagList) {
   
     const insertValues = tagList.map(
       (_, index) => `$${index + 1}`).join('), (');
-     console.log("fdfd", insertValues)
     
     const selectValues = tagList.map(
       (_, index) => `$${index + 1}`).join(', ');
-    console.log("sellectva", selectValues)
-  
+
     try {
    
       await client.query(`
@@ -267,8 +277,7 @@ async function createTags(tagList) {
       WHERE name
       IN (${ selectValues }); `
       , tagList );
-  
-  
+
       return rows;
   
     } catch (error) {
@@ -317,12 +326,13 @@ async function createLinkTag(linkId, tagId) {
 
 async function addTagsToLink(linkId, tagList) {
     try {
+
       const createLinkTagPromises = tagList.map(
         tag => createLinkTag(linkId, tag.id)
       );
   
       await Promise.all(createLinkTagPromises);
-  
+
       return await getLinkByLinkId(linkId);
     } catch (error) {
       throw error;
@@ -364,6 +374,9 @@ async function getLinkByTagName(tagName) {
     }
   }
 
+
+
+
   async function destroyLinkTags(linkId) {
     try {
         await client.query(`
@@ -372,6 +385,34 @@ async function getLinkByTagName(tagName) {
         `);
      } catch(error){
         throw error;
+    }
+  }
+
+  async function getTagsByLinkId(linkId){
+
+    try{
+
+      const { rows: tagIdArr } = await client.query(`
+        SELECT "tagId" FROM link_tags
+        WHERE "linkId"=${ linkId }
+      `)
+      
+      const filteredIdArr = tagIdArr.filter((obj) => {return(obj.tagId !== null)});
+
+      const tagsPromiseArr = filteredIdArr.map(async (tagIdObj) => {
+        const { rows: [ arr ] } = await client.query(`
+          SELECT name FROM tags
+          WHERE id=${tagIdObj.tagId}
+        `);
+        return arr.name;
+      });
+      
+      const tagsArr = await Promise.all(tagsPromiseArr);
+      return tagsArr;
+    }
+    catch(error){
+      console.error('Error getting tags by linkid in db/index.js. Error: ', error);
+      throw error;
     }
   }
   
@@ -399,4 +440,5 @@ module.exports = {
     destroyLinkTags,
     destroyLink,
     getLinkByUserId,
+    getTagsByLinkId,
 }

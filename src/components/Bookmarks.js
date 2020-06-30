@@ -18,17 +18,11 @@ const headers = {
 
 function CustomToggle({ children, eventKey }) {
 
-
     const decoratedOnClick = useAccordionToggle(eventKey, () => null);
 
     const handleClick = (event) => {
-        
         const element = event.target.tagName.toLowerCase();
-
-        if( element !== 'span' && element !== 'a'){
-            decoratedOnClick(event);
-        }
-
+        if( element !== 'span' && element !== 'a'){decoratedOnClick(event);}
     }
     
     return (
@@ -41,31 +35,29 @@ function CustomToggle({ children, eventKey }) {
 
 }
 
-export default function Bookmark( { id, name, url , comment, tags, clickCount , dateCreated, dateModified, lastAccessed, setEditBkmrkModal} ){
+export default function Bookmark( { id, name, url , comment, tags, clickCount , dateCreated, dateModified, lastAccessed, setLinks, links, setEditBkmrkModal, setDeleteBookmarkNotice, setVisibility, setModalTags} ){
 
 
-    const handleClick = async () =>{
+    const handleLinkClick = async () =>{
 
         let newCount = +clickCount + 1;
         let newDate = moment().format('YYYY-MM-DD');
         
-        console.log('new count is ', newCount, 'and new date is ', newDate);
-        console.log('Parse attempt is ', moment('12-05-2000').format('YYYY-MM-DD'));
-
         const updates={
-            name,
-            url,
-            comment,
-            tags,
-            newCount,
-            dateCreated,
-            dateModified,
-            lastAccessed
+            clicks: newCount,
+            'lastAccessed': newDate
         }
+
         try{
-            const data = await axios.patch(BASE_URL + `/${id}`, updates, headers);
-            console.log(data);
-            return data;
+
+            const { data: { link: updatedLink } } = await axios.patch(BASE_URL + `/${id}`, updates, headers);
+
+            console.log('updatedLink is ', updatedLink);
+            
+            const updatedLinksArr = links.map((link) => link.id != id ? link : updatedLink);
+
+            setLinks(updatedLinksArr);
+
         }
         catch(err){
             console.error("There's been an error updating click count and date last accessed at /src/components/Bookmarks @ handleEventClick. Error: ", err );
@@ -74,28 +66,82 @@ export default function Bookmark( { id, name, url , comment, tags, clickCount , 
 
     }
 
-    function handleEdit(e){
-        
-        const element = e.target;
-
-        const header = element.closest('.bookmark-header');
-        const headerContent = header.childNodes;
-        const linkName = headerContent[0].textContent;
-        const linkUrl = headerContent[1].childNodes[0].textContent;
-
-        const bodyContent = header.parentNode.nextSibling.childNodes[0].childNodes;
-        const linkComment = bodyContent[0].textContent;
-        
-        const linkInfo = bodyContent[1].childNodes;
-        const tags = linkInfo[0].textContent;
-
-        const linkStats = linkInfo[1].childNodes;
-
-
-        console.log('element is ', tags, linkStats);
-
-        setEditBkmrkModal(true)
+   async function deleteBookmark(linkId){
+    
+        const token = localStorage.getItem('token');
+        const headers = {
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${ token }`} 
+        }
+         
+        try {
+           
+            const deletedLink = await axios.delete(BASE_URL + `/${linkId}`, headers)
+            console.log("deletedlink", deletedLink)
+            if(deletedLink){
+            const updatedLinks = links.filter((link) => {
+                if(link.id != linkId){
+                    return link;
+                }
+            }) 
+           
+            setLinks(updatedLinks)
+            
+            setDeleteBookmarkNotice(true)
+            setTimeout(() => {
+                setVisibility(false);
+            }, 200);
+            setTimeout(() => {
+                setVisibility(true);
+            }, 2500);
+            setTimeout(() => {
+                setDeleteBookmarkNotice(false);
+            }, 3000);
+          
+            return deletedLink
+            
+         }
+        }
+        catch(err){
+                console.error(err);
+                throw err;
+        }
     }
+
+    function handleDelete(e){
+        const linkId= e.target.getAttribute("id");
+        deleteBookmark(linkId);
+    }
+
+
+    function handleEdit(e){
+            
+        const linkId= +(e.target.getAttribute("id"));
+
+        const [ response ] = links.filter((link) => link.id === linkId );
+
+        const { name: editName, url: editUrl, comment: description, tags: editTags } = response;
+
+        setModalTags(editTags);
+        
+        setEditBkmrkModal(true);
+
+        setTimeout(() => {
+        document.getElementById('bkmrk-input-name').value = editName;
+        document.getElementById('bkmrk-input-url').value = editUrl;
+        document.getElementById('bkmrk-input-desc').value = description;
+        }, 100)
+    }
+
+    function createTagElements(){
+
+        const tagElemArr = tags.map((tagObj) => (<div key={`${tagObj.id}`} className='tag' id={`tag-${tagObj.id}`}>{tagObj.name}</div>));
+
+        return tagElemArr;
+    }
+
+    createTagElements();
     
     return(
         <Accordion defaultActiveKey='0'>
@@ -106,10 +152,9 @@ export default function Bookmark( { id, name, url , comment, tags, clickCount , 
                         <Accordion.Toggle className='bookmark-name' as='h2' eventKey={ id }> 
                             { name }
                         </Accordion.Toggle>
-
-                        <h2>
-                            <a className='bookmark-link' target='_blank' href={ url } title={ comment } onClick={ handleClick }>{ url }</a>
-                        </h2>
+                        
+                        <a className='bookmark-link' target='_blank' href={ url } title={ comment } onClick={ handleLinkClick }>{ url }</a>
+                        
 
                         <div className='bookmark-icons'>
                             
@@ -120,8 +165,8 @@ export default function Bookmark( { id, name, url , comment, tags, clickCount , 
                                     {/* </span> */}
                                 </Dropdown.Toggle>
                                 <Dropdown.Menu>
-                                    <Dropdown.Item className='edit-button' onClick={ (e) => handleEdit(e) }>Edit Bookmark</Dropdown.Item>
-                                    <Dropdown.Item className='delete-button' >Delete Bookmark</Dropdown.Item>
+                                    <Dropdown.Item className='edit-button' id={id} onClick={ (e) => handleEdit(e) }>Edit Bookmark</Dropdown.Item>
+                                    <Dropdown.Item className='delete-button' id={id} onClick={ (e) => handleDelete(e) } >Delete Bookmark</Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>
 
@@ -138,23 +183,28 @@ export default function Bookmark( { id, name, url , comment, tags, clickCount , 
             <Accordion.Collapse eventKey={ id }>
                 <Card.Body>
 
-                    <div className='card-comment'>
-                        <h3>Description:</h3>
-                        <p className='comment'>{ comment }</p> 
+                    <div className='card-main'>
+                        <div className='card-comment'>
+                            <h3>Description:</h3>
+                            <p className='comment'>{ comment }</p> 
+                        </div>
+
+                        <div className='card-tags'>
+                            <h3>Tags:</h3>
+                            <div className='tag-container'>
+                                { createTagElements() }
+                            </div>
+                        </div>
                     </div>
 
                     <div className='card-info'>
                         
-                        <div className='card-tags'>
-                            <h3>Tags:</h3>
-                            <p>{ tags }</p> 
-                        </div>
 
                         <div className='card-stats'>
                             <h3>Date Created:</h3>           
-                            <p> { dateCreated} </p>
+                            <p> { dateCreated } </p>
                             <h3>Date Modified:</h3>
-                            <p>{dateModified}</p>
+                            <p>{ dateModified }</p>
                             <h3>Last Accessed:</h3>
                             <p>{ lastAccessed }</p>
                             <h3>Click Count:</h3>

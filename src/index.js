@@ -4,7 +4,6 @@ import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 
 import axios from 'axios';
-import chalk from 'chalk';
 
 import Header from './components/Header';
 import Nav from './components/Nav';
@@ -24,10 +23,14 @@ const App = () => {
         username: '',
         name: ''
     });
-    const[links, setLinks] =useState([]);
     
+    const [ deleteBookmarkNotice, setDeleteBookmarkNotice ] = useState(false);
     const [ editBkmrkModal, setEditBkmrkModal ] = useState(false);
-
+    const[ visibility, setVisibility ] = useState(true);
+    const[ modalTags, setModalTags ] = useState([]);
+    const[ links, setLinks ] = useState([]);
+    
+    
     function clearLocalStorage() {
         localStorage.setItem('token', '');
         localStorage.setItem('name', '');
@@ -46,7 +49,6 @@ const App = () => {
             const { data } = await axios.post(BASE_URL + '/users/test', {token});
             
             const {name: messageName, userObj } = data;
-            const { id, username, name } = userObj;
             setUser(userObj);
 
             if(messageName === 'VerificationSuccessful'){return userObj}
@@ -71,7 +73,6 @@ const App = () => {
                 }
 
         const { data: { links } } = await axios.get(BASE_URL + '/links/user', headers);
-
         return links;
 
     }
@@ -90,15 +91,15 @@ const App = () => {
             .catch(console.error);
         }
 
-    }, [user])
-    
+    }, [user]);
+
     if(!user.id){
 
         return (
             <>
             <header>
                     <Header />
-                    <Nav user={ user } setUser={ setUser } editBkmrkModal={ () => {console.log('toplevel editbkmrk modal evaluates to ', editBkmrkModal); editBkmrkModal} } setEditBkmrkModal={ setEditBkmrkModal }/>
+                    <Nav user={ user } setUser={ setUser } editBkmrkModal={ editBkmrkModal } setEditBkmrkModal={ setEditBkmrkModal } setDeleteBookmarkNotice ={setDeleteBookmarkNotice} deleteBookmarkNotice={ deleteBookmarkNotice } setVisibility={setVisibility} visibility={visibility} links={links} setLinks={setLinks} modalTags={ modalTags } setModalTags={ setModalTags } />
             </header>
             
             <main>
@@ -117,7 +118,7 @@ const App = () => {
             <>
                 <header>
                         <Header />
-                        <Nav user={ user } setUser={ setUser } editBkmrkModal={ editBkmrkModal } setEditBkmrkModal={ setEditBkmrkModal } />
+                        <Nav user={ user } setUser={ setUser } editBkmrkModal={ editBkmrkModal } setEditBkmrkModal={ setEditBkmrkModal } setDeleteBookmarkNotice ={setDeleteBookmarkNotice} deleteBookmarkNotice={ deleteBookmarkNotice } setVisibility={setVisibility} visibility={visibility}  links={links} setLinks={setLinks} modalTags={ modalTags } setModalTags={ setModalTags }/>
                 </header>
                 
                 <main>
@@ -127,7 +128,8 @@ const App = () => {
                         <Search />
                     </div>
                 
-                    < BookmarkUI links={ links } setEditBkmrkModal={ setEditBkmrkModal } />
+                    < BookmarkUI links={ links } setLinks={ setLinks } setEditBkmrkModal={ setEditBkmrkModal } setDeleteBookmarkNotice ={setDeleteBookmarkNotice} deleteBookmarkNotice={ deleteBookmarkNotice } setVisibility={setVisibility} visibility={visibility} setModalTags={ setModalTags }/>
+                    
 
                 </main>
             </>   
