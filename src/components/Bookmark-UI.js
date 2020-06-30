@@ -20,10 +20,11 @@ export default function BookmarkUI(){
 
         try{
             const { data: { links } } = await axios.get(BASE_URL + '/user', headers);
-
+            
             const bookmarkArr = links.map((bookmark) => {
 
                 const { id, name, url, comment, tags, clicks, datecreated } = bookmark
+                
     
                 const bookmarkCard = (
                         <Bookmarks key={id} id={id} name={name} url={url} tags={tags} clickCount={clicks} dateCreated={datecreated} comment='I am a comment'/>
