@@ -48414,7 +48414,7 @@ __webpack_require__.r(__webpack_exports__);
 const BASE_URL = "http://localhost:3000/api/links";
 function BookmarkUI({
   links,
-  setLinks
+  setEditBkmrkModal
 }) {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     id: "bookmark-ui"
@@ -48440,7 +48440,8 @@ function BookmarkUI({
       dateCreated: datecreated,
       dateModified: dateModified,
       comment: comment,
-      lastAccessed: lastAccessed
+      lastAccessed: lastAccessed,
+      setEditBkmrkModal: setEditBkmrkModal
     });
     return bookmarkCard;
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Bookmarks__WEBPACK_IMPORTED_MODULE_2__["default"], {
@@ -48453,7 +48454,8 @@ function BookmarkUI({
     dateCreated: "2020-05-06",
     dateModified: "2020-06-06",
     lastAccessed: "2020-05-09",
-    comment: "I am a comment. I cant be short, but I can also be long. This is just filler content though.sabvazadevishuzatanapemusceregmacowmewzewzugfuvpalupdozejoiferinirizkuriagrovgebkugezmujjimbacjocaebsahgehbuduneflodirmoheahuzaufravkancuelladrazhebhucocgujorpurvizurbupfuvhasalcihionewerajguznenoupvupfezumibaedecomvejaminhowebiditgutaodovaebaijoesefivzuvijzilhucjuhzudpiocfurcijiwfebzepakhacogrubitzoheponbategdoznazotadjaniovdeecvaehairac"
+    comment: "I am a comment. I cant be short, but I can also be long. This is just filler content though.sabvazadevishuzatanapemusceregmacowmewzewzugfuvpalupdozejoiferinirizkuriagrovgebkugezmujjimbacjocaebsahgehbuduneflodirmoheahuzaufravkancuelladrazhebhucocgujorpurvizurbupfuvhasalcihionewerajguznenoupvupfezumibaedecomvejaminhowebiditgutaodovaebaijoesefivzuvijzilhucjuhzudpiocfurcijiwfebzepakhacogrubitzoheponbategdoznazotadjaniovdeecvaehairac",
+    setEditBkmrkModal: setEditBkmrkModal
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Bookmarks__WEBPACK_IMPORTED_MODULE_2__["default"], {
     id: "8",
     key: "8",
@@ -48464,7 +48466,8 @@ function BookmarkUI({
     dateCreated: "June 5th, 2020",
     dateModified: "July 1st, 2020",
     lastAccessed: "June 13th, 2020",
-    comment: "I am a comment. I cant be short, but I can also be long. This is just filler content though.sabvazadevishuzatanapemusceregmacowmewzewzugfuvpalupdozejoiferinirizkuriagrovgebkugezmujjimbacjocaebsahgehbuduneflodirmoheahuzaufravkancuelladrazhebhucocgujorpurvizurbupfuvhasalcihionewerajguznenoupvupfezumibaedecomvejaminhowebiditgutaodovaebaijoesefivzuvijzilhucjuhzudpiocfurcijiwfebzepakhacogrubitzoheponbategdoznazotadjaniovdeecvaehairac"
+    comment: "I am a comment. I cant be short, but I can also be long. This is just filler content though.sabvazadevishuzatanapemusceregmacowmewzewzugfuvpalupdozejoiferinirizkuriagrovgebkugezmujjimbacjocaebsahgehbuduneflodirmoheahuzaufravkancuelladrazhebhucocgujorpurvizurbupfuvhasalcihionewerajguznenoupvupfezumibaedecomvejaminhowebiditgutaodovaebaijoesefivzuvijzilhucjuhzudpiocfurcijiwfebzepakhacogrubitzoheponbategdoznazotadjaniovdeecvaehairac",
+    setEditBkmrkModal: setEditBkmrkModal
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Bookmarks__WEBPACK_IMPORTED_MODULE_2__["default"], {
     id: "7",
     key: "7",
@@ -48475,7 +48478,8 @@ function BookmarkUI({
     dateCreated: "June 5th, 2020",
     dateModified: "July 1st, 2020",
     lastAccessed: "June 13th, 2020",
-    comment: "I am a comment. I cant be short, but I can also be long. This is just filler content though.sabvazadevishuzatanapemusceregmacowmewzewzugfuvpalupdozejoiferinirizkuriagrovgebkugezmujjimbacjocaebsahgehbuduneflodirmoheahuzaufravkancuelladrazhebhucocgujorpurvizurbupfuvhasalcihionewerajguznenoupvupfezumibaedecomvejaminhowebiditgutaodovaebaijoesefivzuvijzilhucjuhzudpiocfurcijiwfebzepakhacogrubitzoheponbategdoznazotadjaniovdeecvaehairac"
+    comment: "I am a comment. I cant be short, but I can also be long. This is just filler content though.sabvazadevishuzatanapemusceregmacowmewzewzugfuvpalupdozejoiferinirizkuriagrovgebkugezmujjimbacjocaebsahgehbuduneflodirmoheahuzaufravkancuelladrazhebhucocgujorpurvizurbupfuvhasalcihionewerajguznenoupvupfezumibaedecomvejaminhowebiditgutaodovaebaijoesefivzuvijzilhucjuhzudpiocfurcijiwfebzepakhacogrubitzoheponbategdoznazotadjaniovdeecvaehairac",
+    setEditBkmrkModal: setEditBkmrkModal
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Bookmarks__WEBPACK_IMPORTED_MODULE_2__["default"], {
     id: "6",
     key: "6",
@@ -48486,7 +48490,8 @@ function BookmarkUI({
     dateCreated: "June 5th, 2020",
     dateModified: "July 1st, 2020",
     lastAccessed: "June 13th, 2020",
-    comment: "I am a comment. I cant be short, but I can also be long. This is just filler content though.sabvazadevishuzatanapemusceregmacowmewzewzugfuvpalupdozejoiferinirizkuriagrovgebkugezmujjimbacjocaebsahgehbuduneflodirmoheahuzaufravkancuelladrazhebhucocgujorpurvizurbupfuvhasalcihionewerajguznenoupvupfezumibaedecomvejaminhowebiditgutaodovaebaijoesefivzuvijzilhucjuhzudpiocfurcijiwfebzepakhacogrubitzoheponbategdoznazotadjaniovdeecvaehairac"
+    comment: "I am a comment. I cant be short, but I can also be long. This is just filler content though.sabvazadevishuzatanapemusceregmacowmewzewzugfuvpalupdozejoiferinirizkuriagrovgebkugezmujjimbacjocaebsahgehbuduneflodirmoheahuzaufravkancuelladrazhebhucocgujorpurvizurbupfuvhasalcihionewerajguznenoupvupfezumibaedecomvejaminhowebiditgutaodovaebaijoesefivzuvijzilhucjuhzudpiocfurcijiwfebzepakhacogrubitzoheponbategdoznazotadjaniovdeecvaehairac",
+    setEditBkmrkModal: setEditBkmrkModal
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Bookmarks__WEBPACK_IMPORTED_MODULE_2__["default"], {
     id: "5",
     key: "5",
@@ -48497,7 +48502,8 @@ function BookmarkUI({
     dateCreated: "June 5th, 2020",
     dateModified: "July 1st, 2020",
     lastAccessed: "June 13th, 2020",
-    comment: "I am a comment. I cant be short, but I can also be long. This is just filler content though.sabvazadevishuzatanapemusceregmacowmewzewzugfuvpalupdozejoiferinirizkuriagrovgebkugezmujjimbacjocaebsahgehbuduneflodirmoheahuzaufravkancuelladrazhebhucocgujorpurvizurbupfuvhasalcihionewerajguznenoupvupfezumibaedecomvejaminhowebiditgutaodovaebaijoesefivzuvijzilhucjuhzudpiocfurcijiwfebzepakhacogrubitzoheponbategdoznazotadjaniovdeecvaehairac"
+    comment: "I am a comment. I cant be short, but I can also be long. This is just filler content though.sabvazadevishuzatanapemusceregmacowmewzewzugfuvpalupdozejoiferinirizkuriagrovgebkugezmujjimbacjocaebsahgehbuduneflodirmoheahuzaufravkancuelladrazhebhucocgujorpurvizurbupfuvhasalcihionewerajguznenoupvupfezumibaedecomvejaminhowebiditgutaodovaebaijoesefivzuvijzilhucjuhzudpiocfurcijiwfebzepakhacogrubitzoheponbategdoznazotadjaniovdeecvaehairac",
+    setEditBkmrkModal: setEditBkmrkModal
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Bookmarks__WEBPACK_IMPORTED_MODULE_2__["default"], {
     id: "4",
     key: "4",
@@ -48508,7 +48514,8 @@ function BookmarkUI({
     dateCreated: "June 5th, 2020",
     dateModified: "July 1st, 2020",
     lastAccessed: "June 13th, 2020",
-    comment: "I am a comment. I cant be short, but I can also be long. This is just filler content though.sabvazadevishuzatanapemusceregmacowmewzewzugfuvpalupdozejoiferinirizkuriagrovgebkugezmujjimbacjocaebsahgehbuduneflodirmoheahuzaufravkancuelladrazhebhucocgujorpurvizurbupfuvhasalcihionewerajguznenoupvupfezumibaedecomvejaminhowebiditgutaodovaebaijoesefivzuvijzilhucjuhzudpiocfurcijiwfebzepakhacogrubitzoheponbategdoznazotadjaniovdeecvaehairac"
+    comment: "I am a comment. I cant be short, but I can also be long. This is just filler content though.sabvazadevishuzatanapemusceregmacowmewzewzugfuvpalupdozejoiferinirizkuriagrovgebkugezmujjimbacjocaebsahgehbuduneflodirmoheahuzaufravkancuelladrazhebhucocgujorpurvizurbupfuvhasalcihionewerajguznenoupvupfezumibaedecomvejaminhowebiditgutaodovaebaijoesefivzuvijzilhucjuhzudpiocfurcijiwfebzepakhacogrubitzoheponbategdoznazotadjaniovdeecvaehairac",
+    setEditBkmrkModal: setEditBkmrkModal
   }));
 }
 
@@ -48547,7 +48554,8 @@ function BookmarkForm({
   show,
   hideEvent,
   setShow,
-  setBookmarkNotice,
+  setNewBookmarkNotice,
+  setEditBookmarkNotice,
   setLogoutNotice,
   setLoginNotice,
   duplicateError,
@@ -48703,13 +48711,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap/Card */ "./node_modules/react-bootstrap/esm/Card.js");
 /* harmony import */ var react_bootstrap_Accordion__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap/Accordion */ "./node_modules/react-bootstrap/esm/Accordion.js");
 /* harmony import */ var react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap/Button */ "./node_modules/react-bootstrap/esm/Button.js");
-/* harmony import */ var react_bootstrap_Dropdown__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap/Dropdown */ "./node_modules/react-bootstrap/esm/Dropdown.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var react_bootstrap_Dropdown__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-bootstrap/Dropdown */ "./node_modules/react-bootstrap/esm/Dropdown.js");
 /* harmony import */ var react_bootstrap_AccordionToggle__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-bootstrap/AccordionToggle */ "./node_modules/react-bootstrap/esm/AccordionToggle.js");
-
 
 
 
@@ -48731,12 +48738,10 @@ function CustomToggle({
   children,
   eventKey
 }) {
-  const decoratedOnClick = Object(react_bootstrap_AccordionToggle__WEBPACK_IMPORTED_MODULE_7__["useAccordionToggle"])(eventKey, () => console.log('totally custom!'));
-  console.log('decoratedOnClick is ', decoratedOnClick.toString());
+  const decoratedOnClick = Object(react_bootstrap_AccordionToggle__WEBPACK_IMPORTED_MODULE_7__["useAccordionToggle"])(eventKey, () => null);
 
   const handleClick = event => {
     const element = event.target.tagName.toLowerCase();
-    console.log('element is ', element);
 
     if (element !== 'span' && element !== 'a') {
       decoratedOnClick(event);
@@ -48757,13 +48762,14 @@ function Bookmark({
   clickCount,
   dateCreated,
   dateModified,
-  lastAccessed
+  lastAccessed,
+  setEditBkmrkModal
 }) {
   const handleClick = async () => {
     let newCount = +clickCount + 1;
-    let newDate = moment__WEBPACK_IMPORTED_MODULE_6___default()().format('YYYY-MM-DD');
+    let newDate = moment__WEBPACK_IMPORTED_MODULE_5___default()().format('YYYY-MM-DD');
     console.log('new count is ', newCount, 'and new date is ', newDate);
-    console.log('Parse attempt is ', moment__WEBPACK_IMPORTED_MODULE_6___default()('12-05-2000').format('YYYY-MM-DD'));
+    console.log('Parse attempt is ', moment__WEBPACK_IMPORTED_MODULE_5___default()('12-05-2000').format('YYYY-MM-DD'));
     const updates = {
       name,
       url,
@@ -48776,7 +48782,7 @@ function Bookmark({
     };
 
     try {
-      const data = await axios__WEBPACK_IMPORTED_MODULE_5___default.a.patch(BASE_URL + `/${id}`, updates, headers);
+      const data = await axios__WEBPACK_IMPORTED_MODULE_4___default.a.patch(BASE_URL + `/${id}`, updates, headers);
       console.log(data);
       return data;
     } catch (err) {
@@ -48784,6 +48790,21 @@ function Bookmark({
       throw err;
     }
   };
+
+  function handleEdit(e) {
+    const element = e.target;
+    const header = element.closest('.bookmark-header');
+    const headerContent = header.childNodes;
+    const linkName = headerContent[0].textContent;
+    const linkUrl = headerContent[1].childNodes[0].textContent;
+    const bodyContent = header.parentNode.nextSibling.childNodes[0].childNodes;
+    const linkComment = bodyContent[0].textContent;
+    const linkInfo = bodyContent[1].childNodes;
+    const tags = linkInfo[0].textContent;
+    const linkStats = linkInfo[1].childNodes;
+    console.log('element is ', tags, linkStats);
+    setEditBkmrkModal(true);
+  }
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Accordion__WEBPACK_IMPORTED_MODULE_2__["default"], {
     defaultActiveKey: "0"
@@ -48803,15 +48824,16 @@ function Bookmark({
     onClick: handleClick
   }, url)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "bookmark-icons"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Dropdown__WEBPACK_IMPORTED_MODULE_4__["default"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Dropdown__WEBPACK_IMPORTED_MODULE_6__["default"], {
     drop: "left"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Dropdown__WEBPACK_IMPORTED_MODULE_4__["default"].Toggle, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Dropdown__WEBPACK_IMPORTED_MODULE_6__["default"].Toggle, {
     id: `settngs-${id}`,
     as: "span",
     className: "material-icons settings"
-  }, "settings"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Dropdown__WEBPACK_IMPORTED_MODULE_4__["default"].Menu, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Dropdown__WEBPACK_IMPORTED_MODULE_4__["default"].Item, {
-    className: "edit-button"
-  }, "Edit Bookmark"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Dropdown__WEBPACK_IMPORTED_MODULE_4__["default"].Item, {
+  }, "settings"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Dropdown__WEBPACK_IMPORTED_MODULE_6__["default"].Menu, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Dropdown__WEBPACK_IMPORTED_MODULE_6__["default"].Item, {
+    className: "edit-button",
+    onClick: e => handleEdit(e)
+  }, "Edit Bookmark"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Dropdown__WEBPACK_IMPORTED_MODULE_6__["default"].Item, {
     className: "delete-button"
   }, "Delete Bookmark"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Accordion__WEBPACK_IMPORTED_MODULE_2__["default"].Toggle, {
     as: react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_3__["default"],
@@ -49138,10 +49160,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_bootstrap_Navbar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap/Navbar */ "./node_modules/react-bootstrap/esm/Navbar.js");
 /* harmony import */ var react_bootstrap_Image__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap/Image */ "./node_modules/react-bootstrap/esm/Image.js");
 /* harmony import */ var react_bootstrap_Alert__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap/Alert */ "./node_modules/react-bootstrap/esm/Alert.js");
-/* harmony import */ var _NavButtons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./NavButtons */ "./src/components/NavButtons.js");
-/* harmony import */ var _BookmarkForm__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./BookmarkForm */ "./src/components/BookmarkForm.js");
-/* harmony import */ var _LoginForm__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./LoginForm */ "./src/components/LoginForm.js");
-/* harmony import */ var _SignUpForm__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./SignUpForm */ "./src/components/SignUpForm.js");
+/* harmony import */ var _BookmarkForm__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./BookmarkForm */ "./src/components/BookmarkForm.js");
+/* harmony import */ var _NavButtons__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./NavButtons */ "./src/components/NavButtons.js");
+/* harmony import */ var _SignUpForm__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./SignUpForm */ "./src/components/SignUpForm.js");
+/* harmony import */ var _LoginForm__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./LoginForm */ "./src/components/LoginForm.js");
 // /src/components/Nav.js
 
 
@@ -49154,42 +49176,45 @@ __webpack_require__.r(__webpack_exports__);
 
 function Nav({
   user,
-  setUser
+  setUser,
+  editBkmrkModal,
+  setEditBkmrkModal
 }) {
-  const [LoginModal, setLoginModal] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false);
-  const [SignUpModal, setSignUpModal] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false);
-  const [newBkmrkModal, setNewBkmrkModal] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false);
-  const [editBkmrkModal, setEditBkmrkModal] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false);
-  const [loginNotice, setLoginNotice] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false);
-  const [logoutNotice, setLogoutNotice] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false);
-  const [signupNotice, setSignupNotice] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false);
-  const [newBookmarkNotice, setNewBookmarkNotice] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false);
+  //State handlers
   const [editBookmarkNotice, setEditBookmarkNotice] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false);
+  const [newBookmarkNotice, setNewBookmarkNotice] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false);
   const [duplicateError, setDuplicateError] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false);
-  const [visibility, setVisibility] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(true);
+  const [newBkmrkModal, setNewBkmrkModal] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false);
+  const [signupNotice, setSignupNotice] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false);
+  const [logoutNotice, setLogoutNotice] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false);
+  const [loginNotice, setLoginNotice] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false);
+  const [SignUpModal, setSignUpModal] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false);
+  const [LoginModal, setLoginModal] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false);
+  const [visibility, setVisibility] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(true); //Helper function to set current time, token, and name in local storage
 
   function setLocalStorage(token, name) {
-    localStorage.setItem('token', token);
-    localStorage.setItem('name', name); //Get epoch time for time of function call and convert from milliseconds to seconds to minutes, and store in local storage
-
+    //Get epoch time for time of function call and convert from milliseconds to seconds to minutes, and store in local storage
     localStorage.setItem('login-time', JSON.stringify(+new Date(Date.now()) / 1000 / 60));
-    localStorage.setItem('bookmark-fetch-time', '0');
-  }
+    localStorage.setItem('token', token);
+    localStorage.setItem('name', name);
+  } //Clears local storage on logout or expired/missing token
+
 
   function clearLocalStorage() {
+    localStorage.setItem('login-time', JSON.stringify(NaN));
     localStorage.setItem('token', '');
     localStorage.setItem('name', '');
-    localStorage.setItem('login-time', JSON.stringify(NaN));
-  }
+  } //Event handler for logout button click
+
 
   function handleLogout() {
+    setLogoutNotice(true);
+    clearLocalStorage();
     setUser({
       id: '',
       username: '',
       name: ''
     });
-    setLogoutNotice(true);
-    clearLocalStorage();
     setTimeout(() => {
       setVisibility(false);
     }, 200);
@@ -49201,154 +49226,159 @@ function Nav({
     }, 3000);
   }
 
-  return user.id ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Navbar__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  return user.id ?
+  /*#__PURE__*/
+
+  /* ------------------------------------------------------------- Logged In Nav Menu ------------------------------------------------------------- */
+  react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Navbar__WEBPACK_IMPORTED_MODULE_2__["default"], {
     className: "theme-bg theme-variant"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     id: "greeting"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Image__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    src: "/assets/avatar.png",
     alt: "Generic avatar image",
+    src: "/assets/avatar.png",
     roundedCircle: true
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Navbar__WEBPACK_IMPORTED_MODULE_2__["default"].Text, {
     id: "nav-text"
   }, "Welcome, ", user.name, "!")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "navButtons-logged-in"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_NavButtons__WEBPACK_IMPORTED_MODULE_5__["default"], {
-    className: "new-bkmrk",
-    text: `New\ Bookmark`,
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_NavButtons__WEBPACK_IMPORTED_MODULE_6__["default"], {
     clickEvent: () => {
-      setDuplicateError(false);
       setNewBookmarkNotice(false);
+      setDuplicateError(false);
       setNewBkmrkModal(true);
-    }
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_NavButtons__WEBPACK_IMPORTED_MODULE_5__["default"], {
-    className: "new-fldr",
-    text: `New\ Folder`,
-    clickEvent: null
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_NavButtons__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    },
+    text: 'New Bookmark',
+    className: "new-bkmrk"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_NavButtons__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    clickEvent: handleLogout,
     className: "logout",
-    text: `Log\ Out`,
-    clickEvent: handleLogout
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_BookmarkForm__WEBPACK_IMPORTED_MODULE_6__["default"], {
-    show: newBkmrkModal,
+    text: 'Log Out'
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_BookmarkForm__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    setEditBookmarkNotice: setEditBookmarkNotice,
+    setNewBookmarkNotice: setNewBookmarkNotice,
     hideEvent: () => setNewBkmrkModal(false),
-    action: "Create New",
-    setBookmarkNotice: setNewBookmarkNotice,
-    setLogoutNotice: setLogoutNotice,
-    setShow: setNewBkmrkModal,
-    duplicateError: duplicateError,
     setDuplicateError: setDuplicateError,
+    setLogoutNotice: setLogoutNotice,
+    duplicateError: duplicateError,
     setLoginNotice: setLoginNotice,
     setVisibility: setVisibility,
-    visibility: visibility
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_BookmarkForm__WEBPACK_IMPORTED_MODULE_6__["default"], {
-    show: editBkmrkModal,
+    setShow: setNewBkmrkModal,
+    visibility: visibility,
+    show: newBkmrkModal,
+    action: "Create New"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_BookmarkForm__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    setEditBookmarkNotice: setEditBookmarkNotice,
+    setNewBookmarkNotice: setNewBookmarkNotice,
     hideEvent: () => setEditBkmrkModal(false),
-    action: "Edit",
-    setBookmarkNotice: setEditBookmarkNotice,
-    setLogoutNotice: setLogoutNotice,
-    setShow: setEditBkmrkModal,
-    duplicateError: duplicateError,
     setDuplicateError: setDuplicateError,
+    setLogoutNotice: setLogoutNotice,
+    duplicateError: duplicateError,
+    setLoginNotice: setLoginNotice,
     setVisibility: setVisibility,
-    visibility: visibility
+    setShow: setEditBkmrkModal,
+    visibility: visibility,
+    show: editBkmrkModal,
+    action: "Edit"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_animated_css__WEBPACK_IMPORTED_MODULE_1__["Animated"], {
-    animationIn: "fadeOut",
+    isVisible: visibility,
     animationOut: "fadeIn",
-    isVisible: visibility
+    animationIn: "fadeOut"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Alert__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    onClose: () => setLoginNotice(false),
+    show: loginNotice,
     id: "login-success",
     variant: "success",
-    dismissible: true,
-    show: loginNotice,
-    onClose: () => setLoginNotice(false)
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Alert__WEBPACK_IMPORTED_MODULE_4__["default"].Heading, null, " You are now logged in! "))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_animated_css__WEBPACK_IMPORTED_MODULE_1__["Animated"], {
+    dismissible: true
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Alert__WEBPACK_IMPORTED_MODULE_4__["default"].Heading, null, "You are now logged in!"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_animated_css__WEBPACK_IMPORTED_MODULE_1__["Animated"], {
+    isVisible: visibility,
     animationIn: "fadeOut",
-    animationOut: "fadeIn",
-    isVisible: visibility
+    animationOut: "fadeIn"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Alert__WEBPACK_IMPORTED_MODULE_4__["default"], {
     className: "animate__animated animate__fadeOut",
+    onClose: () => setSignupNotice(false),
+    show: signupNotice,
     id: "sign-up-success",
     variant: "success",
-    dismissible: true,
-    show: signupNotice,
-    onClose: () => setSignupNotice(false)
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Alert__WEBPACK_IMPORTED_MODULE_4__["default"].Heading, null, " You have successfully signed up! "))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_animated_css__WEBPACK_IMPORTED_MODULE_1__["Animated"], {
+    dismissible: true
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Alert__WEBPACK_IMPORTED_MODULE_4__["default"].Heading, null, "You have successfully signed up!"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_animated_css__WEBPACK_IMPORTED_MODULE_1__["Animated"], {
+    isVisible: visibility,
     animationIn: "fadeOut",
-    animationOut: "fadeIn",
-    isVisible: visibility
+    animationOut: "fadeIn"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Alert__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    className: "animate__animated animate__fadeOut animate__delay-5s",
+    onClose: () => setNewBookmarkNotice(false),
     id: "create-bookmark-success",
-    variant: "success",
-    dismissible: true,
     show: newBookmarkNotice,
-    onClose: () => setNewBookmarkNotice(false)
+    variant: "success",
+    dismissible: true
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Alert__WEBPACK_IMPORTED_MODULE_4__["default"].Heading, null, " You have successfully created bookmark! "))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_animated_css__WEBPACK_IMPORTED_MODULE_1__["Animated"], {
+    isVisible: visibility,
     animationIn: "fadeOut",
-    animationOut: "fadeIn",
-    isVisible: visibility
+    animationOut: "fadeIn"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Alert__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    className: "animate__animated animate__fadeOut",
+    onClose: () => setEditBookmarkNotice(false),
+    show: editBookmarkNotice,
     id: "create-bookmark-success",
     variant: "success",
-    dismissible: true,
-    show: editBookmarkNotice,
-    onClose: () => setEditBookmarkNotice(false)
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Alert__WEBPACK_IMPORTED_MODULE_4__["default"].Heading, null, " Bookmark has been successfully edited! ")))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Navbar__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    dismissible: true
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Alert__WEBPACK_IMPORTED_MODULE_4__["default"].Heading, null, " Bookmark has been successfully edited! ")))) :
+  /*#__PURE__*/
+
+  /* ------------------------------------------------------------- Logged Out Nav Menu ------------------------------------------------------------- */
+  react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Navbar__WEBPACK_IMPORTED_MODULE_2__["default"], {
     className: "theme-bg theme-variant"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "navButtons-logged-out"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_NavButtons__WEBPACK_IMPORTED_MODULE_5__["default"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_NavButtons__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    clickEvent: () => setLoginModal(true),
     className: "login",
-    text: "Log-In",
-    clickEvent: () => setLoginModal(true)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_NavButtons__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    text: "Log-In"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_NavButtons__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    clickEvent: () => setSignUpModal(true),
     className: "signup",
-    text: "Sign-Up",
-    clickEvent: () => setSignUpModal(true)
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_LoginForm__WEBPACK_IMPORTED_MODULE_7__["default"], {
-    show: LoginModal,
+    text: "Sign-Up"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_LoginForm__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    setEditBookmarkNotice: setEditBookmarkNotice,
+    setNewBookmarkNotice: setNewBookmarkNotice,
     hideEvent: () => setLoginModal(false),
-    setShow: setLoginModal,
+    clearLocalStorage: clearLocalStorage,
     setLoginNotice: setLoginNotice,
     setSignupNotice: setSignupNotice,
     setLogoutNotice: setLogoutNotice,
-    setUser: setUser,
     setLocalStorage: setLocalStorage,
-    clearLocalStorage: clearLocalStorage,
-    setNewBookmarkNotice: setNewBookmarkNotice,
-    setEditBookmarkNotice: setEditBookmarkNotice,
     setVisibility: setVisibility,
-    visibility: visibility
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SignUpForm__WEBPACK_IMPORTED_MODULE_8__["default"], {
-    show: SignUpModal,
-    hideEvent: () => setSignUpModal(false),
+    visibility: visibility,
+    setShow: setLoginModal,
     setUser: setUser,
+    show: LoginModal
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SignUpForm__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    setEditBookmarkNotice: setEditBookmarkNotice,
+    setNewBookmarkNotice: setNewBookmarkNotice,
+    hideEvent: () => setSignUpModal(false),
+    setLogoutNotice: setLogoutNotice,
+    setLocalStorage: setLocalStorage,
     setSignupNotice: setSignupNotice,
     setSignUpModal: setSignUpModal,
     setLoginNotice: setLoginNotice,
-    setLogoutNotice: setLogoutNotice,
-    setLocalStorage: setLocalStorage,
-    setNewBookmarkNotice: setNewBookmarkNotice,
-    setEditBookmarkNotice: setEditBookmarkNotice,
     setVisibility: setVisibility,
-    visibility: visibility
+    visibility: visibility,
+    show: SignUpModal,
+    setUser: setUser
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_animated_css__WEBPACK_IMPORTED_MODULE_1__["Animated"], {
+    isVisible: visibility,
     animationIn: "fadeOut",
-    animationOut: "fadeIn",
-    isVisible: visibility
+    animationOut: "fadeIn"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Alert__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    id: "logout-success",
-    variant: "success",
-    dismissible: true,
-    show: logoutNotice,
     onClose: () => setLogoutNotice(false),
     onLoad: () => {
       setSignupNotice(false);
       setLoginNotice(false);
-    }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Alert__WEBPACK_IMPORTED_MODULE_4__["default"].Heading, null, " You have successfully logged out! "))));
+    },
+    show: logoutNotice,
+    id: "logout-success",
+    variant: "success",
+    dismissible: true
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Alert__WEBPACK_IMPORTED_MODULE_4__["default"].Heading, null, "You have successfully logged out!"))));
 }
 
 /***/ }),
@@ -49658,6 +49688,7 @@ const App = () => {
     name: ''
   });
   const [links, setLinks] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]);
+  const [editBkmrkModal, setEditBkmrkModal] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false);
 
   function clearLocalStorage() {
     localStorage.setItem('token', '');
@@ -49710,21 +49741,8 @@ const App = () => {
         links
       }
     } = await axios__WEBPACK_IMPORTED_MODULE_2___default.a.get(BASE_URL + '/links/user', headers);
-    console.log('links inner is ', links);
-    return links; // const bookmarkArr = links.map((bookmark) => {
-    //     const { id, name, url, comment, tags, clicks, datecreated, dateModified, lastAccessed } = bookmark;
-    //     const bookmarkCard = (
-    //             <Bookmarks key={id} id={id} name={name} url={url} tags={tags} clickCount={clicks} dateCreated={datecreated} dateModified={dateModified} comment={comment} lastAccessed={ lastAccessed } />
-    //     );
-    //     return bookmarkCard;
-    // });
-    // return bookmarkArr;
-  } // const renderBookmarks = () => {
-  //     console.log('Here I am');
-  //     console.log('user.posts is ', user.posts);
-  //     return user.posts;
-  // }
-
+    return links;
+  }
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
     attemptTokenLogin();
@@ -49734,13 +49752,16 @@ const App = () => {
       getBookmarks().then(data => setLinks(data)).catch(console.error);
     }
   }, [user]);
-  console.log('userObj top-level is ', user);
-  console.log('link at the top-level is ', links);
 
   if (!user.id) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Header__WEBPACK_IMPORTED_MODULE_4__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Nav__WEBPACK_IMPORTED_MODULE_5__["default"], {
       user: user,
-      setUser: setUser
+      setUser: setUser,
+      editBkmrkModal: () => {
+        console.log('toplevel editbkmrk modal evaluates to ', editBkmrkModal);
+        editBkmrkModal;
+      },
+      setEditBkmrkModal: setEditBkmrkModal
     })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("main", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       id: "body-header-welcome"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
@@ -49754,14 +49775,16 @@ const App = () => {
   } else {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Header__WEBPACK_IMPORTED_MODULE_4__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Nav__WEBPACK_IMPORTED_MODULE_5__["default"], {
       user: user,
-      setUser: setUser
+      setUser: setUser,
+      editBkmrkModal: editBkmrkModal,
+      setEditBkmrkModal: setEditBkmrkModal
     })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("main", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       id: "body-header"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
       id: "body-header-title"
     }, "Your Bookmarks"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Search__WEBPACK_IMPORTED_MODULE_6__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Bookmark_UI__WEBPACK_IMPORTED_MODULE_7__["default"], {
       links: links,
-      setLinks: setLinks
+      setEditBkmrkModal: setEditBkmrkModal
     })));
   }
 };

@@ -7,139 +7,334 @@ import Navbar from 'react-bootstrap/Navbar';
 import Image from 'react-bootstrap/Image';
 import Alert from 'react-bootstrap/Alert';
 
-import NavButtons from "./NavButtons";
 import BookmarkForm from './BookmarkForm';
-import LoginForm from './LoginForm';
+import NavButtons from "./NavButtons";
 import SignUpForm from './SignUpForm';
+import LoginForm from './LoginForm';
 
-export default function Nav ({ user, setUser }){
 
-    const [ LoginModal, setLoginModal ] = useState(false);
-    const [ SignUpModal, setSignUpModal ] = useState(false);
-    const [ newBkmrkModal, setNewBkmrkModal ] = useState(false);
-    const [ editBkmrkModal, setEditBkmrkModal ] = useState(false);
-
-    const [ loginNotice, setLoginNotice ] = useState(false);
-    const [ logoutNotice, setLogoutNotice ] = useState(false);
-    const [ signupNotice, setSignupNotice ] = useState(false);    
-    const [ newBookmarkNotice, setNewBookmarkNotice ] = useState(false);
+export default function Nav ({ user, setUser, editBkmrkModal, setEditBkmrkModal }){
+    
+    //State handlers
     const [ editBookmarkNotice, setEditBookmarkNotice ] = useState(false);
-
+    const [ newBookmarkNotice, setNewBookmarkNotice ] = useState(false);
     const [ duplicateError, setDuplicateError ] = useState(false);
+    const [ newBkmrkModal, setNewBkmrkModal ] = useState(false);
+    const [ signupNotice, setSignupNotice ] = useState(false);
+    const [ logoutNotice, setLogoutNotice ] = useState(false);
+    const [ loginNotice, setLoginNotice ] = useState(false);
+    const [ SignUpModal, setSignUpModal ] = useState(false);
+    const [ LoginModal, setLoginModal ] = useState(false);
+    const [ visibility, setVisibility ] = useState(true);
 
-    const[ visibility, setVisibility ] = useState(true);
 
+    //Helper function to set current time, token, and name in local storage
     function setLocalStorage(token, name) {
-
-        localStorage.setItem('token', token);
-        localStorage.setItem('name', name);
-
         //Get epoch time for time of function call and convert from milliseconds to seconds to minutes, and store in local storage
         localStorage.setItem('login-time', JSON.stringify(+(new Date(Date.now()))/1000/60));
-        localStorage.setItem('bookmark-fetch-time', '0');
+        localStorage.setItem('token', token);
+        localStorage.setItem('name', name);
     }
 
+    //Clears local storage on logout or expired/missing token
     function clearLocalStorage() {
+        localStorage.setItem('login-time', JSON.stringify(NaN));
         localStorage.setItem('token', '');
         localStorage.setItem('name', '');
-        localStorage.setItem('login-time', JSON.stringify(NaN));
     }
 
+    //Event handler for logout button click
     function handleLogout(){
+        setLogoutNotice(true);
+        clearLocalStorage();
         setUser({
             id: '',
             username: '',
             name: ''
         });
-        setLogoutNotice(true);
-        clearLocalStorage();
-        setTimeout(() => {
-            setVisibility(false);
-        }, 200);
-        setTimeout(() => {
-            setVisibility(true);
-        }, 2500);
-        setTimeout(() => {
-            setLogoutNotice(false);
-        }, 3000);
+
+        setTimeout(() => {setVisibility(false)}, 200);
+        setTimeout(() => {setVisibility(true)}, 2500);
+        setTimeout(() => {setLogoutNotice(false)}, 3000);
     }
 
 
     return(user.id
-        ? (
+
+        ? ( /* ------------------------------------------------------------- Logged In Nav Menu ------------------------------------------------------------- */
+
+
             <>
                 <Navbar className='theme-bg theme-variant'>
+                    
+
+                                                                                {/* Greeting */}
+
 
                     <div id='greeting'>
-                        <Image src="/assets/avatar.png" alt='Generic avatar image' roundedCircle />
-                        <Navbar.Text id='nav-text'>Welcome, { user.name }!</Navbar.Text>
+
+                        <Image
+                            alt='Generic avatar image'
+                            src="/assets/avatar.png"
+                            roundedCircle 
+                        />
+
+                        <Navbar.Text id='nav-text'>
+                            Welcome, { user.name }!
+                        </Navbar.Text>
+
                     </div>
 
             
+                                                                                {/* Buttons */}
+
 
                     <div className="navButtons-logged-in">
 
-                        {/* TODO: LINE BREAK */}
-                        <NavButtons className='new-bkmrk' text={`New\ Bookmark`} clickEvent={ () => {setDuplicateError(false); setNewBookmarkNotice(false); setNewBkmrkModal(true)}} />
-                        <NavButtons className='new-fldr' text={`New\ Folder`} clickEvent={ null } />
-                        <NavButtons className='logout' text={`Log\ Out`} clickEvent={ handleLogout } />
-                    </div>
-                    
-                    {/* Create new bookmark */}
-                    <BookmarkForm show={ newBkmrkModal } hideEvent={() => setNewBkmrkModal(false)}  action='Create New' setBookmarkNotice={ setNewBookmarkNotice }   setLogoutNotice={ setLogoutNotice }  setShow={ setNewBkmrkModal } duplicateError={ duplicateError } setDuplicateError={ setDuplicateError } setLoginNotice={ setLoginNotice } setVisibility={ setVisibility } visibility={ visibility } />
+                        {/* Create New Bookmark Button */}
+                        <NavButtons
+                            clickEvent={ () => {
+                                setNewBookmarkNotice(false);
+                                setDuplicateError(false);
+                                setNewBkmrkModal(true)
+                            }}
+                            text={'New Bookmark'}
+                            className='new-bkmrk'
+                        />
 
-                    {/* Edit bookmark */}
-                    <BookmarkForm show={ editBkmrkModal } hideEvent={() => setEditBkmrkModal(false)}  action='Edit' setBookmarkNotice={ setEditBookmarkNotice }   setLogoutNotice={ setLogoutNotice }  setShow={ setEditBkmrkModal } duplicateError={ duplicateError } setDuplicateError={ setDuplicateError } setVisibility={ setVisibility } visibility={ visibility }/>
+                        {/* Log Out Button */}
+                        <NavButtons
+                            clickEvent={ handleLogout }
+                            className='logout'
+                            text={'Log Out'}
+                        />
+
+                        {/* Create New Folder Button */}
+                        {/* <NavButtons
+                            className='new-fldr'
+                            text={'New Folder'}
+                            clickEvent={ null }
+                        /> */}
+
+                    </div>
+
+                    
+                                                                                {/* Modals */}
+
+                    
+                    {/* Create New Bookmark Modal */}
+                    <BookmarkForm
+                        setEditBookmarkNotice={ setEditBookmarkNotice }
+                        setNewBookmarkNotice={ setNewBookmarkNotice }
+                        hideEvent={ () => setNewBkmrkModal(false) }
+                        setDuplicateError={ setDuplicateError }
+                        setLogoutNotice={ setLogoutNotice }
+                        duplicateError={ duplicateError }
+                        setLoginNotice={ setLoginNotice }
+                        setVisibility={ setVisibility }
+                        setShow={ setNewBkmrkModal }
+                        visibility={ visibility }
+                        show={ newBkmrkModal }
+                        action='Create New'
+                    />
+
+                    {/* Edit Bookmark Modal */}
+                    <BookmarkForm
+                        setEditBookmarkNotice={ setEditBookmarkNotice }
+                        setNewBookmarkNotice={ setNewBookmarkNotice }
+                        hideEvent={ () => setEditBkmrkModal(false) }
+                        setDuplicateError={ setDuplicateError }
+                        setLogoutNotice={ setLogoutNotice }
+                        duplicateError={ duplicateError }
+                        setLoginNotice={ setLoginNotice }
+                        setVisibility={ setVisibility }
+                        setShow={ setEditBkmrkModal }
+                        visibility={ visibility }
+                        show={ editBkmrkModal }
+                        action='Edit'
+                    />
 
                 </Navbar>
 
-                {/* Alerts */}
-                <Animated animationIn = 'fadeOut' animationOut  = 'fadeIn' isVisible={ visibility } >
-                <Alert    id          = 'login-success' variant = 'success' dismissible show = { loginNotice } onClose = { () => setLoginNotice(false) } >
-                        <Alert.Heading> You are now logged in! </Alert.Heading>
+
+                                                                                    {/* Alerts */}
+
+
+                {/* Successful Login Notice */}
+                <Animated
+                isVisible={ visibility }
+                animationOut ='fadeIn'
+                animationIn='fadeOut'>
+
+                    <Alert
+                    onClose = { () => setLoginNotice(false) }
+                    show = { loginNotice }
+                    id='login-success'
+                    variant='success'
+                    dismissible>
+
+                        <Alert.Heading>You are now logged in!</Alert.Heading>
+                        
                     </Alert>
                 </Animated>
 
-                <Animated animationIn='fadeOut' animationOut='fadeIn' isVisible={ visibility } >
-                    <Alert className='animate__animated animate__fadeOut' id='sign-up-success' variant='success' dismissible show={ signupNotice }  onClose={ () => setSignupNotice(false)} >
-                        <Alert.Heading> You have successfully signed up! </Alert.Heading>
+
+                {/* Successful Signup Notice */}
+                <Animated
+                isVisible={ visibility }
+                animationIn='fadeOut'
+                animationOut='fadeIn'>
+
+                    <Alert
+                    className='animate__animated animate__fadeOut'
+                    onClose={ () => setSignupNotice(false) }
+                    show={ signupNotice } 
+                    id='sign-up-success'
+                    variant='success'
+                    dismissible>
+
+                        <Alert.Heading>You have successfully signed up!
+
+                        </Alert.Heading>
+
                     </Alert>
                 </Animated>
 
-                <Animated animationIn='fadeOut' animationOut='fadeIn' isVisible={ visibility } >
-                    <Alert className='animate__animated animate__fadeOut animate__delay-5s' id='create-bookmark-success' variant='success' dismissible show={ newBookmarkNotice }  onClose={ () => setNewBookmarkNotice(false)} >
+
+                {/* Successful Bookmark Creation Notice */}
+                <Animated
+                isVisible={ visibility }
+                animationIn='fadeOut'
+                animationOut='fadeIn'>
+
+                    <Alert
+                    onClose={ () => setNewBookmarkNotice(false) }
+                    id='create-bookmark-success'
+                    show={ newBookmarkNotice }
+                    variant='success'
+                    dismissible>
+
                         <Alert.Heading> You have successfully created bookmark! </Alert.Heading>
+
                     </Alert>
                 </Animated>
 
-                <Animated animationIn='fadeOut' animationOut='fadeIn' isVisible={ visibility } >
-                    <Alert className='animate__animated animate__fadeOut' id='create-bookmark-success' variant='success' dismissible show={ editBookmarkNotice }  onClose={ () => setEditBookmarkNotice(false)} >
+                
+                {/* Bookmark Successfully Edited Notice */}
+                <Animated
+                isVisible={ visibility }
+                animationIn='fadeOut'
+                animationOut='fadeIn'>
+
+                    <Alert
+                    onClose={ () => setEditBookmarkNotice(false) }
+                    show={ editBookmarkNotice }
+                    id='create-bookmark-success'
+                    variant='success'
+                    dismissible>
+
                         <Alert.Heading> Bookmark has been successfully edited! </Alert.Heading>
+
                     </Alert>
                 </Animated>
             </>
         )
 
-        : (
+        
+        : ( /* ------------------------------------------------------------- Logged Out Nav Menu ------------------------------------------------------------- */
+
+            
             <>
                 <Navbar className='theme-bg theme-variant'>
 
-                    <div className="navButtons-logged-out">
-                        <NavButtons className='login' text='Log-In' clickEvent={ () => setLoginModal(true) }/>
-                        <NavButtons className='signup' text='Sign-Up' clickEvent={ () => setSignUpModal(true)  } />
-                    </div>
-                    
-                    <LoginForm show={ LoginModal } hideEvent={ () => setLoginModal(false) } setShow={ setLoginModal } setLoginNotice={ setLoginNotice } setSignupNotice={ setSignupNotice } setLogoutNotice={ setLogoutNotice } setUser={ setUser } setLocalStorage={ setLocalStorage } clearLocalStorage={ clearLocalStorage } setNewBookmarkNotice ={ setNewBookmarkNotice } setEditBookmarkNotice ={ setEditBookmarkNotice } setVisibility={ setVisibility } visibility={ visibility }/>
 
-                    <SignUpForm show={ SignUpModal } hideEvent={ () => setSignUpModal(false) } setUser={ setUser } setSignupNotice={ setSignupNotice } setSignUpModal={ setSignUpModal } setLoginNotice={ setLoginNotice } setLogoutNotice={ setLogoutNotice } setLocalStorage={ setLocalStorage } setNewBookmarkNotice ={ setNewBookmarkNotice } setEditBookmarkNotice ={ setEditBookmarkNotice } setVisibility={ setVisibility } visibility={ visibility } />
+                                                                            {/* Nav Buttons */}
+
+
+                    <div className="navButtons-logged-out">
+
+                        {/* Log-In Button */}
+                        <NavButtons
+                            clickEvent={ () => setLoginModal(true) }
+                            className='login'
+                            text='Log-In'
+                        />
+
+                        {/* Sign-Up Button */}
+                        <NavButtons
+                            clickEvent={ () => setSignUpModal(true)  }
+                            className='signup'
+                            text='Sign-Up'
+                        />
+                        
+                    </div>
+
+                    
+                                                                                {/* Modals */}
+
+
+                    {/* Signup Modal */}
+                    <LoginForm
+                        setEditBookmarkNotice ={ setEditBookmarkNotice }
+                        setNewBookmarkNotice ={ setNewBookmarkNotice }
+                        hideEvent={ () => setLoginModal(false) }
+                        clearLocalStorage={ clearLocalStorage }
+                        setLoginNotice={ setLoginNotice }
+                        setSignupNotice={ setSignupNotice }
+                        setLogoutNotice={ setLogoutNotice }
+                        setLocalStorage={ setLocalStorage }
+                        setVisibility={ setVisibility }
+                        visibility={ visibility }
+                        setShow={ setLoginModal }
+                        setUser={ setUser }
+                        show={ LoginModal }
+                    />
+
+
+                    {/* Signup Modal */}
+                    <SignUpForm
+                        setEditBookmarkNotice={ setEditBookmarkNotice }
+                        setNewBookmarkNotice={ setNewBookmarkNotice }
+                        hideEvent={ () => setSignUpModal(false) }
+                        setLogoutNotice={ setLogoutNotice }
+                        setLocalStorage={ setLocalStorage }
+                        setSignupNotice={ setSignupNotice }
+                        setSignUpModal={ setSignUpModal }
+                        setLoginNotice={ setLoginNotice }
+                        setVisibility={ setVisibility }
+                        visibility={ visibility }
+                        show={ SignUpModal }
+                        setUser={ setUser }
+                    />
 
                 </Navbar>
                 
-                <Animated animationIn='fadeOut' animationOut='fadeIn' isVisible={ visibility } >
-                    <Alert id='logout-success' variant='success' dismissible show={ logoutNotice } onClose={ () => setLogoutNotice(false)} onLoad={ () => { setSignupNotice(false); setLoginNotice(false); }} >
-                        <Alert.Heading> You have successfully logged out! </Alert.Heading>
+
+                                                                                            {/* Notices */}
+
+
+                {/* Logout successful notice */}
+                <Animated
+                isVisible={ visibility }
+                animationIn='fadeOut'
+                animationOut='fadeIn'>
+
+                    <Alert
+                    onClose={ () => setLogoutNotice(false) }
+                    onLoad={ () => {
+                    setSignupNotice(false);
+                    setLoginNotice(false);
+                    }}
+                    show={ logoutNotice }
+                    id='logout-success'
+                    variant='success'
+                    dismissible>
+
+                        <Alert.Heading>You have successfully logged out!</Alert.Heading>
+
                     </Alert>
                 </Animated>
+
             </>
         )
     )

@@ -2,7 +2,6 @@ import React from 'react';
 import Card from 'react-bootstrap/Card';
 import Accordion from 'react-bootstrap/Accordion';
 import Button from 'react-bootstrap/Button';
-import dropdown from 'react-bootstrap/Dropdown';
 
 import axios from 'axios';
 import moment from 'moment';
@@ -20,16 +19,11 @@ const headers = {
 function CustomToggle({ children, eventKey }) {
 
 
-    const decoratedOnClick = useAccordionToggle(eventKey, () =>
-        console.log('totally custom!'),
-    );
-
-    console.log('decoratedOnClick is ', decoratedOnClick.toString());
+    const decoratedOnClick = useAccordionToggle(eventKey, () => null);
 
     const handleClick = (event) => {
         
         const element = event.target.tagName.toLowerCase();
-        console.log('element is ', element);
 
         if( element !== 'span' && element !== 'a'){
             decoratedOnClick(event);
@@ -47,7 +41,7 @@ function CustomToggle({ children, eventKey }) {
 
 }
 
-export default function Bookmark( { id, name, url , comment, tags, clickCount , dateCreated, dateModified, lastAccessed} ){
+export default function Bookmark( { id, name, url , comment, tags, clickCount , dateCreated, dateModified, lastAccessed, setEditBkmrkModal} ){
 
 
     const handleClick = async () =>{
@@ -68,7 +62,6 @@ export default function Bookmark( { id, name, url , comment, tags, clickCount , 
             dateModified,
             lastAccessed
         }
-        
         try{
             const data = await axios.patch(BASE_URL + `/${id}`, updates, headers);
             console.log(data);
@@ -81,8 +74,29 @@ export default function Bookmark( { id, name, url , comment, tags, clickCount , 
 
     }
 
-    
+    function handleEdit(e){
+        
+        const element = e.target;
 
+        const header = element.closest('.bookmark-header');
+        const headerContent = header.childNodes;
+        const linkName = headerContent[0].textContent;
+        const linkUrl = headerContent[1].childNodes[0].textContent;
+
+        const bodyContent = header.parentNode.nextSibling.childNodes[0].childNodes;
+        const linkComment = bodyContent[0].textContent;
+        
+        const linkInfo = bodyContent[1].childNodes;
+        const tags = linkInfo[0].textContent;
+
+        const linkStats = linkInfo[1].childNodes;
+
+
+        console.log('element is ', tags, linkStats);
+
+        setEditBkmrkModal(true)
+    }
+    
     return(
         <Accordion defaultActiveKey='0'>
     
@@ -106,7 +120,7 @@ export default function Bookmark( { id, name, url , comment, tags, clickCount , 
                                     {/* </span> */}
                                 </Dropdown.Toggle>
                                 <Dropdown.Menu>
-                                    <Dropdown.Item className='edit-button' >Edit Bookmark</Dropdown.Item>
+                                    <Dropdown.Item className='edit-button' onClick={ (e) => handleEdit(e) }>Edit Bookmark</Dropdown.Item>
                                     <Dropdown.Item className='delete-button' >Delete Bookmark</Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>

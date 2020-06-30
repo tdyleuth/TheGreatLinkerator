@@ -25,6 +25,8 @@ const App = () => {
         name: ''
     });
     const[links, setLinks] =useState([]);
+    
+    const [ editBkmrkModal, setEditBkmrkModal ] = useState(false);
 
     function clearLocalStorage() {
         localStorage.setItem('token', '');
@@ -69,29 +71,10 @@ const App = () => {
                 }
 
         const { data: { links } } = await axios.get(BASE_URL + '/links/user', headers);
-        console.log('links inner is ', links);
 
         return links;
 
-            // const bookmarkArr = links.map((bookmark) => {
-
-            //     const { id, name, url, comment, tags, clicks, datecreated, dateModified, lastAccessed } = bookmark;
-    
-            //     const bookmarkCard = (
-            //             <Bookmarks key={id} id={id} name={name} url={url} tags={tags} clickCount={clicks} dateCreated={datecreated} dateModified={dateModified} comment={comment} lastAccessed={ lastAccessed } />
-            //     );
-    
-            //     return bookmarkCard;
-            // });
-        
-            // return bookmarkArr;
     }
-
-    // const renderBookmarks = () => {
-    //     console.log('Here I am');
-    //     console.log('user.posts is ', user.posts);
-    //     return user.posts;
-    // }
 
     useEffect(() => {
 
@@ -109,15 +92,13 @@ const App = () => {
 
     }, [user])
     
-    console.log('userObj top-level is ', user);
-    console.log('link at the top-level is ', links);
     if(!user.id){
 
         return (
             <>
             <header>
                     <Header />
-                    <Nav user={ user } setUser={ setUser }/>
+                    <Nav user={ user } setUser={ setUser } editBkmrkModal={ () => {console.log('toplevel editbkmrk modal evaluates to ', editBkmrkModal); editBkmrkModal} } setEditBkmrkModal={ setEditBkmrkModal }/>
             </header>
             
             <main>
@@ -136,7 +117,7 @@ const App = () => {
             <>
                 <header>
                         <Header />
-                        <Nav user={ user } setUser={ setUser }/>
+                        <Nav user={ user } setUser={ setUser } editBkmrkModal={ editBkmrkModal } setEditBkmrkModal={ setEditBkmrkModal } />
                 </header>
                 
                 <main>
@@ -146,10 +127,7 @@ const App = () => {
                         <Search />
                     </div>
                 
-                    < BookmarkUI links={ links } setLinks={ setLinks } />
-                        {/* <div>
-                        { renderBookmarks() }
-                        </div> */}
+                    < BookmarkUI links={ links } setEditBkmrkModal={ setEditBkmrkModal } />
 
                 </main>
             </>   

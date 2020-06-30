@@ -12,7 +12,7 @@ import axios from 'axios';
 const BASE_URL = 'http://localhost:3000/api/links';
 
 
-function BookmarkForm({ show, hideEvent, setShow, setBookmarkNotice, setLogoutNotice, setLoginNotice, duplicateError, setDuplicateError, setVisibility, visibility, action }){
+function BookmarkForm({ show, hideEvent, setShow, setNewBookmarkNotice, setEditBookmarkNotice, setLogoutNotice, setLoginNotice, duplicateError, setDuplicateError, setVisibility, visibility, action }){
 
     
   
