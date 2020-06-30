@@ -15,16 +15,16 @@ import Image from 'react-bootstrap/Image'
 
 import './app.scss';
 
-const BASE_URL = 'http://localhost:3000/api/';
+const BASE_URL = 'http://localhost:3000/api';
 
 const App = () => {
 
     const[user, setUser] = useState({
         id: '',
         username: '',
-        name: '',
-        posts: []
+        name: ''
     });
+    const[links, setLinks] =useState([]);
 
     function clearLocalStorage() {
         localStorage.setItem('token', '');
@@ -41,7 +41,7 @@ const App = () => {
         //If there is a stored token and it is current (less than 30 minutes), attempt to validate token
         if(token && timeSinceLogin < 30){
             
-            const { data } = await axios.post(BASE_URL + 'users/test', {token});
+            const { data } = await axios.post(BASE_URL + '/users/test', {token});
             
             const {name: messageName, userObj } = data;
             const { id, username, name } = userObj;
@@ -58,19 +58,59 @@ const App = () => {
         else {return {}}
     }
 
-    const renderBookmarks = () => {
-        console.log('Here I am');
-        console.log('user.posts is ', user.posts);
-        return user.posts;
+    async function getBookmarks() {
+
+
+        const token = localStorage.getItem('token');
+        const headers = {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${ token }`} 
+                }
+
+        const { data: { links } } = await axios.get(BASE_URL + '/links/user', headers);
+        console.log('links inner is ', links);
+
+        return links;
+
+            // const bookmarkArr = links.map((bookmark) => {
+
+            //     const { id, name, url, comment, tags, clicks, datecreated, dateModified, lastAccessed } = bookmark;
+    
+            //     const bookmarkCard = (
+            //             <Bookmarks key={id} id={id} name={name} url={url} tags={tags} clickCount={clicks} dateCreated={datecreated} dateModified={dateModified} comment={comment} lastAccessed={ lastAccessed } />
+            //     );
+    
+            //     return bookmarkCard;
+            // });
+        
+            // return bookmarkArr;
     }
+
+    // const renderBookmarks = () => {
+    //     console.log('Here I am');
+    //     console.log('user.posts is ', user.posts);
+    //     return user.posts;
+    // }
 
     useEffect(() => {
 
-        attemptTokenLogin()
+        attemptTokenLogin();
 
-    }, [])
+    }, []);
+
+    useEffect(() =>{
+
+        if(user.id){
+            getBookmarks()
+            .then((data) => setLinks(data))
+            .catch(console.error);
+        }
+
+    }, [user])
     
     console.log('userObj top-level is ', user);
+    console.log('link at the top-level is ', links);
     if(!user.id){
 
         return (
@@ -106,7 +146,7 @@ const App = () => {
                         <Search />
                     </div>
                 
-                    < BookmarkUI user={ user } setUser={ setUser } />
+                    < BookmarkUI links={ links } setLinks={ setLinks } />
                         {/* <div>
                         { renderBookmarks() }
                         </div> */}

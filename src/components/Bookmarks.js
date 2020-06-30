@@ -7,6 +7,7 @@ import dropdown from 'react-bootstrap/Dropdown';
 import axios from 'axios';
 import moment from 'moment';
 import Dropdown from 'react-bootstrap/Dropdown';
+import { useAccordionToggle } from 'react-bootstrap/AccordionToggle';
 
 const BASE_URL = 'http://localhost:3000/api/links';
 const token = localStorage.getItem('token');
@@ -16,6 +17,35 @@ const headers = {
         'Authorization': `Bearer ${ token }`} 
     }
 
+function CustomToggle({ children, eventKey }) {
+
+
+    const decoratedOnClick = useAccordionToggle(eventKey, () =>
+        console.log('totally custom!'),
+    );
+
+    console.log('decoratedOnClick is ', decoratedOnClick.toString());
+
+    const handleClick = (event) => {
+        
+        const element = event.target.tagName.toLowerCase();
+        console.log('element is ', element);
+
+        if( element !== 'span' && element !== 'a'){
+            decoratedOnClick(event);
+        }
+
+    }
+    
+    return (
+        <div
+        onClick={handleClick}
+        >
+        {children}
+        </div>
+    );
+
+}
 
 export default function Bookmark( { id, name, url , comment, tags, clickCount , dateCreated, dateModified, lastAccessed} ){
 
@@ -51,43 +81,45 @@ export default function Bookmark( { id, name, url , comment, tags, clickCount , 
 
     }
 
+    
+
     return(
         <Accordion defaultActiveKey='0'>
     
-    <Accordion.Toggle as="div" eventKey={ id }>
-            <Card.Header className='bookmark-header' >
-            
-                <Accordion.Toggle className='bookmark-name' as='h2' eventKey={ id }> 
-                    { name }
-                </Accordion.Toggle>
-
-                <h2>
-                    <a className='bookmark-link' target='_blank' href={ url } title={ comment } onClick={ handleClick }>{ url }</a>
-                </h2>
-
-                <div className='bookmark-icons'>
+            <CustomToggle eventKey={ id }>
+                    <Card.Header className='bookmark-header' >
                     
-                    <Dropdown drop='left'>
-                        <Dropdown.Toggle id={ `settngs-${id}` } as='span' className="material-icons settings">
-                            {/* <span className="material-icons settings " onClick={(e) => e.stopPropagation()}> */}
-                                settings
-                            {/* </span> */}
-                        </Dropdown.Toggle>
-                        <Dropdown.Menu>
-                            <Dropdown.Item className='edit-button' >Edit Bookmark</Dropdown.Item>
-                            <Dropdown.Item className='delete-button' >Delete Bookmark</Dropdown.Item>
-                        </Dropdown.Menu>
-                    </Dropdown>
+                        <Accordion.Toggle className='bookmark-name' as='h2' eventKey={ id }> 
+                            { name }
+                        </Accordion.Toggle>
 
-                    <Accordion.Toggle as={ Button } variant="link" eventKey={ id }>
-                        <span className="material-icons dropdown">
-                            arrow_drop_down
-                        </span>
-                    </Accordion.Toggle>
-                </div>
-                
-            </Card.Header>
-    </Accordion.Toggle>
+                        <h2>
+                            <a className='bookmark-link' target='_blank' href={ url } title={ comment } onClick={ handleClick }>{ url }</a>
+                        </h2>
+
+                        <div className='bookmark-icons'>
+                            
+                            <Dropdown drop='left'>
+                                <Dropdown.Toggle id={ `settngs-${id}` } as='span' className="material-icons settings">
+                                    {/* <span className="material-icons settings " onClick={(e) => e.stopPropagation()}> */}
+                                        settings
+                                    {/* </span> */}
+                                </Dropdown.Toggle>
+                                <Dropdown.Menu>
+                                    <Dropdown.Item className='edit-button' >Edit Bookmark</Dropdown.Item>
+                                    <Dropdown.Item className='delete-button' >Delete Bookmark</Dropdown.Item>
+                                </Dropdown.Menu>
+                            </Dropdown>
+
+                            <Accordion.Toggle as={ Button } variant="link" eventKey={ id }>
+                                <span className="material-icons dropdown">
+                                    arrow_drop_down
+                                </span>
+                            </Accordion.Toggle>
+                        </div>
+                        
+                    </Card.Header>
+            </CustomToggle >
 
             <Accordion.Collapse eventKey={ id }>
                 <Card.Body>
