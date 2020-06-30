@@ -267,8 +267,6 @@ main{
 
         button{
 
-            
-
             font-size: 1.5rem;
             border-radius: 8px;
             
@@ -382,11 +380,11 @@ main{
             color: $theme-accent1;
         }
 
-        a{
+        .bookmark-link{
             color: $theme-accent1;
         }
 
-        h2, a{
+        h2, .bookmark-link{
             font-size: 3rem;
 
             &:hover{
@@ -400,13 +398,13 @@ main{
 
         }
 
-        a:hover{
+        .bookmark-link:hover{
             text-decoration: none;
             color: lighten($theme-accent2, 2%);
             text-decoration: underline;
         }
 
-        div{
+        .bookmark-icons{
             display: flex;
             justify-content: space-beween;
             align-items: center;
@@ -503,6 +501,7 @@ main{
                 
                 p{
                     font-size: 2rem;
+                    text-align: center;
                 }
             }
 
@@ -511,6 +510,32 @@ main{
         }
     }
 }
+
+.dropleft .dropdown-toggle::before{
+    content: none;
+}
+
+.dropdown-menu{
+    $gradient2: linear-gradient(180deg, rgba(60,60,60,0.7) 22%, rgba(30,30,30,0.7) 90%);
+    display: flex;
+    flex-direction: column;
+    width: 20rem;
+    background: $gradient2;
+    box-shadow: 0 0 5px -1px darken($theme-accent4, 15%);
+    
+    .dropdown-item{
+        font-size: 2rem;
+        color: $theme-accent1;
+
+        &:hover, &:focus {
+            color: $theme-accent2;
+            background: none; 
+        }
+    }
+}
+
+
+
 
 /* ----------------------------------------------------------------------------------------------- Media Queries -----------------------------------------------------------------------------------------------*/
 
@@ -559,7 +584,7 @@ main{
     .accordion{
         .bookmark-header{
 
-            h2, a{
+            h2, .bookmark-link{
                 font-size: 2.2rem;
 
                 &:hover{
@@ -619,7 +644,7 @@ main{
 
         .bookmark-header{
 
-            h2, a{
+            h2, .bookmark-link{
                 
                 
                 font-size: 1.9rem;
@@ -630,14 +655,14 @@ main{
 
             }
 
-            a{
+            .bookmark-link{
                 justify-self: center;
                 align-self: center;
                 margin: auto;
             }
 
             
-            div{
+            .bookmark-icons{
                 
                 justify-content: flex-end;
                 width: auto;

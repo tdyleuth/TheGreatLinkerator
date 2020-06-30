@@ -54,7 +54,11 @@ linksRouter.post('/',requireUser, async (req,res,next) => {
       linkData.creatorId = creatorId;
       linkData.name = name;
       linkData.url  = url;
-      linkData.comment = comment 
+      linkData.comment = comment;
+      linkData.clicks = 0;
+      linkData.dateCreated = new Date(Date.now());
+      linkData.dateModified = new Date(Date.now());
+      linkData.lastAccessed = new Date(Date.now());
       
       const link= await createLink(linkData);
 
@@ -81,7 +85,7 @@ linksRouter.patch('/:linkId',requireUser, async (req, res, next) => {
     const { linkId } = req.params;
     // @ts-ignore
     const { id } = req.user;
-    const { name, url, clicks, comment, tags } = req.body;
+    const { name, url, clicks, comment, tags, dateModified, lastAccessed } = req.body;
     const tagsArr = tags.trim().split(/\s+/)
 
     
@@ -102,6 +106,14 @@ linksRouter.patch('/:linkId',requireUser, async (req, res, next) => {
 
     if(comment){
         updateFields.comment = comment;
+    }
+
+    if(dateModified){
+        updateFields.dateModified = dateModified;
+    }
+
+    if(lastAccessed){
+        updateFields.lastAccessed = lastAccessed;
     }
 
   

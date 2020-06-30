@@ -66,7 +66,9 @@ async function createTables() {
         url VARCHAR(255) UNIQUE NOT NULL,
         clicks INTEGER,
         comment TEXT,
-        dateCreated DATE NOT NULL DEFAULT CURRENT_DATE
+        "dateCreated" DATE NOT NULL DEFAULT CURRENT_DATE,
+        "dateModified" DATE NOT NULL DEFAULT CURRENT_DATE,
+        "lastAccessed" DATE NOT NULL DEFAULT CURRENT_DATE
         );`
     );
 

@@ -1,18 +1,55 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
-import Accordion from 'react-bootstrap/Accordion'
-import Button from 'react-bootstrap/Button'
+import Accordion from 'react-bootstrap/Accordion';
+import Button from 'react-bootstrap/Button';
+import dropdown from 'react-bootstrap/Dropdown';
+
+import axios from 'axios';
+import moment from 'moment';
+import Dropdown from 'react-bootstrap/Dropdown';
+
+const BASE_URL = 'http://localhost:3000/api/links';
+const token = localStorage.getItem('token');
+const headers = {
+    headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${ token }`} 
+    }
 
 
-
-//Create bookmark => modal => (name, description (optional), url, tags, submit, cancel )
-// => Name, url
+export default function Bookmark( { id, name, url , comment, tags, clickCount , dateCreated, dateModified, lastAccessed} ){
 
 
+    const handleClick = async () =>{
 
+        let newCount = +clickCount + 1;
+        let newDate = moment().format('YYYY-MM-DD');
+        
+        console.log('new count is ', newCount, 'and new date is ', newDate);
+        console.log('Parse attempt is ', moment('12-05-2000').format('YYYY-MM-DD'));
 
-export default function Bookmark( { id, name, url , comment, tags, clickCount , dateCreated, dateModified} ){
+        const updates={
+            name,
+            url,
+            comment,
+            tags,
+            newCount,
+            dateCreated,
+            dateModified,
+            lastAccessed
+        }
+        
+        try{
+            const data = await axios.patch(BASE_URL + `/${id}`, updates, headers);
+            console.log(data);
+            return data;
+        }
+        catch(err){
+            console.error("There's been an error updating click count and date last accessed at /src/components/Bookmarks @ handleEventClick. Error: ", err );
+            throw err;
+        }
 
+    }
 
     return(
         <Accordion defaultActiveKey='0'>
@@ -25,13 +62,22 @@ export default function Bookmark( { id, name, url , comment, tags, clickCount , 
                 </Accordion.Toggle>
 
                 <h2>
-                    <a target='_blank' href={ url } title={ comment } onClick={(e) => e.stopPropagation()}>{ url }</a>
+                    <a className='bookmark-link' target='_blank' href={ url } title={ comment } onClick={ handleClick }>{ url }</a>
                 </h2>
 
                 <div className='bookmark-icons'>
-                    <span className="material-icons settings " onClick={(e) => e.stopPropagation()}>
-                        settings
-                    </span>
+                    
+                    <Dropdown drop='left'>
+                        <Dropdown.Toggle id={ `settngs-${id}` } as='span' className="material-icons settings">
+                            {/* <span className="material-icons settings " onClick={(e) => e.stopPropagation()}> */}
+                                settings
+                            {/* </span> */}
+                        </Dropdown.Toggle>
+                        <Dropdown.Menu>
+                            <Dropdown.Item className='edit-button' >Edit Bookmark</Dropdown.Item>
+                            <Dropdown.Item className='delete-button' >Delete Bookmark</Dropdown.Item>
+                        </Dropdown.Menu>
+                    </Dropdown>
 
                     <Accordion.Toggle as={ Button } variant="link" eventKey={ id }>
                         <span className="material-icons dropdown">
@@ -63,8 +109,11 @@ export default function Bookmark( { id, name, url , comment, tags, clickCount , 
                             <p> { dateCreated} </p>
                             <h3>Date Modified:</h3>
                             <p>{dateModified}</p>
+                            <h3>Last Accessed:</h3>
+                            <p>{ lastAccessed }</p>
                             <h3>Click Count:</h3>
                             <p>{ clickCount }</p>
+                            
                         </div>
                     </div>
 

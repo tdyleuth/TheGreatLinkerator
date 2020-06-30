@@ -37,7 +37,7 @@ export default function Header (){
 
                 <img className='chain' alt='Stylized chain link' src='/assets/chain-link.png' />
                 <div>
-                    <img id='logo' src='/assets/logo.png' alt='"The Great Linkerator" written in a pixelated font in front of a padlock' onError={ () => handleLogoError() }/>
+                    <img id='logo' src='/assets/logo.png' alt='"The Great Linkerator" written in a pixelated font in front of a padlock' onError={ handleLogoError }/>
                 </div>
                 <img className='chain' alt='Stylized chain link' src='/assets/chain-link.png' />
                 
