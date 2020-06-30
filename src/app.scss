@@ -35,7 +35,6 @@ html{
     background: linear-gradient(180deg, $theme-color2 5%, $theme-color1 90%);
     color: $theme-accent2;
     height: 100%;
-    overflow: auto;
 
 }
 
@@ -55,7 +54,6 @@ main{
     height: 120vh;
     min-height: max-content;
     margin-bottom: 20rem;
-    overflow: scroll;
 }
 
 #header{
@@ -552,8 +550,12 @@ main{
             font-size: 1.5rem;
         }
 
-        img{
+        .chain{
             height: 5rem;
+        }
+
+        #logo{
+            height: 6rem;
         }
     }
 
