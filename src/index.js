@@ -5,10 +5,10 @@ import ReactDOM from 'react-dom';
 
 import axios from 'axios';
 
-import Header from './components/Header';
-import Nav from './components/Nav';
-import Search from './components/Search'
-import BookmarkUI from './components/Bookmark-UI';
+import Header from './components/Header.js';
+import Nav from './components/Nav.js';
+import Search from './components/Search.js'
+import BookmarkUI from './components/Bookmark-UI.js';
 
 import Image from 'react-bootstrap/Image'
 
