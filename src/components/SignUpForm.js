@@ -10,7 +10,7 @@ import {Animated} from "react-animated-css";
 
 import axios from 'axios';
 
-const BASE_URL = `{ ${process.env.DATABASE_URL}/api/users }` || 'http://localhost:3000/api/users';
+const BASE_URL = 'https://linkeratorthegreat.herokuapp.com/api/users' || 'http://localhost:3000/api/users';
 
 function SignUpForm({ show, hideEvent, setUser, setSignupNotice, setSignUpModal, setLoginNotice, setLogoutNotice, setLocalStorage, setNewBookmarkNotice, setEditBookmarkNotice, setVisibility, visibility }){
 

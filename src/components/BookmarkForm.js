@@ -9,7 +9,7 @@ import {Animated} from "react-animated-css";
 
 import axios from 'axios';
 
-const BASE_URL = `{ ${process.env.DATABASE_URL}/api/links }` || 'http://localhost:3000/api/links';
+const BASE_URL = 'https://linkeratorthegreat.herokuapp.com/api/links' || 'http://localhost:3000/api/links';
 
 
 function BookmarkForm({ show, hideEvent, setShow, setNewBookmarkNotice, setEditBookmarkNotice, setLogoutNotice, setLoginNotice, duplicateError, setDuplicateError, setVisibility, visibility, action, links, setLinks, modalTags, setModalTags }){

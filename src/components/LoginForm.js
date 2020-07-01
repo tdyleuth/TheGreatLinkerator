@@ -9,7 +9,7 @@ import Button from 'react-bootstrap/Button';
 import Alert from 'react-bootstrap/Alert'
 import {Animated} from "react-animated-css";
 
-const BASE_URL = `{ ${process.env.DATABASE_URL}/api/users }` || 'http://localhost:3000/api/users';
+const BASE_URL = 'https://linkeratorthegreat.herokuapp.com/api/users' || 'http://localhost:3000/api/users';
 
 
 
