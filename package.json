@@ -38,11 +38,12 @@
     "node-sass": "^4.14.1"
   },
   "scripts": {
-    "seed:dev": "nodemon ./db/seed.js",
     "seed": "node ./db/seed.js",
     "start": "node ./index.js",
-    "start:dev": "nodemon index.js",
     "build": "webpack --mode=\"production\"",
+    "heroku-postbuild": "webpack -p",
+    "seed:dev": "nodemon ./db/seed.js",
+    "start:dev": "nodemon index.js",
     "build:watch": "webpack --watch --mode=\"development\""
   },
   "repository": {
