@@ -4,7 +4,7 @@ import Bookmarks from './Bookmarks'
 import axios from 'axios';
 import moment from 'moment';
 
-const BASE_URL = "http://localhost:3000/api/links"
+const BASE_URL = `{ ${process.env.DATABASE_URL}/api/links }` || "http://localhost:3000/api/links"
 
 export default function BookmarkUI({ links, setLinks, setEditBkmrkModal, deleteBookmarkNotice, setDeleteBookmarkNotice, setVisibility, visibility, setModalTags }){
 
