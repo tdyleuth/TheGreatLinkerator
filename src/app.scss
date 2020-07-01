@@ -402,6 +402,27 @@ main{
         font-size: 1.5rem;
         box-shadow: 0 1px 6px -2px darken($theme-accent4, 18%);
     }
+
+    .search-form{
+        display: flex;
+        align-items: baseline;
+
+        #search-button{
+            height: 3.5rem;
+            font-size: 1.8rem;
+            margin-left: 1rem;
+            background: $gradient2;
+            box-shadow: -1px 2px 2px darken(grey, 20%);
+
+            &:hover{
+                font-size: 2rem;
+                color: $theme-accent2;
+            }
+        }
+
+
+
+    }
 }
 
 

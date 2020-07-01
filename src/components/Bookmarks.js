@@ -37,7 +37,6 @@ function CustomToggle({ children, eventKey }) {
 
 export default function Bookmark( { id, name, url , comment, tags, clickCount , dateCreated, dateModified, lastAccessed, setLinks, links, setEditBkmrkModal, setDeleteBookmarkNotice, setVisibility, setModalTags} ){
 
-
     const handleLinkClick = async () =>{
 
         let newCount = +clickCount + 1;
@@ -160,9 +159,7 @@ export default function Bookmark( { id, name, url , comment, tags, clickCount , 
                             
                             <Dropdown drop='left'>
                                 <Dropdown.Toggle id={ `settngs-${id}` } as='span' className="material-icons settings">
-                                    {/* <span className="material-icons settings " onClick={(e) => e.stopPropagation()}> */}
                                         settings
-                                    {/* </span> */}
                                 </Dropdown.Toggle>
                                 <Dropdown.Menu>
                                     <Dropdown.Item className='edit-button' id={id} onClick={ (e) => handleEdit(e) }>Edit Bookmark</Dropdown.Item>

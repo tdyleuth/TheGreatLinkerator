@@ -17,17 +17,14 @@ function BookmarkForm({ show, hideEvent, setShow, setNewBookmarkNotice, setEditB
 
     async function createBookmark() {
        
-        const name = document.getElementById('new-bkmrk-name').value;
-        const url = document.getElementById('new-bkmrk-url').value;
-        const tags= document.getElementById('new-bkmrk-tags').value;
-        const comment = document.getElementById('new-bkmrk-desc').value
+        const name = document.getElementById('bkmrk-input-name').value;
+        const url = document.getElementById('bkmrk-input-url').value;
+        const tags= document.getElementById('bkmrk-input-tags').value;
+        const comment = document.getElementById('bkmrk-input-desc').value
  
         const tagsArray = tags.split(",")
-
-      
         const token = localStorage.getItem('token');
         
-       
         const headers = {
             headers: {
                 'Content-Type': 'application/json',
@@ -41,7 +38,6 @@ function BookmarkForm({ show, hideEvent, setShow, setNewBookmarkNotice, setEditB
         
         try {
         
-
         const { data: { message } } = await axios.post(BASE_URL, data, headers)
 
 
@@ -60,6 +56,11 @@ function BookmarkForm({ show, hideEvent, setShow, setNewBookmarkNotice, setEditB
         }
 
         if ( message === `New link created!`){
+            
+            const newLinksArr = links;
+            newLinksArr.push(data);
+            setLinks(newLinksArr);
+            
             setEditBookmarkNotice(false);
             setNewBookmarkNotice(true);
             setLogoutNotice(false);
@@ -119,6 +120,29 @@ function BookmarkForm({ show, hideEvent, setShow, setNewBookmarkNotice, setEditB
 
     }
 
+    function handleTagInput(event){
+
+        const linkId=event;
+        console.log('event is ', event);
+        
+
+        // console.log('linkId is '), linkId;
+        // const [ response ] = links.filter((link) => link.id === linkId );
+
+        // const { name: editName, url: editUrl, comment: description, tags: editTags } = response;
+
+        // setModalTags(editTags);
+        
+        // setEditBkmrkModal(true);
+
+        // setTimeout(() => {
+        // document.getElementById('bkmrk-input-name').value = editName;
+        // document.getElementById('bkmrk-input-url').value = editUrl;
+        // document.getElementById('bkmrk-input-desc').value = description;
+        // }, 100)
+
+    }
+
     return(
 
         <Modal
@@ -152,10 +176,10 @@ function BookmarkForm({ show, hideEvent, setShow, setNewBookmarkNotice, setEditB
                         pattern="https://.*" size="30" required></Form.Control>
 
                         <Form.Label>Description (optional):</Form.Label>
-                        <Form.Control as='textarea' id='bkmrk-input-desc'rows='5' placeholder='Description...'></Form.Control>
+                        <Form.Control as='textarea' id='bkmrk-input-desc' rows='5' placeholder='Description...'></Form.Control>
                         
                         <Form.Label>Tags (separated by commas):</Form.Label>
-                        <Form.Control as='input' id='bkmrk-input-tags' placeholder='Tag1, Tag2, Tag3, ...'></Form.Control>
+                        <Form.Control as='input' onKeyUp={ (e) => handleTagInput(e) } id='bkmrk-input-tags' placeholder='Tag1, Tag2, Tag3, ...'></Form.Control>
                         <div id='tag-area'>
                             {modalTags.map(
 

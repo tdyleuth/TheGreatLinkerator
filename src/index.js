@@ -29,6 +29,7 @@ const App = () => {
     const[ visibility, setVisibility ] = useState(true);
     const[ modalTags, setModalTags ] = useState([]);
     const[ links, setLinks ] = useState([]);
+    const [ searchTerm, setSearchTerm ] = useState('');
     
     
     function clearLocalStorage() {
@@ -118,17 +119,17 @@ const App = () => {
             <>
                 <header>
                         <Header />
-                        <Nav user={ user } setUser={ setUser } editBkmrkModal={ editBkmrkModal } setEditBkmrkModal={ setEditBkmrkModal } setDeleteBookmarkNotice ={setDeleteBookmarkNotice} deleteBookmarkNotice={ deleteBookmarkNotice } setVisibility={setVisibility} visibility={visibility}  links={links} setLinks={setLinks} modalTags={ modalTags } setModalTags={ setModalTags }/>
+                        <Nav user={ user } setUser={ setUser } editBkmrkModal={ editBkmrkModal } setEditBkmrkModal={ setEditBkmrkModal } setDeleteBookmarkNotice ={setDeleteBookmarkNotice} deleteBookmarkNotice={ deleteBookmarkNotice } setVisibility={setVisibility} visibility={visibility}  links={links} setLinks={setLinks} modalTags={ modalTags } setModalTags={ setModalTags } />
                 </header>
                 
                 <main>
                     <div id='body-header'>
                         {/* {breadcrumb} */}
                         <h2 id='body-header-title'>Your Bookmarks</h2>
-                        <Search />
+                        <Search searchTerm={ searchTerm } setSearchTerm={ setSearchTerm }/>
                     </div>
                 
-                    < BookmarkUI links={ links } setLinks={ setLinks } setEditBkmrkModal={ setEditBkmrkModal } setDeleteBookmarkNotice ={setDeleteBookmarkNotice} deleteBookmarkNotice={ deleteBookmarkNotice } setVisibility={setVisibility} visibility={visibility} setModalTags={ setModalTags }/>
+                    < BookmarkUI links={ links.filter((link) => link.url.includes(searchTerm) || link.name.includes(searchTerm) ) } setLinks={ setLinks } setEditBkmrkModal={ setEditBkmrkModal } setDeleteBookmarkNotice ={setDeleteBookmarkNotice} deleteBookmarkNotice={ deleteBookmarkNotice } setVisibility={setVisibility} visibility={visibility} setModalTags={ setModalTags }/>
                     
 
                 </main>
