@@ -13,11 +13,6 @@ import {Animated} from "react-animated-css";
 
 const BASE_URL = `/api/users`;
 
-console.log('SECRET IS', process.env.JWT_SECRET);
-console.log('BASE_URL react IS ', process.env.BASE_URL);
-console.log('BASE_URL react IS ', BASE_URL);
-
-
 function LoginForm({ show, hideEvent, setShow, setLoginNotice, setUser, setSignupNotice, setLogoutNotice, setLocalStorage, clearLocalStorage, setNewBookmarkNotice, setEditBookmarkNotice, setVisibility, visibility }){
     
     const [userError, setUserError] = useState(false);

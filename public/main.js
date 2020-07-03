@@ -47604,9 +47604,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const BASE_URL = `/api/users`;
-console.log('SECRET IS', "This is my secret");
-console.log('BASE_URL react IS ', "http://localhost:3000/api");
-console.log('BASE_URL react IS ', BASE_URL);
 
 function LoginForm({
   show,
