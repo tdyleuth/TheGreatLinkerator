@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import dotenv from 'dotenv';
-console.log(dotenv.config());
+// console.log(dotenv.config());
 
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
@@ -11,10 +11,11 @@ import Button from 'react-bootstrap/Button';
 import Alert from 'react-bootstrap/Alert'
 import {Animated} from "react-animated-css";
 
-const BASE_URL = `${process.env.BASE_URL}/users`;
+const BASE_URL = `/api/users`;
 
-console.log('SECRET IS IS ', process.env.JWT_SECRET);
-console.log('BASE_URL react IS ', process.env.REACT_APP_BASE_URL);
+console.log('SECRET IS', process.env.JWT_SECRET);
+console.log('BASE_URL react IS ', process.env.BASE_URL);
+console.log('BASE_URL react IS ', BASE_URL);
 
 
 function LoginForm({ show, hideEvent, setShow, setLoginNotice, setUser, setSignupNotice, setLogoutNotice, setLocalStorage, clearLocalStorage, setNewBookmarkNotice, setEditBookmarkNotice, setVisibility, visibility }){
