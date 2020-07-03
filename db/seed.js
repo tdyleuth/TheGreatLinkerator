@@ -4,7 +4,6 @@ const {
     getAllUsers,
     createLink,
     getAllTags,
-    updateTag,
     getAllLinks,
     getLinkByLinkId,
     getLinkByTagName,

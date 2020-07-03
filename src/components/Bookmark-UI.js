@@ -1,10 +1,7 @@
-import React, { useReducer } from 'react';
-import Accordion from 'react-bootstrap/Accordion';
-import Bookmarks from './Bookmarks'
-import axios from 'axios';
+import React from 'react';
+import Bookmarks from './Bookmarks';
 import moment from 'moment';
 
-const BASE_URL = 'https://linkeratorthegreat.herokuapp.com/api/users' || "http://localhost:3000/api/links"
 
 export default function BookmarkUI({ links, setLinks, setEditBkmrkModal, deleteBookmarkNotice, setDeleteBookmarkNotice, setVisibility, visibility, setModalTags }){
 

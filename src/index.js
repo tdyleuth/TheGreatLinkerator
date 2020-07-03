@@ -14,7 +14,7 @@ import Image from 'react-bootstrap/Image'
 
 import './app.scss';
 
-const BASE_URL = `{ ${process.env.DATABASE_URL}/api }` || 'http://localhost:3000/api';
+const BASE_URL = process.env.BASE_URL;
 
 const App = () => {
 
@@ -129,7 +129,7 @@ const App = () => {
                         <Search searchTerm={ searchTerm } setSearchTerm={ setSearchTerm }/>
                     </div>
                 
-                    < BookmarkUI links={ links.filter((link) => link.url.includes(searchTerm) || link.name.includes(searchTerm) ) } setLinks={ setLinks } setEditBkmrkModal={ setEditBkmrkModal } setDeleteBookmarkNotice ={setDeleteBookmarkNotice} deleteBookmarkNotice={ deleteBookmarkNotice } setVisibility={setVisibility} visibility={visibility} setModalTags={ setModalTags }/>
+                    < BookmarkUI links={ links.filter((link) => link.url.includes(searchTerm) || link.name.includes(searchTerm) || link.tags.filter((tag) => tag.name.includes(searchTerm))) } setLinks={ setLinks } setEditBkmrkModal={ setEditBkmrkModal } setDeleteBookmarkNotice ={setDeleteBookmarkNotice} deleteBookmarkNotice={ deleteBookmarkNotice } setVisibility={setVisibility} visibility={visibility} setModalTags={ setModalTags }/>
                     
 
                 </main>

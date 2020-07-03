@@ -8,7 +8,7 @@ import moment from 'moment';
 import Dropdown from 'react-bootstrap/Dropdown';
 import { useAccordionToggle } from 'react-bootstrap/AccordionToggle';
 
-const BASE_URL = 'https://linkeratorthegreat.herokuapp.com/api/links' || 'http://localhost:3000/api/links';
+const BASE_URL = process.env.BASE_URL + '/links'
 const token = localStorage.getItem('token');
 const headers = {
     headers: {
