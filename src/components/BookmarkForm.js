@@ -275,7 +275,7 @@ function BookmarkForm({ show, hideEvent, setShow, setNewBookmarkNotice, setEditB
                         <Form.Label>Description (optional):</Form.Label>
                         <Form.Control as='textarea' id='bkmrk-input-desc' rows='5' placeholder='Description...'></Form.Control>
                         
-                        <Form.Label>Tags (separated by commas):</Form.Label>
+                        <Form.Label>Tags (separated by spaces):</Form.Label>
                         <Form.Control as='input' onKeyPress={ (e) => handleTagInput(e) } id='bkmrk-input-tags' placeholder='Tag1, Tag2, Tag3, ...'></Form.Control>
                         <div id='tag-area'>
                             {modalTags.map((tagObj) => {

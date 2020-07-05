@@ -46891,7 +46891,7 @@ function BookmarkForm({
     id: "bkmrk-input-desc",
     rows: "5",
     placeholder: "Description..."
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2__["default"].Label, null, "Tags (separated by commas):"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2__["default"].Control, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2__["default"].Label, null, "Tags (separated by spaces):"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2__["default"].Control, {
     as: "input",
     onKeyPress: e => handleTagInput(e),
     id: "bkmrk-input-tags",
@@ -48065,14 +48065,12 @@ const App = () => {
   function clearLocalStorage() {
     localStorage.setItem('token', '');
     localStorage.setItem('name', '');
-    localStorage.setItem('login-time', JSON.stringify(NaN));
   }
 
   async function attemptTokenLogin() {
-    const token = localStorage.getItem('token');
-    const timeSinceLogin = +new Date(Date.now()) / 1000 / 60 - Number(localStorage.getItem('login-time')); //If there is a stored token and it is current (less than 30 minutes), attempt to validate token
+    const token = localStorage.getItem('token'); //If there is a stored token and it is current (less than 30 minutes), attempt to validate token
 
-    if (token && timeSinceLogin < 30) {
+    if (token) {
       const {
         data
       } = await axios__WEBPACK_IMPORTED_MODULE_2___default.a.post(_constants__WEBPACK_IMPORTED_MODULE_3__["BASE_URL"] + '/users/test', {
