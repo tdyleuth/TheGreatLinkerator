@@ -47,7 +47,7 @@ body{
 main{   
     height: 120vh;
     position: relative;
-    overflow: scroll;
+    overflow-y: scroll;
     min-height: max-content;
 }
 
@@ -331,6 +331,7 @@ main{
                 color: $theme-accent1;
                 min-width: 5rem;
                 margin-right: 2rem;
+                margin-top: 1rem;
                 background: $gradient1;
                 border-radius: 5px;
                 padding: 1rem;
@@ -437,7 +438,7 @@ main{
     margin: 0 0.6rem;
     
     h3{
-        text-shadow: -1px 2px 1px lighten(black, 10%);
+        text-shadow: -1px 1px rgba(55, 55, 55, 0.6);
     }
     
 

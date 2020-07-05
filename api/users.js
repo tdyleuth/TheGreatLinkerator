@@ -67,7 +67,9 @@ usersRouter.post('/register', async (req, res, next) => {
           }).then((newUser) => {
 
             const token = jwt.sign({ 
-              username
+              username,
+              name,
+              id: newUser.id
             }, process.env.JWT_SECRET, {
               expiresIn: '1w'
             });
@@ -128,6 +130,7 @@ usersRouter.post('/login', async (req, res, next) => {
     }
        else {
       if (passwordsMatch) {
+        console.log('storing username ', username, "name ", name, 'and id ', id);
     
       const token = jwt.sign({ username, name, id }, process.env.JWT_SECRET, { expiresIn: '1w' });
 

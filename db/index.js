@@ -122,8 +122,8 @@ async function createLink({
         
         console.log('tags are ', tags);
         const tagList = await createTags(tags);
+        
         console.log('tagslist here is ', tagList);
-  
         const taggedObj = await addTagsToLink(link.id, tagList);
         console.log('taggedObj is ', taggedObj);
         return taggedObj;
@@ -325,7 +325,10 @@ async function createLinkTag(linkId, tagId) {
 
 
 async function addTagsToLink(linkId, tagList) {
+
     try {
+      
+      if (tagList===undefined){return await getLinkByLinkId(linkId)};
 
       const createLinkTagPromises = tagList.map(
         tag => createLinkTag(linkId, tag.id)

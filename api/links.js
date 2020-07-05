@@ -11,8 +11,8 @@ linksRouter.use( (req,res,next) => {
     next();
 });
 
-//Get all links
 
+//Get all links
 linksRouter.get('/', async (req,res) => {
     const links = await getAllLinks();
 
@@ -39,23 +39,24 @@ linksRouter.get('/user', requireUser, async (req, res) => {
 
 
 //Create new link with added tags
-linksRouter.post('/',requireUser, async (req,res,next) => {
+linksRouter.post('/', requireUser, async (req,res,next) => {
 
-    const { name, url, comment="", tags = "" } = req.body;
+    const { name, url, comment="", tags } = req.body;
     const { id } = req.user;
-    
+
     const creatorId = id;
     const linkData = {};
     
     linkData.lastAccessed = new Date(Date.now());
     linkData.dateModified = new Date(Date.now());
     linkData.dateCreated = new Date(Date.now());
-    if(tags.length) {linkData.tags = tags;}
+    if(tags && tags.length) {linkData.tags = tags;}
     linkData.creatorId = creatorId;
     linkData.comment = comment;
     linkData.name = name;
     linkData.url  = url;
     linkData.clicks = 0;
+    
   
  
     try{
@@ -82,6 +83,7 @@ linksRouter.post('/',requireUser, async (req,res,next) => {
 //Update Link
 
 linksRouter.patch('/:linkId',requireUser, async (req, res, next) => {
+    
     const { linkId } = req.params;
     // @ts-ignore
     const { id } = req.user;

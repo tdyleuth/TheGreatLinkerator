@@ -62,12 +62,13 @@ async function createTables() {
         id SERIAL PRIMARY KEY,
         "creatorId" INTEGER REFERENCES users(id) NOT NULL,
         name VARCHAR(255) NOT NULL,
-        url VARCHAR(255) UNIQUE NOT NULL,
+        url VARCHAR(255) NOT NULL,
         clicks INTEGER,
         comment TEXT,
         "dateCreated" DATE NOT NULL DEFAULT CURRENT_DATE,
         "dateModified" DATE NOT NULL DEFAULT CURRENT_DATE,
-        "lastAccessed" DATE NOT NULL DEFAULT CURRENT_DATE
+        "lastAccessed" DATE NOT NULL DEFAULT CURRENT_DATE,
+        UNIQUE ("creatorId", url)
         );`
     );
 
@@ -153,7 +154,7 @@ async function createInitialLinks(){
          url: "https://www.google.com",
          clicks:1,
          comment: "google is the best search engine",
-         tags: ["search", "knowledge", "tool", "stuff", "more", "stuff"]
+         tags: ["search", "knowledge", "tool", "stuff", "more", "stuff", "and", "again", "another", "one", "yet", "what", "if", "this", "never", "stopped", "stop", "stopping"]
      });
 
      await createLink({

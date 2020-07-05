@@ -42,14 +42,12 @@ user,
     //Helper function to set current time, token, and name in local storage
     function setLocalStorage(token, name) {
         //Get epoch time for time of function call and convert from milliseconds to seconds to minutes, and store in local storage
-        localStorage.setItem('login-time', JSON.stringify(+(new Date(Date.now()))/1000/60));
         localStorage.setItem('token', token);
         localStorage.setItem('name', name);
     }
 
     //Clears local storage on logout or expired/missing token
     function clearLocalStorage() {
-        localStorage.setItem('login-time', JSON.stringify(NaN));
         localStorage.setItem('token', '');
         localStorage.setItem('name', '');
     }

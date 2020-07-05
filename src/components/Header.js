@@ -6,13 +6,12 @@ import Jumbotron from 'react-bootstrap/Jumbotron'
 
 export default function Header (){
 
-    const [ imageSuccess, setImageSuccess ] = useState(true);
+    const [ mainImageSuccess, setMainImageSuccess ] = useState(true);
+    const [ sideImageSuccess, setSideImageSuccess ] = useState(true);
 
-    const handleLogoError = () => {
-        
-        setImageSuccess(false);
+    const handleLogoError = () => setMainImageSuccess(false);
+    const handleSideImageError = () => setSideImageSuccess(false);
 
-    }
 
     return(
         
@@ -20,9 +19,15 @@ export default function Header (){
 
             <div id='header'>
 
-                <img className='chain' alt='Stylized chain link' src='/assets/chain-link.png' />
+                {sideImageSuccess
+                
+                    ? <img className='chain' alt='Stylized chain link' src='/assets/chain-link.png' onError={ handleSideImageError } />
+
+                    : <div></div>
+                }
+
                 <div>
-                    {imageSuccess
+                    {mainImageSuccess
 
                         ? <img id='logo' src='/assets/logo.png' alt='"The Great Linkerator" written in a pixelated font in front of a padlock' onError={ handleLogoError } />
 
@@ -33,7 +38,13 @@ export default function Header (){
                     }
 
                 </div>
-                <img className='chain' alt='Stylized chain link' src='/assets/chain-link.png' />
+
+                {sideImageSuccess
+                
+                    ? <img className='chain' alt='Stylized chain link' src='/assets/chain-link.png' onError={ handleSideImageError } />
+
+                    : <div></div>
+                }
                 
             </div>
 

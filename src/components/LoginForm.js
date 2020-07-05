@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import dotenv from 'dotenv';
+import { BASE_URL} from '../constants';
 // console.log(dotenv.config());
 
 import Modal from 'react-bootstrap/Modal';
@@ -10,8 +10,6 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Alert from 'react-bootstrap/Alert'
 import {Animated} from "react-animated-css";
-
-const BASE_URL = `/api/users`;
 
 function LoginForm({ show, hideEvent, setShow, setLoginNotice, setUser, setSignupNotice, setLogoutNotice, setLocalStorage, clearLocalStorage, setNewBookmarkNotice, setEditBookmarkNotice, setVisibility, visibility }){
     
@@ -26,7 +24,7 @@ function LoginForm({ show, hideEvent, setShow, setLoginNotice, setUser, setSignu
         //If there is a stored token and it is current (less than 30 minutes), attempt to validate token
         if(token && timeSinceLogin < 30){
             
-            const { data: { name }} = await axios.post(BASE_URL + '/test', {token});
+            const { data: { name }} = await axios.post(BASE_URL + 'users/test', {token});
     
             if(name === 'VerificationSuccessful'){
                 return true;
@@ -47,7 +45,7 @@ function LoginForm({ show, hideEvent, setShow, setLoginNotice, setUser, setSignu
             
         try{
     
-            const { data: { messageName, name, token, id } } = await axios.post(BASE_URL + '/login',
+            const { data: { messageName, name, token, id } } = await axios.post(BASE_URL + '/users/login',
             {
                 username: loginUsername,
                 password: loginPassword

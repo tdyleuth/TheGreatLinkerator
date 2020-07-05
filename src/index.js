@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 
 import axios from 'axios';
+import { BASE_URL} from './constants';
 
 import Header from './components/Header.js';
 import Nav from './components/Nav.js';
@@ -13,8 +14,6 @@ import BookmarkUI from './components/Bookmark-UI.js';
 import Image from 'react-bootstrap/Image'
 
 import './app.scss';
-
-const BASE_URL = process.env.BASE_URL;
 
 const App = () => {
 
@@ -30,7 +29,8 @@ const App = () => {
     const[ modalTags, setModalTags ] = useState([]);
     const[ links, setLinks ] = useState([]);
     const [ searchTerm, setSearchTerm ] = useState('');
-    
+    const [ welcomeImageSuccess, setWelcomeImageSuccess ] = useState(true);
+
     
     function clearLocalStorage() {
         localStorage.setItem('token', '');
@@ -50,6 +50,7 @@ const App = () => {
             const { data } = await axios.post(BASE_URL + '/users/test', {token});
             
             const {name: messageName, userObj } = data;
+
             setUser(userObj);
 
             if(messageName === 'VerificationSuccessful'){return userObj}
@@ -78,6 +79,8 @@ const App = () => {
 
     }
 
+    const handleWelcomeImageSuccess = () => setWelcomeImageSuccess(false);
+
     useEffect(() => {
 
         attemptTokenLogin();
@@ -94,6 +97,8 @@ const App = () => {
 
     }, [user]);
 
+    console.log('links is ', links)
+
     if(!user.id){
 
         return (
@@ -107,7 +112,11 @@ const App = () => {
                 <div id='body-header-welcome'>
                     {/* {breadcrumb} */}
                     <h2 id='body-header-welcome-title'>Welcome! Please sign-up or log in to continue!</h2>
-                    <Image id='chain-welcome' src="/assets/chain-link.png" alt='Stylized chain link' rounded />
+                    { welcomeImageSuccess
+                        ? <Image id='chain-welcome' src="/assets/chain-link.png" alt='Stylized chain link' onError={ handleWelcomeImageSuccess } rounded />
+
+                        : <div></div>
+                    }
                 </div>
             </main>
             </>   
@@ -124,12 +133,11 @@ const App = () => {
                 
                 <main>
                     <div id='body-header'>
-                        {/* {breadcrumb} */}
                         <h2 id='body-header-title'>Your Bookmarks</h2>
                         <Search searchTerm={ searchTerm } setSearchTerm={ setSearchTerm }/>
                     </div>
                 
-                    < BookmarkUI links={ links.filter((link) => link.url.includes(searchTerm) || link.name.includes(searchTerm) || link.tags.filter((tag) => tag.name.includes(searchTerm))) } setLinks={ setLinks } setEditBkmrkModal={ setEditBkmrkModal } setDeleteBookmarkNotice ={setDeleteBookmarkNotice} deleteBookmarkNotice={ deleteBookmarkNotice } setVisibility={setVisibility} visibility={visibility} setModalTags={ setModalTags }/>
+                    < BookmarkUI links={ links.filter((link) => link.url.toLowerCase().includes(searchTerm.toLowerCase()) || link.name.toLowerCase().includes(searchTerm.toLowerCase())) } setLinks={ setLinks } setEditBkmrkModal={ setEditBkmrkModal } setDeleteBookmarkNotice ={setDeleteBookmarkNotice} deleteBookmarkNotice={ deleteBookmarkNotice } setVisibility={setVisibility} visibility={visibility} setModalTags={ setModalTags }/>
                     
 
                 </main>

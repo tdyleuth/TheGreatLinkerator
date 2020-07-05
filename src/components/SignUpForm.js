@@ -6,11 +6,10 @@ import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Alert from 'react-bootstrap/Alert';
-import {Animated} from "react-animated-css";
+import { Animated } from "react-animated-css";
+import { BASE_URL } from '../constants';
 
 import axios from 'axios';
-
-const BASE_URL = process.env.BASE_URL + '/users'
 
 function SignUpForm({ show, hideEvent, setUser, setSignupNotice, setSignUpModal, setLoginNotice, setLogoutNotice, setLocalStorage, setNewBookmarkNotice, setEditBookmarkNotice, setVisibility, visibility }){
 
@@ -20,14 +19,16 @@ function SignUpForm({ show, hideEvent, setUser, setSignupNotice, setSignUpModal,
 
     async function handleSignup(event){
         
+        console.log('here1');
         event.preventDefault();
         event.stopPropagation();
+        console.log('here2');
         
         const newName = document.getElementById('signup-name').value;
         const newUsername = document.getElementById('signup-username').value;
         const password = document.getElementById('signup-password').value;
         
-        const { data: { messageName, token, username, name, id } } = await axios.post(BASE_URL + '/register', {
+        const { data: { messageName, token, username, name, id } } = await axios.post(BASE_URL + '/users/register', {
             username: newUsername,
             password,
             name: newName
@@ -82,9 +83,9 @@ function SignUpForm({ show, hideEvent, setUser, setSignupNotice, setSignUpModal,
             setSignUpModal(false);
             setLogoutNotice(false);
             setLoginNotice(false);
-            setLocalStorage(token, name);
             setNewBookmarkNotice(false);
             setEditBookmarkNotice(false);
+            setLocalStorage(token, name);
             setUser({
                 username,
                 name,

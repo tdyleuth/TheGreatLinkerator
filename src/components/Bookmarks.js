@@ -8,7 +8,8 @@ import moment from 'moment';
 import Dropdown from 'react-bootstrap/Dropdown';
 import { useAccordionToggle } from 'react-bootstrap/AccordionToggle';
 
-const BASE_URL = process.env.BASE_URL + '/links'
+import { BASE_URL } from '../constants';
+
 const token = localStorage.getItem('token');
 const headers = {
     headers: {
@@ -49,7 +50,7 @@ export default function Bookmark( { id, name, url , comment, tags, clickCount , 
 
         try{
 
-            const { data: { link: updatedLink } } = await axios.patch(BASE_URL + `/${id}`, updates, headers);
+            const { data: { link: updatedLink } } = await axios.patch(BASE_URL + `/links/${id}`, updates, headers);
 
             console.log('updatedLink is ', updatedLink);
             
@@ -76,7 +77,7 @@ export default function Bookmark( { id, name, url , comment, tags, clickCount , 
          
         try {
            
-            const deletedLink = await axios.delete(BASE_URL + `/${linkId}`, headers)
+            const deletedLink = await axios.delete(BASE_URL + `/links/${linkId}`, headers)
             console.log("deletedlink", deletedLink)
             if(deletedLink){
             const updatedLinks = links.filter((link) => {
@@ -117,19 +118,18 @@ export default function Bookmark( { id, name, url , comment, tags, clickCount , 
     function handleEdit(e){
             
         const linkId= +(e.target.getAttribute("id"));
-
         const [ response ] = links.filter((link) => link.id === linkId );
+        localStorage.setItem('linkId', JSON.stringify(linkId));
 
         const { name: editName, url: editUrl, comment: description, tags: editTags } = response;
 
         setModalTags(editTags);
-        
         setEditBkmrkModal(true);
 
         setTimeout(() => {
-        document.getElementById('bkmrk-input-name').value = editName;
-        document.getElementById('bkmrk-input-url').value = editUrl;
-        document.getElementById('bkmrk-input-desc').value = description;
+            document.getElementById('bkmrk-input-name').value = editName;
+            document.getElementById('bkmrk-input-url').value = editUrl;
+            document.getElementById('bkmrk-input-desc').value = description;
         }, 100)
     }
 
@@ -143,7 +143,7 @@ export default function Bookmark( { id, name, url , comment, tags, clickCount , 
     createTagElements();
     
     return(
-        <Accordion defaultActiveKey='0'>
+        <Accordion id={id} key={id} defaultActiveKey='0'>
     
             <CustomToggle eventKey={ id }>
                     <Card.Header className='bookmark-header' >
