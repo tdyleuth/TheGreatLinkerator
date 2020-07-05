@@ -205,7 +205,7 @@ async function rebuildDB(){
         client.connect();
         console.log("Connected to DB!")
 
-        await dropTables();
+        // await dropTables();
         await createTables();
         await createInitialUsers();
         await createInitialLinks();
@@ -218,7 +218,7 @@ async function rebuildDB(){
 }
 
 rebuildDB()
-.then(testDB)
+// .then(testDB)
 .catch(console.error)
 .finally(() => 
 client.end()
