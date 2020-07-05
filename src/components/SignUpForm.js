@@ -19,10 +19,8 @@ function SignUpForm({ show, hideEvent, setUser, setSignupNotice, setSignUpModal,
 
     async function handleSignup(event){
         
-        console.log('here1');
         event.preventDefault();
         event.stopPropagation();
-        console.log('here2');
         
         const newName = document.getElementById('signup-name').value;
         const newUsername = document.getElementById('signup-username').value;
@@ -33,8 +31,6 @@ function SignUpForm({ show, hideEvent, setUser, setSignupNotice, setSignUpModal,
             password,
             name: newName
         });
-
-        console.log('signup data is ', messageName, token, username, name, id);
 
         if(messageName === 'UserExistsError' ){
             setUsernameError(false);

@@ -120,12 +120,8 @@ async function createLink({
          RETURNING *;`
         , [creatorId,name,url,clicks,comment]);
         
-        console.log('tags are ', tags);
         const tagList = await createTags(tags);
-        
-        console.log('tagslist here is ', tagList);
         const taggedObj = await addTagsToLink(link.id, tagList);
-        console.log('taggedObj is ', taggedObj);
         return taggedObj;
 
     } catch(error){

@@ -88,8 +88,6 @@ linksRouter.patch('/:linkId',requireUser, async (req, res, next) => {
     // @ts-ignore
     const { id } = req.user;
     const { name, url, clicks, comment, tags=[], dateModified, lastAccessed } = req.body;
-
-    console.log('I am here and the click count is ', clicks)
     
     const updateFields = {};
 
@@ -123,7 +121,6 @@ linksRouter.patch('/:linkId',requireUser, async (req, res, next) => {
     if(tags.length){
       tagsArr = tags.trim().split(/\s+/);
     }
-    // console.log('tagsArr 2 is ', tagsArr); 
 
   
     try {

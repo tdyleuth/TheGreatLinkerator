@@ -97,8 +97,6 @@ const App = () => {
 
     }, [user]);
 
-    console.log('links is ', links)
-
     if(!user.id){
 
         return (

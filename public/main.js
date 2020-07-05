@@ -46673,16 +46673,13 @@ function BookmarkForm({
     }
 
     try {
-      console.log('createbookmark, here 3', linkData);
       const {
         data
       } = await axios__WEBPACK_IMPORTED_MODULE_7___default.a.post(_constants__WEBPACK_IMPORTED_MODULE_8__["BASE_URL"] + '/links', linkData, headers);
-      console.log('createbookmark, here 4');
       const {
         message,
         link
       } = data;
-      console.log('data is ', data);
 
       if (message === `duplicate key value violates unique constraint "links_creatorId_url_key"`) {
         setDuplicateError(true);
@@ -46701,7 +46698,6 @@ function BookmarkForm({
       if (message === `New link created!`) {
         const newLinksArr = links;
         newLinksArr.unshift(link);
-        console.log('newLinksArr is ', newLinksArr);
         setLinks(newLinksArr);
         setEditBookmarkNotice(false);
         setNewBookmarkNotice(true);
@@ -46718,7 +46714,6 @@ function BookmarkForm({
         }, 3000);
       }
 
-      console.log('New bookmark is ', data);
       return data;
     } catch (err) {
       console.error('Error creating bookmark at /src/components/New-Bookmark @ createBookmark(event). Error', err);
@@ -46784,11 +46779,8 @@ function BookmarkForm({
       }
 
       if (message === 'Link has been updated') {
-        console.log('here');
         const newLinksArr = links.filter(linkObj => linkObj.id !== +linkId);
-        console.log('newLinksArr is ', newLinksArr);
         newLinksArr.push(link);
-        console.log('newLinksArr is ', newLinksArr);
         setLinks(newLinksArr);
         setEditBookmarkNotice(false);
         setNewBookmarkNotice(true);
@@ -46805,7 +46797,6 @@ function BookmarkForm({
         }, 3000);
       }
 
-      console.log('New bookmark is ', data);
       return data;
     } catch (err) {
       console.error('Error creating bookmark at /src/components/New-Bookmark @ createBookmark(event). Error', err);
@@ -46858,7 +46849,6 @@ function BookmarkForm({
       const newTags = modalTags;
       newTags.push(newTag);
       setModalTags(newTags);
-      console.log('modalTags is now ', modalTags);
       document.getElementById('bkmrk-input-tags').value = '';
     }
   }
@@ -47041,7 +47031,6 @@ function Bookmark({
           link: updatedLink
         }
       } = await axios__WEBPACK_IMPORTED_MODULE_4___default.a.patch(_constants__WEBPACK_IMPORTED_MODULE_8__["BASE_URL"] + `/links/${id}`, updates, headers);
-      console.log('updatedLink is ', updatedLink);
       const updatedLinksArr = links.map(link => link.id != id ? link : updatedLink);
       setLinks(updatedLinksArr);
     } catch (err) {
@@ -47061,7 +47050,6 @@ function Bookmark({
 
     try {
       const deletedLink = await axios__WEBPACK_IMPORTED_MODULE_4___default.a.delete(_constants__WEBPACK_IMPORTED_MODULE_8__["BASE_URL"] + `/links/${linkId}`, headers);
-      console.log("deletedlink", deletedLink);
 
       if (deletedLink) {
         const updatedLinks = links.filter(link => {
@@ -47255,7 +47243,6 @@ __webpack_require__.r(__webpack_exports__);
 // /src/components/LoginForm.js
 
 
- // console.log(dotenv.config());
 
 
 
@@ -47857,10 +47844,8 @@ function SignUpForm({
   const [passwordError, setPasswordError] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false);
 
   async function handleSignup(event) {
-    console.log('here1');
     event.preventDefault();
     event.stopPropagation();
-    console.log('here2');
     const newName = document.getElementById('signup-name').value;
     const newUsername = document.getElementById('signup-username').value;
     const password = document.getElementById('signup-password').value;
@@ -47877,7 +47862,6 @@ function SignUpForm({
       password,
       name: newName
     });
-    console.log('signup data is ', messageName, token, username, name, id);
 
     if (messageName === 'UserExistsError') {
       setUsernameError(false);
@@ -48137,7 +48121,6 @@ const App = () => {
       getBookmarks().then(data => setLinks(data)).catch(console.error);
     }
   }, [user]);
-  console.log('links is ', links);
 
   if (!user.id) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Header_js__WEBPACK_IMPORTED_MODULE_4__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Nav_js__WEBPACK_IMPORTED_MODULE_5__["default"], {

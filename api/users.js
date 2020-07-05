@@ -37,9 +37,8 @@ usersRouter.post('/register', async (req, res, next) => {
           message: 'A user by that username already exists'
         });
       }
-    console.log(username.length < 5 || username.length > 25)
+  
       if (username.length < 5 || username.length > 25) {
-        console.log('got here')
         return next({
           messageName: 'UsernameLengthError',
           message: 'Username must be 8-25 characters'
@@ -130,8 +129,6 @@ usersRouter.post('/login', async (req, res, next) => {
     }
        else {
       if (passwordsMatch) {
-        console.log('storing username ', username, "name ", name, 'and id ', id);
-    
       const token = jwt.sign({ username, name, id }, process.env.JWT_SECRET, { expiresIn: '1w' });
 
       res.send({ messageName: "LoginSuccess", message: "You're logged in!", token, name, id });

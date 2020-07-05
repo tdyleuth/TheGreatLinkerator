@@ -51,13 +51,8 @@ function BookmarkForm({ show, hideEvent, setShow, setNewBookmarkNotice, setEditB
         }
         
         try {
-            console.log('createbookmark, here 3', linkData);
             const { data } = await axios.post(BASE_URL + '/links', linkData, headers)
-            console.log('createbookmark, here 4');
             const{ message, link } = data;
-
-            console.log('data is ', data);
-
 
             if( message === `duplicate key value violates unique constraint "links_creatorId_url_key"`){
                 setDuplicateError(true)
@@ -77,7 +72,6 @@ function BookmarkForm({ show, hideEvent, setShow, setNewBookmarkNotice, setEditB
                 
                 const newLinksArr = links;
                 newLinksArr.unshift(link);
-                console.log('newLinksArr is ', newLinksArr);
                 setLinks(newLinksArr);
                 
                 setEditBookmarkNotice(false);
@@ -95,8 +89,6 @@ function BookmarkForm({ show, hideEvent, setShow, setNewBookmarkNotice, setEditB
                 }, 3000);
             
             }
-        
-            console.log('New bookmark is ', data);
 
             return data;
         
@@ -166,11 +158,8 @@ function BookmarkForm({ show, hideEvent, setShow, setNewBookmarkNotice, setEditB
             }
 
             if ( message === 'Link has been updated'){
-                console.log('here');
                 const newLinksArr = links.filter((linkObj) => linkObj.id !== +linkId)
-                console.log('newLinksArr is ', newLinksArr);
                 newLinksArr.push(link);
-                console.log('newLinksArr is ', newLinksArr);
                 setLinks(newLinksArr);
                 
                 setEditBookmarkNotice(false);
@@ -188,8 +177,6 @@ function BookmarkForm({ show, hideEvent, setShow, setNewBookmarkNotice, setEditB
                 }, 3000);
             
             }
-        
-            console.log('New bookmark is ', data);
 
             return data;
         
@@ -248,7 +235,6 @@ function BookmarkForm({ show, hideEvent, setShow, setNewBookmarkNotice, setEditB
             const newTags = modalTags;
             newTags.push(newTag);
             setModalTags(newTags);
-            console.log('modalTags is now ', modalTags);
             document.getElementById('bkmrk-input-tags').value = '';
         }
         

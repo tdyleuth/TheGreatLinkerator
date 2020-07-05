@@ -49,15 +49,9 @@ export default function Bookmark( { id, name, url , comment, tags, clickCount , 
         }
 
         try{
-
             const { data: { link: updatedLink } } = await axios.patch(BASE_URL + `/links/${id}`, updates, headers);
-
-            console.log('updatedLink is ', updatedLink);
-            
             const updatedLinksArr = links.map((link) => link.id != id ? link : updatedLink);
-
             setLinks(updatedLinksArr);
-
         }
         catch(err){
             console.error("There's been an error updating click count and date last accessed at /src/components/Bookmarks @ handleEventClick. Error: ", err );
@@ -78,7 +72,6 @@ export default function Bookmark( { id, name, url , comment, tags, clickCount , 
         try {
            
             const deletedLink = await axios.delete(BASE_URL + `/links/${linkId}`, headers)
-            console.log("deletedlink", deletedLink)
             if(deletedLink){
             const updatedLinks = links.filter((link) => {
                 if(link.id != linkId){
